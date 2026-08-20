@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRO OS • Projetos & Eficiência</title>
+<style>
+:root{
+  --bg:#0a0d12;--panel:#11161e;--panel2:#151b24;--panel3:#1a222d;
+  --line:#293341;--text:#eef3f8;--muted:#91a0b2;--accent:#8b7cff;
+  --accent2:#a99fff;--green:#52d9a5;--yellow:#f3c969;--red:#ff7088;
+  --blue:#62a7ff;--shadow:0 14px 38px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Roboto,Arial,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.app{min-height:100vh;display:flex}
+.sidebar{width:245px;position:fixed;left:0;top:0;bottom:0;background:#0d1117;border-right:1px solid var(--line);padding:18px 12px;z-index:20}
+.brand{font-size:23px;font-weight:900;letter-spacing:2px;padding:5px 12px 22px}.brand span{color:var(--green)}
+.create{width:100%;padding:11px 13px;border:0;border-radius:9px;background:var(--accent);color:#fff;font-weight:750;text-align:left;margin-bottom:20px}
+.nav-title{font-size:10px;color:#687689;text-transform:uppercase;letter-spacing:1.2px;padding:12px}
+.nav button{width:100%;padding:10px 12px;border:0;background:transparent;color:#aab5c3;border-radius:9px;text-align:left;margin:2px 0}
+.nav button:hover,.nav button.active{background:#202733;color:#fff}.nav button.active{box-shadow:inset 3px 0 var(--accent)}
+.main{margin-left:245px;width:calc(100% - 245px);padding:22px 28px 50px}
+.page{display:none}.page.active{display:block}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:20px}.topbar h1{font-size:25px;margin:0}.topbar p{margin:5px 0;color:var(--muted);font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--panel2);color:#fff;padding:9px 12px;border-radius:9px}.btn:hover{background:var(--panel3)}.btn.primary{background:var(--accent);border-color:var(--accent)}.btn.green{background:#123d30;border-color:#1e7558;color:#a6f4d5}.btn.danger{color:#ff9aaa}.btn.sm{padding:6px 9px;font-size:12px}.btn.icon{width:35px;height:35px;padding:0}
+.filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:17px}.filter{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:8px 11px;color:#dbe3ec}.search{min-width:220px}
+.board{display:grid;grid-template-columns:repeat(3,minmax(260px,1fr));gap:14px;align-items:start;overflow-x:auto;padding-bottom:15px}
+.column{background:#0e131a;border:1px solid #1c2632;border-radius:13px;min-height:430px}
+.colhead{padding:13px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#0e131a;border-radius:13px 13px 0 0}.colhead b{font-size:14px}.count{font-size:11px;background:#1c2531;color:#aeb8c6;padding:4px 8px;border-radius:20px}
+.tasks{padding:9px;min-height:370px}.dropzone{outline:2px dashed var(--accent);outline-offset:-3px;background:#111827}
+.task{background:var(--panel2);border:1px solid #2a3442;border-radius:10px;margin-bottom:9px;padding:11px;box-shadow:0 5px 15px rgba(0,0,0,.12);transition:.15s}.task:hover{border-color:#445168;transform:translateY(-1px)}
+.task-title{display:flex;gap:8px;align-items:flex-start}.checkcircle{width:18px;height:18px;border:1px solid #9aa7b7;border-radius:50%;flex:none;margin-top:1px}.task.done .checkcircle{background:var(--accent);border-color:var(--accent)}.task.done .checkcircle:after{content:"✓";display:block;text-align:center;font-size:11px;line-height:17px}.task.done .title{text-decoration:line-through;color:#7f8b9b}.title{font-weight:700;font-size:13px;line-height:1.35}
+.bucket{font-size:10px;color:#b3aaff;margin-bottom:8px;letter-spacing:.3px}.meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:11px;color:#a7b2c0;font-size:11px}.dot{width:6px;height:6px;border-radius:50%;display:inline-block}.priority-high .dot{background:var(--red)}.priority-medium .dot{background:var(--yellow)}.priority-low .dot{background:var(--green)}
+.tag{padding:3px 7px;border-radius:5px;background:#202a38;color:#b8c5d5}.due.late{color:#ff879b}.due.today{color:#f6d477}.avatars{margin-left:auto;display:flex}.avatar{width:24px;height:24px;border-radius:50%;background:#293442;border:2px solid var(--panel2);margin-left:-5px;font-size:9px;display:flex;align-items:center;justify-content:center}
+.addtask{border:0;background:transparent;color:#687689;padding:8px;width:100%;text-align:left}.addtask:hover{color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}.kpi small{color:var(--muted);display:block;font-size:11px}.kpi b{font-size:22px;display:block;margin-top:5px}
+.analytics{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:15px}.panel h2{font-size:16px;margin:0 0 13px}.barrow{margin:12px 0}.barrow label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:5px}.bar{height:7px;border-radius:10px;background:#202a35;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);border-radius:10px}
+.modalwrap{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:50;align-items:center;justify-content:center;padding:20px}.modalwrap.open{display:flex}.modal{width:min(850px,100%);max-height:94vh;overflow:auto;background:#111720;border:1px solid #303b49;border-radius:16px;box-shadow:var(--shadow);padding:19px}
+.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.modalhead h2{margin:0;font-size:19px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field.full{grid-column:1/-1}.field label{font-size:11px;color:var(--muted);display:block;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;background:#0b1118;color:#fff;border:1px solid var(--line);border-radius:8px;padding:10px}.field textarea{min-height:85px;resize:vertical}
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:14px}.tabs button{border:0;background:transparent;color:var(--muted);padding:9px 11px;border-bottom:2px solid transparent}.tabs button.active{color:#fff;border-color:var(--accent)}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.detail{background:#0c131b;border:1px solid var(--line);border-radius:9px;padding:11px}.detail small{display:block;color:var(--muted);font-size:10px}.detail b{display:block;margin-top:4px;font-size:17px}
+.checkrow{display:flex;align-items:center;gap:9px;padding:9px;background:#0c131b;border:1px solid var(--line);border-radius:8px;margin:7px 0}.checkrow input{accent-color:var(--accent)}.checkrow span{flex:1}.struck{text-decoration:line-through;color:#758294}
+.timer{font-variant-numeric:tabular-nums;font-size:30px;font-weight:800;letter-spacing:1px}.timerbox{display:flex;align-items:center;justify-content:space-between;background:#0c131b;border:1px solid var(--line);border-radius:11px;padding:13px;margin-bottom:14px}
+.history{display:grid;gap:8px}.history .item{background:#0c131b;border:1px solid var(--line);padding:10px;border-radius:8px}
+.toast{position:fixed;right:18px;bottom:18px;background:#121b26;border:1px solid var(--line);padding:11px 14px;border-radius:10px;z-index:70}
+.mobile{display:none}
+@media(max-width:1050px){.board{grid-template-columns:repeat(3,300px)}.kpis{grid-template-columns:repeat(3,1fr)}.analytics{grid-template-columns:1fr}}
+@media(max-width:760px){.sidebar{display:none}.main{margin:0;width:100%;padding:16px 12px 75px}.board{grid-template-columns:repeat(3,290px)}.mobile{display:flex;position:fixed;bottom:0;left:0;right:0;background:#0c1118f2;border-top:1px solid var(--line);z-index:30}.mobile button{flex:1;border:0;background:transparent;color:#aeb8c5;padding:9px 2px;font-size:10px}.mobile button.active{color:#fff}.kpis{grid-template-columns:1fr 1fr}.formgrid,.detail-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.topbar{align-items:flex-start;flex-direction:column}.search{min-width:160px}}
+
+.riskcards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}.riskcard{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px}.riskcard b{display:block;font-size:16px;margin-bottom:12px}.riskcard span{color:var(--muted);font-size:12px}.riskcard{cursor:pointer}.riskcard:focus{outline:2px solid var(--accent);outline-offset:2px}.riskcard.active{border-color:var(--accent);box-shadow:0 0 0 1px #8b7cff33 inset}.sectionbar{display:flex;align-items:center;justify-content:space-between}.sectionbar h2{margin:0}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:700px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line);font-size:12px}th{font-size:10px;color:#8190a1;font-weight:700}td b{font-size:13px}.positive{color:var(--green)}.negative{color:var(--red)}.finance-item{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.finance-item:last-child{border-bottom:0}.goal{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:15px;margin-bottom:12px}.goalhead{display:flex;justify-content:space-between;gap:10px}.goalbar{height:8px;background:#202a35;border-radius:10px;overflow:hidden;margin:9px 0}.goalbar i{height:100%;display:block;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:10px}.goalmeta{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.mini-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mini-form .full{grid-column:1/-1}.empty{padding:25px;text-align:center;color:#627082;font-size:12px}
+@media(max-width:760px){.riskcards{grid-template-columns:1fr}}
+
+.risk-description{padding:13px;background:#0c131b;border:1px solid var(--line);border-radius:9px;color:var(--muted);font-size:12px}.status-ok{color:var(--green)}.status-warn{color:var(--yellow)}.status-danger{color:var(--red)}.budget-progress{height:7px;background:#202a35;border-radius:10px;overflow:hidden;min-width:100px}.budget-progress i{display:block;height:100%;border-radius:10px;background:var(--accent)}.budget-progress.over i{background:var(--red)}.budget-progress.warn i{background:var(--yellow)}
+
+.personal-tabs{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}.personal-tab{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:9px 16px;font-weight:700;font-size:12px;cursor:pointer}.personal-tab.active{background:var(--text);color:var(--bg);border-color:var(--text)}.personal-goal{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:13px}.personal-goal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.personal-goal-title{font-size:18px;font-weight:800}.personal-goal-meta{font-size:11px;color:var(--muted);margin-top:4px}.personal-goal-progress{height:8px;background:#202a35;border-radius:10px;overflow:hidden;margin:13px 0 7px}.personal-goal-progress i{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,var(--green),var(--blue))}.personal-goal-foot{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.personal-actions{margin-top:13px;display:grid;gap:8px}.personal-action{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:rgba(255,255,255,.015);border-radius:10px;padding:10px}.personal-action.done{opacity:.62}.personal-action.done .pa-name{text-decoration:line-through}.pa-check{width:24px;height:24px;border-radius:7px;border:1px solid var(--line);background:transparent;color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:900}.personal-action.done .pa-check{background:var(--text);color:var(--bg)}.pa-name{font-size:12px;font-weight:700;flex:1}.pa-meta{font-size:10px;color:var(--muted)}.consistency-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;padding:4px}.consistency-cell{aspect-ratio:1;border:1px solid var(--line);border-radius:3px;background:transparent;cursor:pointer}.consistency-cell.done{background:var(--text);border-color:var(--text)}.consistency-cell.today{box-shadow:0 0 0 1px var(--accent) inset}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat-card{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:14px}.stat-card small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}.stat-card b{display:block;font-size:25px;margin-top:6px}.stat-chart{height:170px;display:flex;align-items:flex-end;gap:5px;padding:15px 5px 4px;border:1px solid var(--line);border-radius:12px;margin-top:12px}.stat-bar{flex:1;min-width:3px;background:var(--text);border-radius:4px 4px 1px 1px;opacity:.75}.reflection{margin-top:12px;padding:14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.015)}.reflection textarea{width:100%;min-height:75px;resize:vertical;margin-top:8px}.period-note{color:var(--muted);font-size:11px;margin-bottom:12px}@media(max-width:760px){.stats-grid{grid-template-columns:1fr}}
+
+.daily-checklist-panel{margin-bottom:14px}.daily-item{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid var(--line)}.daily-item:last-child{border-bottom:0}.daily-check{width:26px;height:26px;border-radius:7px;border:1px solid var(--line);background:transparent;color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:900;flex:0 0 auto}.daily-item.done .daily-check{background:var(--text);color:var(--bg);border-color:var(--text)}.daily-item.done .daily-name{text-decoration:line-through;opacity:.55}.daily-name{font-size:12px;font-weight:700;flex:1}.daily-time{font-size:10px;color:var(--muted)}.daily-delete{opacity:.6}.daily-summary{display:flex;justify-content:space-between;margin-top:12px;color:var(--muted);font-size:11px}.daily-summary b{color:var(--text)}.daily-empty{padding:15px 0;color:var(--muted);font-size:11px}.daily-history{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;margin-top:12px}.daily-history-cell{height:28px;border-radius:5px;background:#202a35;border:1px solid var(--line);position:relative}.daily-history-cell.done{background:var(--text);border-color:var(--text)}.daily-history-cell.today{box-shadow:0 0 0 1px var(--accent) inset}.daily-history-cell span{position:absolute;inset:auto 0 -16px;text-align:center;font-size:8px;color:var(--muted)}@media(max-width:760px){.daily-history{grid-template-columns:repeat(7,1fr)}}
+
+.personal-profile-note{color:var(--muted);font-size:11px}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">PRO<span>OS</span></div>
+  <button class="create" onclick="newProject()">＋ Criar projeto</button>
+  <div class="nav-title">Coisas pessoais</div>
+  <div class="nav">
+    <button data-view="personal">◉ &nbsp; Objetivos pessoais</button>
+    <button data-view="personalProfile">♙ &nbsp; Perfil pessoal</button>
+  </div>
+  <div class="nav-title">Projetos</div>
+  <div class="nav">
+    <button class="active" data-view="board">▦ &nbsp; Projetos & Eficiência</button>
+    <button data-view="analytics">◔ &nbsp; Análise de eficiência</button>
+  </div>
+  <div class="nav-title">Finanças</div>
+  <div class="nav">
+    <button data-view="finance">▣ &nbsp; Finanças</button>
+    <button data-view="investments">↗ &nbsp; Investimentos</button>
+    <button data-view="budget">▤ &nbsp; Orçamento</button>
+    <button data-view="goals">◎ &nbsp; Objetivos financeiros</button>
+    <button data-view="profile">♙ &nbsp; Perfil financeiro</button>
+  </div>
+  <div class="nav-title">Sistema</div>
+  <div class="nav">
+    <button data-view="settings">⚙ &nbsp; Definições</button>
+  </div>
+</aside>
+
+<main class="main">
+<section id="board" class="page active">
+  <div class="topbar">
+    <div><h1>Projetos & Eficiência</h1><p>Um Planner construído para medir como trabalhas, não apenas o que tens para fazer.</p></div>
+    <div class="actions"><button class="btn" onclick="exportData()">⇩ Exportar</button><button class="btn primary" onclick="newProject()">＋ Novo projeto</button></div>
+  </div>
+  <div class="filters">
+    <input class="filter search" id="search" placeholder="⌕ Procurar projeto..." oninput="renderBoard()">
+    <select class="filter" id="priorityFilter" onchange="renderBoard()"><option value="">Todas prioridades</option><option>Alta</option><option>Média</option><option>Baixa</option></select>
+    <select class="filter" id="bucketFilter" onchange="renderBoard()"><option value="">Todos os grupos</option></select>
+    <button class="btn sm" onclick="clearFilters()">Limpar filtros</button>
+  </div>
+  <div class="board">
+    <div class="column"><div class="colhead"><b>Não iniciado</b><span class="count" id="cTodo">0</span></div><div class="tasks" id="todo" data-status="todo"></div><button class="addtask" onclick="newProject('todo')">＋ Adicionar projeto</button></div>
+    <div class="column"><div class="colhead"><b>Em progresso</b><span class="count" id="cDoing">0</span></div><div class="tasks" id="doing" data-status="doing"></div><button class="addtask" onclick="newProject('doing')">＋ Adicionar projeto</button></div>
+    <div class="column"><div class="colhead"><b>Concluído</b><span class="count" id="cDone">0</span></div><div class="tasks" id="done" data-status="done"></div><button class="addtask" onclick="newProject('done')">＋ Adicionar projeto</button></div>
+  </div>
+</section>
+
+<section id="analytics" class="page">
+  <div class="topbar"><div><h1>Análise de eficiência</h1><p>Aqui o teu trabalho transforma-se em dados.</p></div><button class="btn" onclick="renderAnalytics()">↻ Atualizar</button></div>
+  <div class="kpis">
+    <div class="kpi"><small>Projetos concluídos</small><b id="aDone">0</b></div>
+    <div class="kpi"><small>Assertividade média</small><b id="aAcc">—</b></div>
+    <div class="kpi"><small>Tempo de execução</small><b id="aTime">0h</b></div>
+    <div class="kpi"><small>Alterações</small><b id="aChanges">0</b></div>
+    <div class="kpi"><small>Retrabalho</small><b id="aRework">0h</b></div>
+  </div>
+  <div class="analytics">
+    <div class="panel"><h2>Assertividade por projeto</h2><div id="accList"></div></div>
+    <div class="panel"><h2>Onde estás a perder tempo?</h2><div id="insights"></div></div>
+  </div>
+</section>
+
+
+<section id="finance" class="page">
+  <div class="topbar"><div><h1>Finanças</h1><p>A tua visão financeira num só lugar.</p></div><div class="actions"><button class="btn primary" onclick="financeMovement()">＋ Movimento</button></div></div>
+  <div class="kpis">
+    <div class="kpi"><small>Património estimado</small><b id="fNet">0 Kz</b></div>
+    <div class="kpi"><small>Rendimento mensal</small><b id="fIncome">0 Kz</b></div>
+    <div class="kpi"><small>Despesas este mês</small><b id="fExpense">0 Kz</b></div>
+    <div class="kpi"><small>Taxa de poupança</small><b id="fSave">0%</b></div>
+    <div class="kpi"><small>Investimentos</small><b id="fInvest">0 Kz</b></div>
+  </div>
+  <div class="analytics">
+    <div class="panel"><h2>Fluxo financeiro</h2><div id="financeSummary"></div></div>
+    <div class="panel"><h2>Distribuição</h2><div id="financeDistribution"></div></div>
+  </div>
+  <div class="panel" style="margin-top:14px"><h2>Movimentos recentes</h2><div id="financeMoves"></div></div>
+</section>
+
+<section id="investments" class="page">
+  <div class="topbar"><div><h1>Investimentos</h1><p>Acompanha a tua carteira e o crescimento do património. Perfil actual: <b id="currentRiskLabel">${esc(fin.profile.risk||'Moderado')}</b></p></div><div class="actions"><button class="btn" onclick="showView('profile')">Editar perfil</button><button class="btn primary" onclick="investmentModal()">＋ Investimento</button></div></div>
+  <div id="riskCards" class="riskcards"></div><div class="panel"><div class="sectionbar"><h2>▧ Carteira</h2><button class="btn green sm" onclick="investmentModal()">＋ Investimento</button></div><div class="tablewrap"><table><thead><tr><th>ACTIVO</th><th>TIPO</th><th>CAPITAL</th><th>ACTUAL</th><th>RESULTADO</th><th></th></tr></thead><tbody id="investTable"></tbody></table></div></div>
+  <div class="analytics" style="margin-top:14px"><div class="panel"><h2>Alocação</h2><div id="alloc"></div></div><div class="panel"><h2>Performance</h2><div id="performance"></div></div></div>
+</section>
+
+
+
+<section id="personal" class="page">
+  <div class="topbar">
+    <div><h1>Objetivos pessoais</h1><p>Transforma intenções em ações e acompanha a tua consistência.</p></div>
+    <div class="actions"><button class="btn" onclick="personalStats()">▥ Estatísticas</button><button class="btn primary" onclick="personalGoalModal()">＋ Novo objetivo</button></div>
+  </div>
+
+  <div class="personal-tabs" id="personalTabs">
+    <button class="personal-tab active" data-period="daily">Diários</button>
+    <button class="personal-tab" data-period="weekly">Semanais</button>
+    <button class="personal-tab" data-period="monthly">Mensais</button>
+    <button class="personal-tab" data-period="yearly">Anuais</button>
+  </div>
+
+  <div class="panel daily-checklist-panel">
+    <div class="sectionbar">
+      <div><h2 style="margin:0">✓ Checklist diária</h2><p class="period-note" style="margin:4px 0 0">As tarefas que tens de cumprir hoje.</p></div>
+      <button class="btn primary sm" onclick="dailyTaskModal()">＋ Tarefa</button>
+    </div>
+    <div id="dailyChecklist"></div>
+    <div class="daily-summary"><span id="dailyProgressText">0 de 0 concluídas</span><b id="dailyProgressPct">0%</b></div>
+    <div class="personal-goal-progress"><i id="dailyProgressBar" style="width:0%"></i></div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><small>Objetivos activos</small><b id="pActive">0</b></div>
+    <div class="kpi"><small>Consistência</small><b id="pConsistency">0%</b></div>
+    <div class="kpi"><small>Concluídos hoje</small><b id="pToday">0</b></div>
+    <div class="kpi"><small>Melhor sequência</small><b id="pStreak">0 dias</b></div>
+  </div>
+
+  <div id="personalGoalsList"></div>
+</section>
+
+
+<section id="personalProfile" class="page">
+  <div class="topbar">
+    <div><h1>Perfil pessoal</h1><p>Define o contexto pessoal que orienta os teus objetivos e decisões.</p></div>
+  </div>
+  <div class="panel">
+    <h2>♙ Perfil pessoal</h2>
+    <div class="formgrid">
+      <div class="field"><label>Nome</label><input id="ppName" placeholder="O teu nome"></div>
+      <div class="field"><label>Idade</label><input id="ppAge" type="number" min="0" placeholder="Idade"></div>
+      <div class="field"><label>Profissão / área</label><input id="ppProfession" placeholder="Ex.: Designer de interiores / Artista 3D"></div>
+      <div class="field"><label>Foco principal</label><input id="ppFocus" placeholder="Ex.: Crescimento pessoal"></div>
+      <div class="field full"><label>Objetivo de vida</label><textarea id="ppLifeGoal" placeholder="O que queres construir nos próximos anos?"></textarea></div>
+      <div class="field full"><label>Notas pessoais</label><textarea id="ppNotes" placeholder="Princípios, prioridades ou outras informações importantes."></textarea></div>
+      <div class="field full"><button class="btn primary" onclick="savePersonalProfile()">Guardar perfil</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="budget" class="page">
+  <div class="topbar"><div><h1>Orçamento</h1><p>Define limites por categoria e compara o planeado com o que realmente gastaste.</p></div>
+    <button class="btn primary" onclick="budgetModal()">＋ Categoria</button></div>
+  <div class="kpis">
+    <div class="kpi"><small>Orçamento total</small><b id="bTotal">0 Kz</b></div>
+    <div class="kpi"><small>Gasto este mês</small><b id="bSpent">0 Kz</b></div>
+    <div class="kpi"><small>Disponível</small><b id="bAvailable">0 Kz</b></div>
+    <div class="kpi"><small>Execução do orçamento</small><b id="bRate">0%</b></div>
+  </div>
+  <div class="panel"><div class="sectionbar"><h2>▤ Orçamento mensal</h2><button class="btn green sm" onclick="budgetModal()">＋ Categoria</button></div>
+    <div class="tablewrap"><table><thead><tr><th>CATEGORIA</th><th>ORÇADO</th><th>GASTO REAL</th><th>DISPONÍVEL</th><th>EXECUÇÃO</th><th>ESTADO</th><th></th></tr></thead><tbody id="budgetTable"></tbody></table></div>
+  </div>
+  <div class="analytics" style="margin-top:14px"><div class="panel"><h2>Controlo por categoria</h2><div id="budgetBars"></div></div>
+    <div class="panel"><h2>Alertas</h2><div id="budgetAlerts"></div></div></div>
+</section>
+
+<section id="profile" class="page">
+  <div class="topbar"><div><h1>Perfil financeiro</h1><p>Personaliza a estratégia de risco e as regras que orientam o teu sistema.</p></div></div>
+  <div class="panel">
+    <h2>♙ Perfil</h2>
+    <div class="formgrid">
+      <div class="field"><label>Nome</label><input id="pfName"></div>
+      <div class="field"><label>Idade</label><input id="pfAge" type="number" min="0"></div>
+      <div class="field"><label>Rendimento mensal</label><input id="pfIncome" type="number" min="0"></div>
+      <div class="field"><label>Rendimento extra médio</label><input id="pfExtra" type="number" min="0"></div>
+      <div class="field"><label>Saldo disponível no início do mês</label><input id="pfCash" type="number" min="0"></div>
+      <div class="field"><label>Meta de poupança %</label><input id="pfSave" type="number" min="0" max="100"></div>
+      <div class="field"><label>Perfil de investidor</label>
+        <select id="pfRisk">
+          <option value="Conservador">Conservador</option>
+          <option value="Moderado">Moderado</option>
+          <option value="Agressivo">Agressivo</option>
+        </select>
+      </div>
+      <div class="field full"><div id="riskDescription" class="risk-description"></div></div>
+      <div class="field full"><div class="actions"><button class="btn" onclick="loadProfileIntoForm()">↺ Repor dados guardados</button><button class="btn primary" onclick="saveProfile()">Guardar perfil</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="goals" class="page">
+  <div class="topbar"><div><h1>Objetivos financeiros</h1><p>Transforma planos em metas mensuráveis.</p></div><button class="btn primary" onclick="goalModal()">＋ Novo objetivo</button></div>
+  <div id="goalsList"></div>
+</section>
+
+<section id="settings" class="page">
+  <div class="topbar"><div><h1>Definições</h1><p>Dados guardados apenas neste navegador.</p></div></div>
+  <div class="panel"><h2>Dados</h2><p style="color:var(--muted)">Esta aplicação funciona localmente. Os projetos e cronómetros ficam guardados no navegador.</p><div class="actions"><button class="btn" onclick="exportData()">Exportar dados</button><button class="btn danger" onclick="resetAll()">Apagar todos os dados</button></div></div>
+</section>
+</main>
+<nav class="mobile"><button data-view="finance">▣<br>Finanças</button><button data-view="investments">↗<br>Invest.</button><button data-view="budget">▤<br>Orçamento</button><button data-view="personal">◉<br>Objetivos</button><button data-view="personalProfile">♙<br>Perfil</button><button class="active" data-view="board">▦<br>Projetos</button><button data-view="analytics">◔<br>Análise</button><button onclick="newProject()">＋<br>Novo</button><button data-view="settings">⚙<br>Definições</button></nav>
+</div>
+
+<div class="modalwrap" id="modal"><div class="modal">
+  <div class="modalhead"><h2 id="modalTitle"></h2><button class="btn icon" onclick="closeModal()">✕</button></div>
+  <div id="modalBody"></div>
+</div></div>
+
+<script>
+const KEY='pro_os_planner_v1';
+const EMPTY={projects:[]};
+let state=load(), detailIndex=null, detailTab='details';
+
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||structuredClone(EMPTY)}catch(e){return structuredClone(EMPTY)}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));renderAll()}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function fmtMin(m){m=Math.max(0,Number(m)||0);let h=Math.floor(m/60),mi=Math.floor(m%60),s=Math.floor((m*60)%60);return `${String(h).padStart(2,'0')}:${String(mi).padStart(2,'0')}:${String(s).padStart(2,'0')}`}
+function fmtHours(m){return (Number(m||0)/60).toFixed(1)+'h'}
+function fmtDate(d){if(!d)return 'Sem prazo';return new Date(d+'T00:00:00').toLocaleDateString('pt-AO',{day:'2-digit',month:'2-digit'})}
+function fullDate(d){if(!d)return '—';return new Date(d+'T00:00:00').toLocaleDateString('pt-AO')}
+function money(v){return new Intl.NumberFormat('pt-AO').format(Math.round(Number(v)||0))+' Kz'}
+function currentWorkMinutes(p){let m=Number(p.elapsed||0);if(p.timerStart)m+=(Date.now()-p.timerStart)/60000;return m}
+function totalMinutes(p){return currentWorkMinutes(p)+(p.alterations||[]).reduce((a,x)=>a+Number(x.minutes||0),0)}
+function isLate(p){if(!p.due||p.status!=='done')return false;if(!p.completedAt)return false;return new Date(p.completedAt)>new Date(p.due+'T23:59:59')}
+function lateDays(p){if(!p.due||!p.completedAt)return 0;return Math.max(0,Math.ceil((new Date(p.completedAt)-new Date(p.due+'T23:59:59'))/86400000))}
+function accuracy(p){
+ let n=(p.alterations||[]).length,re=(p.alterations||[]).reduce((a,x)=>a+Number(x.minutes||0),0),base=currentWorkMinutes(p);
+ let score=100-(n*5)-(base?Math.min(50,re/base*50):0)-(Math.min(20,lateDays(p)*2));
+ return Math.max(0,Math.min(100,score));
+}
+function priorityClass(x){return x==='Alta'?'priority-high':x==='Baixa'?'priority-low':'priority-medium'}
+function dueClass(p){if(!p.due)return '';let today=new Date();today.setHours(0,0,0,0);let d=new Date(p.due+'T00:00:00');if(p.status!=='done'&&d<today)return 'late';if(d.getTime()===today.getTime())return 'today';return ''}
+
+
+const FINKEY='pro_os_finance_v2';
+let fin=loadFinance(); fin.budgets=fin.budgets||[]; fin.profile=fin.profile||{name:'Utilizador',age:0,income:0,extra:0,savingTarget:30,risk:'Moderado'};
+function loadFinance(){try{return JSON.parse(localStorage.getItem(FINKEY))||{profile:{name:'Utilizador',age:0,income:0,extra:0,cash:0,savingTarget:30,risk:'Moderado'},moves:[],investments:[],goals:[],budgets:[]}}catch(e){return {profile:{name:'Utilizador',age:0,income:0,extra:0,cash:0,savingTarget:30,risk:'Moderado'},moves:[],investments:[],goals:[],budgets:[]}}}
+function saveFinance(){localStorage.setItem(FINKEY,JSON.stringify(fin));renderFinance();renderInvestments();renderBudget();renderGoals();renderProfile()}
+function monthMoves(){let now=new Date(),m=now.getMonth(),y=now.getFullYear();return fin.moves.filter(x=>{let d=new Date(x.date+'T00:00:00');return d.getMonth()===m&&d.getFullYear()===y})}
+function financeTotals(){
+ let mm=monthMoves();
+ let profileIncome=Number(fin.profile?.income)||0, extra=Number(fin.profile?.extra)||0;
+ let income=profileIncome+extra;
+ let expense=mm.filter(x=>x.kind==='expense').reduce((a,x)=>a+x.amount,0);
+ let invest=fin.investments.reduce((a,x)=>a+(Number(x.current)||0),0);
+ let openingCash=Number(fin.profile?.cash)||0;
+ let cash=openingCash+income-expense;
+ let saving=income?Math.max(0,(income-expense)/income*100):0;
+ return {income,expense,invest,cash,net:cash+invest,saving};
+}
+function financeMovement(){
+ let body=`<div class="formgrid"><div class="field"><label>Tipo</label><select id="mKind"><option value="income">Receita</option><option value="expense">Despesa</option></select></div><div class="field"><label>Valor (Kz)</label><input id="mAmount" type="number" min="0"></div><div class="field"><label>Nome</label><input id="mName" placeholder="Ex.: salário, táxi, alimentação..."></div><div class="field"><label>Categoria</label><input id="mCat" placeholder="Casa, transporte, trabalho..."></div><div class="field"><label>Data</label><input id="mDate" type="date" value="${new Date().toISOString().slice(0,10)}"></div><div class="field full"><button class="btn primary" onclick="addMovement()">Guardar movimento</button></div></div>`;
+ openCustomModal('Novo movimento',body)
+}
+function addMovement(){let k=document.getElementById('mKind').value,a=+document.getElementById('mAmount').value,n=document.getElementById('mName').value.trim(),c=document.getElementById('mCat').value.trim(),d=document.getElementById('mDate').value;if(!a||!n||!d)return alert('Preenche tipo, valor, nome e data.');fin.moves.push({id:Date.now(),kind:k,amount:a,name:n,category:c,date:d});closeModal();saveFinance()}
+function investmentModal(){
+ let body=`<div class="formgrid"><div class="field"><label>Activo</label><input id="iName" placeholder="Ex.: Banco X"></div><div class="field"><label>Tipo</label><select id="iType"><option>Ação</option><option>Obrigação</option><option>Fundo</option><option>Imóvel</option><option>Outro</option></select></div><div class="field"><label>Capital investido</label><input id="iCapital" type="number" min="0"></div><div class="field"><label>Valor atual</label><input id="iCurrent" type="number" min="0"></div><div class="field"><label>Data de compra</label><input id="iDate" type="date" value="${new Date().toISOString().slice(0,10)}"></div><div class="field"><label>Unidades</label><input id="iUnits" type="number" min="0" step="0.0001"></div><div class="field full"><button class="btn primary" onclick="addInvestment()">Guardar investimento</button></div></div>`;
+ openCustomModal('Novo investimento',body)
+}
+function addInvestment(){let n=document.getElementById('iName').value.trim(),t=document.getElementById('iType').value,c=+document.getElementById('iCapital').value,cur=+document.getElementById('iCurrent').value,d=document.getElementById('iDate').value,u=+document.getElementById('iUnits').value||0;if(!n||!c)return alert('Indica activo e capital.');fin.investments.push({id:Date.now(),name:n,type:t,capital:c,current:cur||c,date:d,units:u});closeModal();saveFinance()}
+function renderFinance(){let t=financeTotals();document.getElementById('fNet').textContent=money(t.net);document.getElementById('fIncome').textContent=money(t.income);document.getElementById('fExpense').textContent=money(t.expense);document.getElementById('fSave').textContent=t.saving.toFixed(1)+'%';document.getElementById('fInvest').textContent=money(t.invest);
+ document.getElementById('financeSummary').innerHTML=`<div class="finance-item"><span>Receitas deste mês</span><b class="positive">${money(t.income)}</b></div><div class="finance-item"><span>Despesas deste mês</span><b class="negative">${money(t.expense)}</b></div><div class="finance-item"><span>Disponível após despesas</span><b>${money(t.income-t.expense)}</b></div><div class="finance-item"><span>Capital investido / carteira</span><b>${money(t.invest)}</b></div>`;
+ let cats={};monthMoves().filter(x=>x.kind==='expense').forEach(x=>cats[x.category||'Sem categoria']=(cats[x.category||'Sem categoria']||0)+x.amount);let max=Math.max(1,...Object.values(cats));document.getElementById('financeDistribution').innerHTML=Object.entries(cats).length?Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="barrow"><label><span>${esc(k)}</span><b>${money(v)}</b></label><div class="bar"><i style="width:${v/max*100}%"></i></div></div>`).join(''):'<div class="empty">Regista despesas para começar a analisar a distribuição.</div>';
+ document.getElementById('financeMoves').innerHTML=fin.moves.length?[...fin.moves].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,10).map((x,i)=>`<div class="finance-item"><span>${esc(x.name)} <small style="color:var(--muted)">· ${esc(x.category||'')}</small></span><b class="${x.kind==='income'?'positive':'negative'}">${x.kind==='income'?'+':'-'} ${money(x.amount)}</b></div>`).join(''):'<div class="empty">Nenhum movimento registado.</div>'
+}
+
+function renderRiskCards(){
+  const el=document.getElementById('riskCards');
+  if(!el)return;
+  const selected=fin.profile?.risk||'Moderado';
+  const descriptions={
+    Conservador:'Preservação e liquidez.',
+    Moderado:'Equilíbrio risco/retorno.',
+    Agressivo:'Maior volatilidade.'
+  };
+  el.innerHTML=['Conservador','Moderado','Agressivo'].map(r=>`
+    <div class="riskcard ${selected===r?'active':''}" role="button" tabindex="0"
+      onclick="setRisk('${r}')"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRisk('${r}')}">
+      <b>${r}${selected===r?' ✓':''}</b>
+      <span>${descriptions[r]}</span>
+    </div>`).join('');
+}
+
+function renderInvestments(){renderRiskCards();let riskLabel=document.getElementById('currentRiskLabel');if(riskLabel)riskLabel.textContent=fin.profile?.risk||'Moderado';let tb=document.getElementById('investTable');if(!tb)return;let totalC=fin.investments.reduce((a,x)=>a+x.capital,0),totalV=fin.investments.reduce((a,x)=>a+x.current,0);tb.innerHTML=fin.investments.length?fin.investments.map((x,i)=>{let r=x.current-x.capital;return `<tr><td><b>${esc(x.name)}</b></td><td>${esc(x.type)}</td><td>${money(x.capital)}</td><td>${money(x.current)}</td><td class="${r>=0?'positive':'negative'}">${r>=0?'+':''}${money(r)} (${x.capital?(r/x.capital*100).toFixed(1):0}%)</td><td><button class="btn sm danger" onclick="deleteInvestment(${i})">✕</button></td></tr>`}).join(''):'<tr><td colspan="6" class="empty">Nenhum investimento. A carteira começa vazia.</td></tr>';
+ document.getElementById('alloc').innerHTML=fin.investments.length?fin.investments.map(x=>`<div class="barrow"><label><span>${esc(x.name)}</span><b>${totalV?(x.current/totalV*100).toFixed(1):0}%</b></label><div class="bar"><i style="width:${totalV?x.current/totalV*100:0}%"></i></div></div>`).join(''):'<div class="empty">Adiciona investimentos para ver a alocação.</div>';
+ let r=totalC?((totalV-totalC)/totalC*100):0;document.getElementById('performance').innerHTML=`<div class="detail-grid"><div class="detail"><small>Capital</small><b>${money(totalC)}</b></div><div class="detail"><small>Valor atual</small><b>${money(totalV)}</b></div><div class="detail"><small>Resultado</small><b class="${r>=0?'positive':'negative'}">${r.toFixed(1)}%</b></div><div class="detail"><small>Ativos</small><b>${fin.investments.length}</b></div></div>`
+}
+function setRisk(r){fin.profile=fin.profile||{};fin.profile.risk=r;localStorage.setItem(FINKEY,JSON.stringify(fin));renderInvestments();renderProfile();showToast('Perfil de investidor alterado para '+r+'.')}
+function deleteInvestment(i){if(confirm('Apagar este investimento?')){fin.investments.splice(i,1);saveFinance()}}
+function goalModal(){openCustomModal('Novo objetivo financeiro',`<div class="formgrid"><div class="field"><label>Objetivo</label><input id="gName" placeholder="Ex.: Fundo de emergência"></div><div class="field"><label>Meta (Kz)</label><input id="gTarget" type="number" min="0"></div><div class="field"><label>Valor atual (Kz)</label><input id="gCurrent" type="number" min="0"></div><div class="field"><label>Prazo</label><input id="gDue" type="date"></div><div class="field full"><button class="btn primary" onclick="addGoal()">Guardar objetivo</button></div></div>`)}
+function addGoal(){let n=document.getElementById('gName').value.trim(),t=+document.getElementById('gTarget').value,c=+document.getElementById('gCurrent').value||0,d=document.getElementById('gDue').value;if(!n||!t)return alert('Indica o nome e a meta.');fin.goals.push({name:n,target:t,current:c,due:d});closeModal();saveFinance()}
+function renderGoals(){let el=document.getElementById('goalsList');if(!el)return;el.innerHTML=fin.goals.length?fin.goals.map((g,i)=>{let pct=Math.min(100,g.target?g.current/g.target*100:0);return `<div class="goal"><div class="goalhead"><div><b>${esc(g.name)}</b><div class="meta">${g.due?'Prazo: '+fullDate(g.due):'Sem prazo'}</div></div><b>${pct.toFixed(0)}%</b></div><div class="goalbar"><i style="width:${pct}%"></i></div><div class="goalmeta"><span>${money(g.current)}</span><span>${money(g.target)}</span></div><div class="actions" style="margin-top:10px"><button class="btn sm" onclick="updateGoal(${i})">＋ Registar progresso</button><button class="btn sm danger" onclick="fin.goals.splice(${i},1);saveFinance()">Apagar</button></div></div>`}).join(''):'<div class="panel"><div class="empty">Ainda não tens objetivos financeiros.</div></div>'}
+function updateGoal(i){let v=prompt('Novo valor acumulado (Kz):',fin.goals[i].current);if(v!==null&&!isNaN(+v)){fin.goals[i].current=+v;saveFinance()}}
+function openCustomModal(title,body){document.getElementById('modalTitle').textContent=title;document.getElementById('modalBody').innerHTML=body;document.getElementById('modal').classList.add('open')}
+
+
+function currentMonth(){let d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
+function budgetTotals(){let month=currentMonth(), moves=fin.moves.filter(x=>x.kind==='expense'&&x.date.startsWith(month));let total=fin.budgets.reduce((a,x)=>a+x.limit,0);let spent=moves.reduce((a,x)=>a+x.amount,0);return {total,spent,available:total-spent,rate:total?spent/total*100:0}}
+function categorySpent(cat){let m=currentMonth();return fin.moves.filter(x=>x.kind==='expense'&&x.date.startsWith(m)&&x.category===cat).reduce((a,x)=>a+x.amount,0)}
+function budgetModal(i=null){
+ let b=i===null?{category:'',limit:0}:fin.budgets[i];
+ openCustomModal(i===null?'Nova categoria de orçamento':'Editar categoria',`<div class="formgrid">
+   <div class="field"><label>Categoria</label><input id="budCat" value="${esc(b.category)}" placeholder="Ex.: Transporte"></div>
+   <div class="field"><label>Limite mensal (Kz)</label><input id="budLimit" type="number" min="0" value="${b.limit||0}"></div>
+   <div class="field full"><p style="color:var(--muted);font-size:12px">O gasto real é calculado automaticamente a partir das despesas desta categoria registadas na aba Finanças.</p></div>
+   <div class="field full"><button class="btn primary" onclick="saveBudget(${i===null?'null':i})">Guardar categoria</button></div>
+ </div>`)
+}
+function saveBudget(i){
+ let cat=document.getElementById('budCat').value.trim(),limit=+document.getElementById('budLimit').value;
+ if(!cat||limit<0)return alert('Indica a categoria e um limite válido.');
+ let existing=fin.budgets.findIndex((x,j)=>x.category.toLowerCase()===cat.toLowerCase()&&j!==i);
+ if(existing>=0)return alert('Essa categoria já existe no orçamento.');
+ let item={category:cat,limit};
+ if(i===null)fin.budgets.push(item);else fin.budgets[i]=item;
+ closeModal();saveFinance();
+}
+function deleteBudget(i){if(confirm('Apagar esta categoria do orçamento?')){fin.budgets.splice(i,1);saveFinance()}}
+function renderBudget(){
+ let el=document.getElementById('budgetTable');if(!el)return;
+ let t=budgetTotals();document.getElementById('bTotal').textContent=money(t.total);document.getElementById('bSpent').textContent=money(t.spent);document.getElementById('bAvailable').textContent=money(t.available);document.getElementById('bRate').textContent=t.rate.toFixed(1)+'%';
+ el.innerHTML=fin.budgets.length?fin.budgets.map((b,i)=>{let spent=categorySpent(b.category),pct=b.limit?spent/b.limit*100:0,remain=b.limit-spent,cls=pct>100?'status-danger':pct>=80?'status-warn':'status-ok';return `<tr><td><b>${esc(b.category)}</b></td><td>${money(b.limit)}</td><td>${money(spent)}</td><td class="${remain<0?'negative':'positive'}">${money(remain)}</td><td><div class="budget-progress ${pct>100?'over':pct>=80?'warn':''}"><i style="width:${Math.min(100,pct)}%"></i></div><small>${pct.toFixed(0)}%</small></td><td class="${cls}">${pct>100?'Acima do limite':pct>=80?'Atenção':'Dentro do limite'}</td><td><button class="btn sm" onclick="budgetModal(${i})">Editar</button> <button class="btn sm danger" onclick="deleteBudget(${i})">✕</button></td></tr>`}).join(''):'<tr><td colspan="7" class="empty">Adiciona categorias como alimentação, transporte, casa, universidade, lazer, família ou qualquer outra que queiras controlar.</td></tr>';
+ let max=Math.max(1,...fin.budgets.map(x=>Math.max(x.limit,categorySpent(x.category))));document.getElementById('budgetBars').innerHTML=fin.budgets.length?fin.budgets.map(b=>{let s=categorySpent(b.category);return `<div class="barrow"><label><span>${esc(b.category)}</span><b>${money(s)} / ${money(b.limit)}</b></label><div class="bar"><i style="width:${Math.min(100,s/max*100)}%"></i></div></div>`}).join(''):'<div class="empty">Sem categorias.</div>';
+ let alerts=fin.budgets.map(b=>({b,s:categorySpent(b.category),p:b.limit?categorySpent(b.category)/b.limit*100:0})).filter(x=>x.p>=80).sort((a,b)=>b.p-a.p);document.getElementById('budgetAlerts').innerHTML=alerts.length?alerts.map(x=>`<div class="finance-item"><span>${esc(x.b.category)}</span><b class="${x.p>100?'negative':'status-warn'}">${x.p.toFixed(0)}% usado</b></div>`).join(''):'<div class="empty">Nenhuma categoria está perto do limite.</div>';
+}
+function loadProfileIntoForm(){
+ let p=fin.profile||{name:'Utilizador',age:0,income:0,extra:0,cash:0,savingTarget:30,risk:'Moderado'};
+ document.getElementById('pfName').value=p.name||'Utilizador';
+ document.getElementById('pfAge').value=p.age||0;
+ document.getElementById('pfIncome').value=p.income||0;
+ document.getElementById('pfExtra').value=p.extra||0;
+ document.getElementById('pfCash').value=p.cash||0;
+ document.getElementById('pfSave').value=p.savingTarget??30;
+ document.getElementById('pfRisk').value=p.risk||'Moderado';
+ updateRiskDescription();
+}
+function renderProfile(){
+ let p=fin.profile||{};
+ const vals={pfName:p.name||'Utilizador',pfAge:p.age||0,pfIncome:p.income||0,pfExtra:p.extra||0,pfCash:p.cash||0,pfSave:p.savingTarget??30};
+ Object.entries(vals).forEach(([id,v])=>{let el=document.getElementById(id);if(el)el.value=v});
+ let r=document.getElementById('pfRisk');if(r)r.value=p.risk||'Moderado';
+ updateRiskDescription();
+}
+function updateRiskDescription(){let r=document.getElementById('pfRisk')?.value,d=document.getElementById('riskDescription');if(!d)return;let txt={Conservador:'Prioriza preservação de capital, liquidez e menor volatilidade.',Moderado:'Procura equilíbrio entre crescimento, risco e estabilidade.',Agressivo:'Aceita maior volatilidade e risco para procurar maior crescimento.'};d.innerHTML='<b style="color:#fff">'+esc(r)+'</b><br>'+txt[r]}
+document.addEventListener('change',e=>{if(e.target.id==='pfRisk')updateRiskDescription()})
+function saveProfile(){fin.profile={name:document.getElementById('pfName').value.trim()||'Utilizador',age:+document.getElementById('pfAge').value||0,income:+document.getElementById('pfIncome').value||0,extra:+document.getElementById('pfExtra').value||0,cash:+document.getElementById('pfCash').value||0,savingTarget:+document.getElementById('pfSave').value||0,risk:document.getElementById('pfRisk').value};saveFinance();showToast('Perfil guardado com sucesso.')}
+
+
+const PPROFILE_KEY='pro_os_personal_profile_v1';
+let personalProfile=loadPersonalProfile();
+function loadPersonalProfile(){try{return JSON.parse(localStorage.getItem(PPROFILE_KEY))||{name:'',age:0,profession:'',focus:'',lifeGoal:'',notes:''}}catch(e){return {name:'',age:0,profession:'',focus:'',lifeGoal:'',notes:''}}}
+function savePersonalProfile(){
+ personalProfile={
+  name:document.getElementById('ppName').value.trim(),
+  age:+document.getElementById('ppAge').value||0,
+  profession:document.getElementById('ppProfession').value.trim(),
+  focus:document.getElementById('ppFocus').value.trim(),
+  lifeGoal:document.getElementById('ppLifeGoal').value.trim(),
+  notes:document.getElementById('ppNotes').value.trim()
+ };
+ localStorage.setItem(PPROFILE_KEY,JSON.stringify(personalProfile));showToast('Perfil pessoal guardado com sucesso.');
+}
+function renderPersonalProfile(){
+ const p=personalProfile||{};
+ const vals={ppName:p.name||'',ppAge:p.age||0,ppProfession:p.profession||'',ppFocus:p.focus||'',ppLifeGoal:p.lifeGoal||'',ppNotes:p.notes||''};
+ Object.entries(vals).forEach(([id,v])=>{let el=document.getElementById(id);if(el)el.value=v});
+}
+
+const PKEY='pro_os_personal_v1';
+let personal=loadPersonal();
+function loadPersonal(){try{return JSON.parse(localStorage.getItem(PKEY))||{goals:[],activePeriod:'daily'}}catch(e){return {goals:[],activePeriod:'daily'}}}
+function savePersonal(){localStorage.setItem(PKEY,JSON.stringify(personal));renderPersonal()}
+function periodLabel(p){return {daily:'Diário',weekly:'Semanal',monthly:'Mensal',yearly:'Anual'}[p]||p}
+function periodDays(p){return {daily:1,weekly:7,monthly:30,yearly:365}[p]||1}
+function personalGoalModal(i=null){
+ let g=i===null?{name:'',period:'daily',duration:30,actions:[],reflection:''}:personal.goals[i];
+ let actionRows=(g.actions||[]).map((a,j)=>`<div class="finance-item"><span>${esc(a.name)}</span><button class="btn sm danger" onclick="removeDraftAction(${j})">✕</button></div>`).join('');
+ openCustomModal(i===null?'Novo objetivo':'Editar objetivo',`<div class="formgrid">
+   <div class="field full"><label>Nome do objetivo</label><input id="pgName" placeholder="Ex.: Crescimento pessoal" value="${esc(g.name||'')}"></div>
+   <div class="field"><label>Período</label><select id="pgPeriod"><option value="daily" ${g.period==='daily'?'selected':''}>Diário</option><option value="weekly" ${g.period==='weekly'?'selected':''}>Semanal</option><option value="monthly" ${g.period==='monthly'?'selected':''}>Mensal</option><option value="yearly" ${g.period==='yearly'?'selected':''}>Anual</option></select></div>
+   <div class="field"><label>Duração</label><select id="pgDuration"><option value="30" ${g.duration==30?'selected':''}>30 Dias</option><option value="60" ${g.duration==60?'selected':''}>60 Dias</option><option value="90" ${g.duration==90?'selected':''}>90 Dias</option><option value="365" ${g.duration==365?'selected':''}>365 Dias</option></select></div>
+   <div class="field full"><label>Adicionar ação</label><div style="display:flex;gap:8px"><input id="pgAction" placeholder="Ex.: Ler 15 min"><button class="btn" onclick="addDraftAction()">＋</button></div></div>
+   <div class="field full"><div id="draftActions">${actionRows||'<div class="empty">Ainda não há ações.</div>'}</div></div>
+   <div class="field full"><label>Reflexão</label><textarea id="pgReflection" placeholder="O que queres observar neste período?">${esc(g.reflection||'')}</textarea></div>
+   <div class="field full"><button class="btn primary" onclick="savePersonalGoal(${i===null?'null':i})">Guardar objetivo</button></div>
+ </div>`);
+ window._draftGoal=JSON.parse(JSON.stringify(g));
+}
+function addDraftAction(){let input=document.getElementById('pgAction'),name=input.value.trim();if(!name)return;window._draftGoal=window._draftGoal||{actions:[]};window._draftGoal.actions=window._draftGoal.actions||[];window._draftGoal.actions.push({name,done:false,history:{}});input.value='';let box=document.getElementById('draftActions');box.innerHTML=window._draftGoal.actions.map((a,j)=>`<div class="finance-item"><span>${esc(a.name)}</span><button class="btn sm danger" onclick="removeDraftAction(${j})">✕</button></div>`).join('')}
+function removeDraftAction(j){if(!window._draftGoal)return;window._draftGoal.actions.splice(j,1);let box=document.getElementById('draftActions');box.innerHTML=window._draftGoal.actions.length?window._draftGoal.actions.map((a,k)=>`<div class="finance-item"><span>${esc(a.name)}</span><button class="btn sm danger" onclick="removeDraftAction(${k})">✕</button></div>`).join(''):'<div class="empty">Ainda não há ações.</div>'}
+function savePersonalGoal(i){
+ let name=document.getElementById('pgName').value.trim(),period=document.getElementById('pgPeriod').value,duration=+document.getElementById('pgDuration').value,reflection=document.getElementById('pgReflection').value;
+ if(!name)return alert('Indica o nome do objetivo.');
+ let old=i===null?null:personal.goals[i],g=window._draftGoal||{actions:[]};
+ let item={id:old?.id||Date.now(),name,period,duration,start:old?.start||todayISO(),actions:g.actions||[],reflection};
+ if(i===null)personal.goals.push(item);else personal.goals[i]=item;
+ window._draftGoal=null;closeModal();savePersonal();showToast('Objetivo guardado com sucesso.');
+}
+function todayISO(){return new Date().toISOString().slice(0,10)}
+function dateDiff(a,b){return Math.floor((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/86400000)}
+function togglePersonalAction(gi,ai){
+ let a=personal.goals[gi].actions[ai],d=todayISO();a.history=a.history||{};
+ a.history[d]=!a.history[d];a.done=!!a.history[d];savePersonal()
+}
+function removePersonalGoal(i){if(confirm('Apagar este objetivo?')){personal.goals.splice(i,1);savePersonal()}}
+function setPersonalPeriod(p){personal.activePeriod=p;document.querySelectorAll('.personal-tab').forEach(b=>b.classList.toggle('active',b.dataset.period===p));renderPersonal()}
+function goalStats(g){
+ let today=todayISO(),start=new Date(g.start+'T00:00:00'),end=new Date(start);end.setDate(end.getDate()+g.duration-1);
+ let totalDays=Math.max(1,g.duration),elapsed=Math.min(totalDays,Math.max(1,dateDiff(g.start,today)+1)),days=Array.from({length:elapsed},(_,i)=>{let d=new Date(start);d.setDate(d.getDate()+i);return d.toISOString().slice(0,10)});
+ let checks=0,total=days.length*Math.max(1,g.actions.length);
+ days.forEach(d=>(g.actions||[]).forEach(a=>{if(a.history?.[d])checks++}));
+ let consistency=total?checks/total*100:0,actionToday=(g.actions||[]).filter(a=>a.history?.[today]).length;
+ let streak=0;for(let d=new Date(today+'T00:00:00');;d.setDate(d.getDate()-1)){let ds=d.toISOString().slice(0,10);if((g.actions||[]).length&&g.actions.every(a=>a.history?.[ds]))streak++;else break}
+ return {elapsed,totalDays,days,checks,total,consistency,actionToday,streak,end:end.toISOString().slice(0,10)}
+}
+function consistencyGrid(g){
+ let s=goalStats(g),cells=[];for(let i=0;i<Math.min(g.duration,90);i++){let d=new Date(g.start+'T00:00:00');d.setDate(d.getDate()+i);let ds=d.toISOString().slice(0,10),done=(g.actions||[]).length&&g.actions.every(a=>a.history?.[ds]);cells.push(`<button class="consistency-cell ${done?'done':''} ${ds===todayISO()?'today':''}" title="${ds}" onclick="toggleDayActions(${personal.goals.indexOf(g)},'${ds}')"></button>`)}return cells.join('')
+}
+function toggleDayActions(gi,ds){let g=personal.goals[gi];if(!g.actions?.length)return;let makeDone=!g.actions.every(a=>a.history?.[ds]);g.actions.forEach(a=>{a.history=a.history||{};a.history[ds]=makeDone});savePersonal()}
+
+const DKEY='pro_os_daily_checklist_v1';
+let daily=loadDaily();
+function loadDaily(){try{return JSON.parse(localStorage.getItem(DKEY))||{tasks:[],history:{}}}catch(e){return {tasks:[],history:{}}}}
+function saveDaily(){localStorage.setItem(DKEY,JSON.stringify(daily));renderDailyChecklist();renderPersonal()}
+function dailyTaskModal(i=null){
+ let t=i===null?{name:'',time:''}:daily.tasks[i];
+ openCustomModal(i===null?'Nova tarefa diária':'Editar tarefa diária',`<div class="formgrid">
+   <div class="field full"><label>Tarefa</label><input id="dtName" placeholder="Ex.: Meditar 20 minutos" value="${esc(t.name||'')}"></div>
+   <div class="field"><label>Hora (opcional)</label><input id="dtTime" type="time" value="${esc(t.time||'')}"></div>
+   <div class="field"><label>Repetição</label><input value="Todos os dias" disabled></div>
+   <div class="field full"><button class="btn primary" onclick="saveDailyTask(${i===null?'null':i})">Guardar tarefa</button></div>
+ </div>`)
+}
+function saveDailyTask(i){
+ let name=document.getElementById('dtName').value.trim(),time=document.getElementById('dtTime').value;
+ if(!name)return alert('Indica o nome da tarefa.');
+ if(i===null)daily.tasks.push({id:Date.now(),name,time});else daily.tasks[i]={...daily.tasks[i],name,time};
+ saveDaily();closeModal();showToast('Tarefa diária guardada.')
+}
+function deleteDailyTask(i){if(confirm('Apagar esta tarefa diária?')){daily.tasks.splice(i,1);saveDaily()}}
+function toggleDailyTask(i){
+ let d=todayISO(),t=daily.tasks[i];daily.history[d]=daily.history[d]||{};
+ daily.history[d][t.id]=!daily.history[d][t.id];saveDaily()
+}
+function dailyDoneCount(date=todayISO()){let h=daily.history?.[date]||{};return daily.tasks.filter(t=>h[t.id]).length}
+function dailyPct(date=todayISO()){return daily.tasks.length?dailyDoneCount(date)/daily.tasks.length*100:0}
+function dailyHistoryDays(n=14){
+ let arr=[];for(let i=n-1;i>=0;i--){let d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-i);arr.push(d.toISOString().slice(0,10))}return arr
+}
+function dailyStats(){
+ let days=dailyHistoryDays(30),checks=0,total=days.length*daily.tasks.length,best=0,cur=0;
+ days.forEach(d=>{let c=dailyDoneCount(d);checks+=c;if(daily.tasks.length&&c===daily.tasks.length){cur++;best=Math.max(best,cur)}else cur=0});
+ return {checks,total,pct:total?checks/total*100:0,best}
+}
+function renderDailyChecklist(){
+ let el=document.getElementById('dailyChecklist');if(!el)return;
+ let d=todayISO(),h=daily.history?.[d]||{},done=dailyDoneCount(d),pct=dailyPct(d);
+ document.getElementById('dailyProgressText').textContent=`${done} de ${daily.tasks.length} concluídas`;
+ document.getElementById('dailyProgressPct').textContent=pct.toFixed(0)+'%';
+ document.getElementById('dailyProgressBar').style.width=Math.min(100,pct)+'%';
+ if(!daily.tasks.length){el.innerHTML='<div class="daily-empty">Ainda não tens tarefas para hoje. Adiciona a primeira tarefa diária.</div>';return}
+ el.innerHTML=daily.tasks.map((t,i)=>{let ok=!!h[t.id];return `<div class="daily-item ${ok?'done':''}"><button class="daily-check" onclick="toggleDailyTask(${i})">${ok?'✓':''}</button><span class="daily-name">${esc(t.name)}</span>${t.time?`<span class="daily-time">${esc(t.time)}</span>`:''}<button class="btn sm" onclick="dailyTaskModal(${i})">Editar</button><button class="btn sm danger daily-delete" onclick="deleteDailyTask(${i})">✕</button></div>`}).join('')
+}
+function dailyStatsBlock(){
+ let s=dailyStats(),days=dailyHistoryDays(14);
+ return `<div class="panel" style="margin-top:12px"><div class="sectionbar"><h2 style="margin:0">CHECKLIST DIÁRIA</h2><b>${s.pct.toFixed(0)}%</b></div><div class="stats-grid"><div class="stat-card"><small>Tarefas concluídas</small><b>${s.checks}</b></div><div class="stat-card"><small>Consistência</small><b>${s.pct.toFixed(0)}%</b></div><div class="stat-card"><small>Melhor sequência</small><b>${s.best} dias</b></div><div class="stat-card"><small>Hoje</small><b>${dailyDoneCount()}/${daily.tasks.length}</b></div></div><div class="daily-history">${days.map(d=>`<div class="daily-history-cell ${daily.tasks.length&&dailyDoneCount(d)===daily.tasks.length?'done':''} ${d===todayISO()?'today':''}" title="${d}: ${dailyDoneCount(d)}/${daily.tasks.length}"></div>`).join('')}</div></div>`
+}
+
+function renderPersonal(){
+ renderDailyChecklist();
+ let list=document.getElementById('personalGoalsList');if(!list)return;
+ let p=personal.activePeriod||'daily';document.querySelectorAll('.personal-tab').forEach(b=>b.classList.toggle('active',b.dataset.period===p));
+ let goals=personal.goals.filter(g=>g.period===p),active=personal.goals.filter(g=>{let s=goalStats(g);return s.elapsed<s.totalDays});
+ let allChecks=0,allPossible=0,today=0,best=0;active.forEach(g=>{let s=goalStats(g);allChecks+=s.checks;allPossible+=s.total;today+=s.actionToday;best=Math.max(best,s.streak)});
+ document.getElementById('pActive').textContent=active.length;document.getElementById('pConsistency').textContent=(allPossible?allChecks/allPossible*100:0).toFixed(0)+'%';document.getElementById('pToday').textContent=today;document.getElementById('pStreak').textContent=best+' dias';
+ if(!goals.length){list.innerHTML=`<div class="panel"><div class="empty">Ainda não tens objetivos ${periodLabel(p).toLowerCase()}s. Cria o primeiro objetivo.</div></div>`;return}
+ list.innerHTML=goals.map(g=>{let gi=personal.goals.indexOf(g),s=goalStats(g),pct=s.totalDays?Math.min(100,s.elapsed/s.totalDays*100):0;return `<div class="personal-goal">
+   <div class="personal-goal-head"><div><div class="personal-goal-title">${esc(g.name)}</div><div class="personal-goal-meta">${periodLabel(g.period)} · ${s.elapsed} / ${s.totalDays} dias · ${s.totalDays-s.elapsed} dias restantes</div></div><div><b>${s.consistency.toFixed(0)}%</b></div></div>
+   <div class="personal-goal-progress"><i style="width:${pct}%"></i></div>
+   <div class="personal-goal-foot"><span>Consistência</span><b>${s.consistency.toFixed(0)}%</b><span>Racha: ${s.streak} dias</span></div>
+   <div class="panel" style="margin-top:12px"><div class="sectionbar"><h2 style="font-size:13px;margin:0">CONSISTÊNCIA</h2><b>${s.consistency>=90?'PERFEITA 💎':s.consistency>=70?'FORTE':'EM CONSTRUÇÃO'}</b></div><div class="consistency-grid">${consistencyGrid(g)}</div></div>
+   <div class="sectionbar" style="margin-top:13px"><h2 style="font-size:13px;margin:0">AÇÕES</h2><button class="btn sm" onclick="personalGoalModal(${gi})">＋</button></div>
+   <div class="personal-actions">${(g.actions||[]).length?(g.actions.map((a,ai)=>{let done=!!a.history?.[todayISO()];return `<div class="personal-action ${done?'done':''}"><button class="pa-check" onclick="togglePersonalAction(${gi},${ai})">${done?'✓':''}</button><span class="pa-name">${esc(a.name)}</span><span class="pa-meta">${done?'Concluído hoje':'Hoje'}</span><button class="btn sm danger" onclick="deletePersonalAction(${gi},${ai})">✕</button></div>`}).join('')):'<div class="empty">Adiciona ações ao objetivo para medir consistência.</div>'}</div>
+   <div class="reflection"><b>REFLEXÃO</b><div style="color:var(--muted);font-size:11px;margin-top:4px">${esc(g.reflection||'Sem reflexão definida.')}</div></div>
+   <div class="actions" style="margin-top:12px"><button class="btn sm" onclick="personalGoalModal(${gi})">Editar</button><button class="btn sm danger" onclick="removePersonalGoal(${gi})">Apagar</button></div>
+ </div>`}).join('')
+}
+function deletePersonalAction(gi,ai){if(confirm('Apagar esta ação?')){personal.goals[gi].actions.splice(ai,1);savePersonal()}}
+function personalStats(){
+ let goals=personal.goals,checks=0,total=0,best=0,sessions=0;
+ goals.forEach(g=>{let s=goalStats(g);checks+=s.checks;total+=s.total;sessions+=s.checks;best=Math.max(best,s.streak)});
+ let consistency=total?checks/total*100:0;
+ let bars=Array.from({length:14},(_,i)=>{let v=goals.length?Math.round((i+1)/(14)*100):0;return `<div class="stat-bar" style="height:${Math.max(8,v)}%" title="${v}%"></div>`}).join('');
+ openCustomModal('Estatísticas',`<div class="personal-tabs"><button class="personal-tab">7D</button><button class="personal-tab active">1M</button><button class="personal-tab">3M</button><button class="personal-tab">6M</button><button class="personal-tab">1A</button><button class="personal-tab">Tudo</button></div>
+ <div class="stats-grid"><div class="stat-card"><small>Sessões</small><b>${sessions}</b></div><div class="stat-card"><small>Consistência</small><b>${consistency.toFixed(0)}%</b></div><div class="stat-card"><small>Racha</small><b>${best} <small style="display:inline">dias</small></b></div><div class="stat-card"><small>Objetivos</small><b>${goals.length}</b></div></div>
+ <div class="panel" style="margin-top:12px"><small style="color:var(--muted)">PROGRESSO DO PERÍODO</small><div class="stat-chart">${bars}</div></div>
+ ${dailyStatsBlock()}
+ <div class="reflection"><b>LEITURA</b><p style="color:var(--muted);font-size:12px">Usa estas métricas para perceber consistência, não apenas resultados. O objetivo é construir um padrão que consiga repetir.</p></div>`)
+}
+document.addEventListener('click',e=>{let b=e.target.closest('.personal-tab');if(b&&b.dataset.period)setPersonalPeriod(b.dataset.period)})
+
+function renderAll(){renderBoard();renderAnalytics();renderFinance();renderInvestments();renderBudget();renderGoals();renderProfile();renderPersonal();renderDailyChecklist();renderPersonalProfile()}
+function renderBoard(){
+ let search=(document.getElementById('search')?.value||'').toLowerCase(), pf=document.getElementById('priorityFilter')?.value||'', bf=document.getElementById('bucketFilter')?.value||'';
+ let buckets=[...new Set(state.projects.map(p=>p.bucket).filter(Boolean))], sel=document.getElementById('bucketFilter');
+ if(sel){let old=sel.value;sel.innerHTML='<option value="">Todos os grupos</option>'+buckets.map(x=>`<option>${esc(x)}</option>`).join('');sel.value=buckets.includes(old)?old:'';bf=sel.value}
+ let arr=state.projects.filter(p=>(!search||p.name.toLowerCase().includes(search)||(p.bucket||'').toLowerCase().includes(search))&&(!pf||p.priority===pf)&&(!bf||p.bucket===bf));
+ let groups={todo:arr.filter(p=>p.status==='todo'),doing:arr.filter(p=>p.status==='doing'),done:arr.filter(p=>p.status==='done')};
+ ['todo','doing','done'].forEach(k=>{let el=document.getElementById(k);el.innerHTML=groups[k].length?groups[k].map(taskHTML).join(''):'<div style="padding:30px 10px;text-align:center;color:#5f6c7d;font-size:12px">Nenhum projeto aqui</div>';document.getElementById('c'+(k==='todo'?'Todo':k==='doing'?'Doing':'Done')).textContent=groups[k].length});
+}
+function taskHTML(p){
+ let i=state.projects.indexOf(p), checked=(p.checklist||[]).filter(x=>x.done).length,total=(p.checklist||[]).length,st=p.timerStart?'A contar':p.timerPaused?'Pausado':'Parado';
+ let change=(p.alterations||[]).length;
+ return `<article class="task ${p.status==='done'?'done':''}" draggable="true" data-index="${i}" onclick="openProject(${i})" ondragstart="dragStart(event,${i})">
+  <div class="bucket">${esc(p.bucket||'SEM GRUPO')}</div>
+  <div class="task-title"><span class="checkcircle" onclick="event.stopPropagation();completeProject(${i})"></span><div class="title">${esc(p.name)}</div></div>
+  <div class="meta ${priorityClass(p.priority)}"><span class="dot"></span>${esc(p.priority||'Média')} ${p.due?`<span class="due ${dueClass(p)}">▣ ${fmtDate(p.due)}</span>`:''}${total?`<span class="tag">☑ ${checked}/${total}</span>`:''}${change?`<span class="tag">↻ ${change}</span>`:''}<span class="tag">${st}</span></div>
+  <div class="meta"><span>⏱ ${fmtMin(currentWorkMinutes(p))}</span><span class="avatars"><span class="avatar">EU</span></span></div>
+ </article>`;
+}
+function dragStart(e,i){e.dataTransfer.setData('text/plain',String(i))}
+document.querySelectorAll('.tasks').forEach(()=>{});
+document.addEventListener('dragover',e=>{let z=e.target.closest('.tasks');if(z){e.preventDefault();z.classList.add('dropzone')}});
+document.addEventListener('dragleave',e=>{let z=e.target.closest('.tasks');if(z)z.classList.remove('dropzone')});
+document.addEventListener('drop',e=>{let z=e.target.closest('.tasks');if(!z)return;e.preventDefault();z.classList.remove('dropzone');let i=+e.dataTransfer.getData('text/plain');if(!Number.isNaN(i)){state.projects[i].status=z.dataset.status;save()}});
+
+function openProject(i,tab='details'){
+ detailIndex=i;detailTab=tab;let p=state.projects[i];
+ document.getElementById('modalTitle').textContent=p.name;
+ document.getElementById('modalBody').innerHTML=projectModalHTML(p,i);
+ document.getElementById('modal').classList.add('open');
+}
+function projectModalHTML(p,i){
+ let tabs=`<div class="tabs"><button class="${detailTab==='details'?'active':''}" onclick="switchTab(${i},'details')">Detalhes</button><button class="${detailTab==='checklist'?'active':''}" onclick="switchTab(${i},'checklist')">☑ Checklist <span class="tag">${(p.checklist||[]).filter(x=>x.done).length}/${(p.checklist||[]).length}</span></button><button class="${detailTab==='history'?'active':''}" onclick="switchTab(${i},'history')">↻ Alterações ${(p.alterations||[]).length?`<span class="tag">${p.alterations.length}</span>`:''}</button></div>`;
+ return tabs+(detailTab==='details'?detailsHTML(p,i):detailTab==='checklist'?checklistHTML(p,i):historyHTML(p,i));
+}
+function detailsHTML(p,i){
+ let running=!!p.timerStart, paused=!!p.timerPaused;
+ return `<div class="timerbox"><div><small style="color:var(--muted)">TEMPO DE EXECUÇÃO</small><div class="timer" data-timer="${i}">${fmtMin(currentWorkMinutes(p))}</div></div><div class="actions">${running?`<button class="btn" onclick="pauseTimer(${i})">⏸ Pausar</button>`:paused?`<button class="btn primary" onclick="resumeTimer(${i})">▶ Retomar</button>`:`<button class="btn primary" onclick="startTimer(${i})">▶ Começar</button>`}</div></div>
+ <div class="detail-grid"><div class="detail"><small>Status</small><b>${p.status==='todo'?'Não iniciado':p.status==='doing'?'Em progresso':'Concluído'}</b></div><div class="detail"><small>Prioridade</small><b>${esc(p.priority)}</b></div><div class="detail"><small>Início</small><b>${fullDate(p.start)}</b></div><div class="detail"><small>Prazo</small><b>${fullDate(p.due)}</b></div><div class="detail"><small>Tempo previsto</small><b>${p.planned||0}h</b></div><div class="detail"><small>Assertividade</small><b>${p.status==='done'?accuracy(p).toFixed(0)+'%':'Ainda não calculada'}</b></div></div>
+ <div class="formgrid" style="margin-top:13px"><div class="field"><label>Nome</label><input id="editName" value="${esc(p.name)}"></div><div class="field"><label>Grupo / bucket</label><input id="editBucket" value="${esc(p.bucket||'')}"></div><div class="field"><label>Estado</label><select id="editStatus"><option value="todo" ${p.status==='todo'?'selected':''}>Não iniciado</option><option value="doing" ${p.status==='doing'?'selected':''}>Em progresso</option><option value="done" ${p.status==='done'?'selected':''}>Concluído</option></select></div><div class="field"><label>Prioridade</label><select id="editPriority"><option ${p.priority==='Baixa'?'selected':''}>Baixa</option><option ${p.priority==='Média'?'selected':''}>Média</option><option ${p.priority==='Alta'?'selected':''}>Alta</option></select></div><div class="field"><label>Data de início</label><input id="editStart" type="date" value="${p.start||''}"></div><div class="field"><label>Prazo</label><input id="editDue" type="date" value="${p.due||''}"></div><div class="field"><label>Tempo previsto (horas)</label><input id="editPlanned" type="number" min="0" step=".25" value="${p.planned||0}"></div><div class="field full"><label>Notas</label><textarea id="editNotes">${esc(p.notes||'')}</textarea></div><div class="field full"><div class="actions"><button class="btn danger" onclick="deleteProject(${i})">Apagar projeto</button><button class="btn primary" onclick="saveDetails(${i})">Guardar alterações</button></div></div></div>`;
+}
+function checklistHTML(p,i){
+ let list=p.checklist||[];
+ return `<div class="panel" style="padding:0;border:0;background:transparent"><div class="field"><label>Adicionar etapa / critério de entrega</label><div class="actions"><input id="newStep" placeholder="Ex.: validar medidas, materiais, iluminação..." style="flex:1;background:#0b1118;color:#fff;border:1px solid var(--line);border-radius:8px;padding:10px"><button class="btn primary" onclick="addStep(${i})">＋ Adicionar</button></div></div><div style="margin-top:12px">${list.length?list.map((x,j)=>`<div class="checkrow"><input type="checkbox" ${x.done?'checked':''} onchange="toggleStep(${i},${j})"><span class="${x.done?'struck':''}">${esc(x.text)}</span><button class="btn sm danger" onclick="deleteStep(${i},${j})">✕</button></div>`).join(''):'<div class="empty">Ainda não tens checklist. Cria os critérios que precisam estar certos na primeira entrega.</div>'}</div><div class="actions" style="margin-top:13px"><button class="btn" onclick="closeModal()">Fechar</button></div></div>`;
+}
+function historyHTML(p,i){
+ let alterations=p.alterations||[], re=alterations.reduce((a,x)=>a+Number(x.minutes||0),0);
+ return `<div class="detail-grid"><div class="detail"><small>Alterações</small><b>${alterations.length}</b></div><div class="detail"><small>Tempo de retrabalho</small><b>${fmtMin(re)}</b></div><div class="detail"><small>Tempo de execução</small><b>${fmtMin(currentWorkMinutes(p))}</b></div><div class="detail"><small>Assertividade</small><b>${p.status==='done'?accuracy(p).toFixed(0)+'%':'Após finalizar'}</b></div></div>
+ <div class="panel" style="margin-top:12px"><h2>Registar alteração</h2><div class="formgrid"><div class="field full"><label>O que foi alterado?</label><input id="altText" placeholder="Ex.: cliente pediu alteração do layout"></div><div class="field"><label>Tempo gasto (minutos)</label><input id="altMin" type="number" min="1" step="1" placeholder="30"></div><div class="field"><label>Tipo</label><select id="altType"><option>Design</option><option>Técnico</option><option>Cliente</option><option>Erro</option><option>Outro</option></select></div><div class="field full"><button class="btn primary" onclick="addAlteration(${i})">＋ Registar alteração</button></div></div></div>
+ <div class="history">${alterations.length?alterations.map((a,j)=>`<div class="item"><b>${esc(a.description)}</b><div class="meta"><span>${esc(a.type||'Outro')}</span><span>⏱ ${a.minutes} min</span><button class="btn sm danger" onclick="removeAlteration(${i},${j})">Apagar</button></div></div>`).join(''):'<div class="empty">Nenhuma alteração registada.</div>'}</div>`;
+}
+function switchTab(i,t){detailTab=t;openProject(i,t)}
+function addStep(i){let el=document.getElementById('newStep'),v=el.value.trim();if(!v)return;state.projects[i].checklist.push({text:v,done:false});el.value='';save();openProject(i,'checklist')}
+function toggleStep(i,j){state.projects[i].checklist[j].done=!state.projects[i].checklist[j].done;save();openProject(i,'checklist')}
+function deleteStep(i,j){state.projects[i].checklist.splice(j,1);save();openProject(i,'checklist')}
+function addAlteration(i){let d=document.getElementById('altText').value.trim(),m=+document.getElementById('altMin').value,t=document.getElementById('altType').value;if(!d||!m)return alert('Indica a alteração e o tempo gasto.');state.projects[i].alterations.push({description:d,minutes:m,type:t,at:new Date().toISOString()});save();openProject(i,'history')}
+function removeAlteration(i,j){state.projects[i].alterations.splice(j,1);save();openProject(i,'history')}
+
+function saveDetails(i){
+ let p=state.projects[i];p.name=document.getElementById('editName').value.trim();p.bucket=document.getElementById('editBucket').value.trim();p.status=document.getElementById('editStatus').value;p.priority=document.getElementById('editPriority').value;p.start=document.getElementById('editStart').value;p.due=document.getElementById('editDue').value;p.planned=+document.getElementById('editPlanned').value||0;p.notes=document.getElementById('editNotes').value;
+ if(p.status==='done'&&!p.completedAt)p.completedAt=new Date().toISOString();if(p.status!=='done')p.completedAt=null;
+ closeModal();save()
+}
+function startTimer(i){let p=state.projects[i];if(p.timerPaused){p.timerStart=Date.now();p.timerPaused=false}else p.timerStart=Date.now();p.status='doing';save();openProject(i,'details')}
+function pauseTimer(i){let p=state.projects[i];p.elapsed=currentWorkMinutes(p);p.timerStart=null;p.timerPaused=true;save();openProject(i,'details')}
+function resumeTimer(i){let p=state.projects[i];p.timerStart=Date.now();p.timerPaused=false;p.status='doing';save();openProject(i,'details')}
+function completeProject(i){let p=state.projects[i];if(p.timerStart){p.elapsed=currentWorkMinutes(p);p.timerStart=null}p.timerPaused=false;p.status='done';p.completedAt=new Date().toISOString();save()}
+function deleteProject(i){if(confirm('Apagar este projeto e todo o histórico?')){state.projects.splice(i,1);closeModal();save()}}
+function newProject(status='todo'){
+ state.projects.push({name:'Novo projeto',bucket:'',status,priority:'Média',start:'',due:'',planned:0,elapsed:0,timerStart:null,timerPaused:false,checklist:[],alterations:[],notes:'',completedAt:null});
+ let i=state.projects.length-1;save();openProject(i,'details');setTimeout(()=>document.getElementById('editName')?.select(),30)
+}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()})
+
+function renderAnalytics(){
+ let done=state.projects.filter(p=>p.status==='done'), acc=done.map(accuracy),changes=done.reduce((a,p)=>a+(p.alterations||[]).length,0),re=done.reduce((a,p)=>a+(p.alterations||[]).reduce((x,y)=>x+Number(y.minutes||0),0),0),tm=done.reduce((a,p)=>a+currentWorkMinutes(p),0);
+ document.getElementById('aDone').textContent=done.length;document.getElementById('aAcc').textContent=acc.length?Math.round(acc.reduce((a,b)=>a+b,0)/acc.length)+'%':'—';document.getElementById('aTime').textContent=fmtHours(tm);document.getElementById('aChanges').textContent=changes;document.getElementById('aRework').textContent=fmtHours(re);
+ document.getElementById('accList').innerHTML=done.length?done.map(p=>`<div class="barrow"><label><span>${esc(p.name)}</span><b>${accuracy(p).toFixed(0)}%</b></label><div class="bar"><i style="width:${accuracy(p)}%"></i></div></div>`).join(''):'<div class="empty">Finaliza projetos para começar a medir a assertividade.</div>';
+ let byType={};done.forEach(p=>(p.alterations||[]).forEach(a=>byType[a.type||'Outro']=(byType[a.type||'Outro']||0)+Number(a.minutes||0)));let ranked=Object.entries(byType).sort((a,b)=>b[1]-a[1]);
+ document.getElementById('insights').innerHTML=ranked.length?ranked.map(x=>`<div class="barrow"><label><span>${esc(x[0])}</span><b>${fmtHours(x[1])}</b></label><div class="bar"><i style="width:${Math.min(100,x[1]/Math.max(...ranked.map(y=>y[1]))*100)}%"></i></div></div>`).join(''):'<div class="empty">Ainda não há dados de retrabalho.</div>';
+}
+function clearFilters(){search.value='';priorityFilter.value='';bucketFilter.value='';renderBoard()}
+function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='pro-os-projetos.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+function resetAll(){if(confirm('Isto apagará todos os projetos e históricos deste navegador. Continuar?')){localStorage.removeItem(KEY);state=structuredClone(EMPTY);renderAll();showToast('Dados apagados.')}}
+function showToast(t){let e=document.createElement('div');e.className='toast';e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),1500)}
+
+function showView(view){
+ document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===view));
+ document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===view));
+ if(view==='analytics')renderAnalytics();
+ if(view==='finance')renderFinance();
+ if(view==='investments')renderInvestments();
+ if(view==='budget')renderBudget();
+ if(view==='goals')renderGoals();
+ if(view==='profile')renderProfile();
+ if(view==='personal')renderPersonal();
+ if(view==='personalProfile')renderPersonalProfile();
+}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+
+function tick(){
+ document.querySelectorAll('[data-timer]').forEach(e=>{let i=+e.dataset.timer,p=state.projects[i];if(p)e.textContent=fmtMin(currentWorkMinutes(p))});
+ document.querySelectorAll('.task').forEach(()=>{});
+}
+renderAll();setInterval(tick,1000);
+</script>
+</body>
+</html>
