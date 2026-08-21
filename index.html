@@ -51,11 +51,11 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 @media(max-width:760px){.sidebar{display:none}.main{margin:0;width:100%;padding:16px 12px 75px}.board{grid-template-columns:repeat(3,290px)}.mobile{display:flex;position:fixed;bottom:0;left:0;right:0;background:#0c1118f2;border-top:1px solid var(--line);z-index:30}.mobile button{flex:1;border:0;background:transparent;color:#aeb8c5;padding:9px 2px;font-size:10px}.mobile button.active{color:#fff}.kpis{grid-template-columns:1fr 1fr}.formgrid,.detail-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.topbar{align-items:flex-start;flex-direction:column}.search{min-width:160px}}
 
 .riskcards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}.riskcard{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px}.riskcard b{display:block;font-size:16px;margin-bottom:12px}.riskcard span{color:var(--muted);font-size:12px}.riskcard{cursor:pointer}.riskcard:focus{outline:2px solid var(--accent);outline-offset:2px}.riskcard.active{border-color:var(--accent);box-shadow:0 0 0 1px #8b7cff33 inset}.sectionbar{display:flex;align-items:center;justify-content:space-between}.sectionbar h2{margin:0}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:700px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line);font-size:12px}th{font-size:10px;color:#8190a1;font-weight:700}td b{font-size:13px}.positive{color:var(--green)}.negative{color:var(--red)}.finance-item{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.finance-item:last-child{border-bottom:0}.goal{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:15px;margin-bottom:12px}.goalhead{display:flex;justify-content:space-between;gap:10px}.goalbar{height:8px;background:#202a35;border-radius:10px;overflow:hidden;margin:9px 0}.goalbar i{height:100%;display:block;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:10px}.goalmeta{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.mini-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mini-form .full{grid-column:1/-1}.empty{padding:25px;text-align:center;color:#627082;font-size:12px}
-@media(max-width:760px){.riskcards{grid-template-columns:1fr}}
+@media(max-width:760px){.riskcards{grid-template-columns:1fr}.consistency-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;padding:3px}.consistency-cell{min-width:0;width:100%}.mobile{display:none!important}}
 
 .risk-description{padding:13px;background:#0c131b;border:1px solid var(--line);border-radius:9px;color:var(--muted);font-size:12px}.status-ok{color:var(--green)}.status-warn{color:var(--yellow)}.status-danger{color:var(--red)}.budget-progress{height:7px;background:#202a35;border-radius:10px;overflow:hidden;min-width:100px}.budget-progress i{display:block;height:100%;border-radius:10px;background:var(--accent)}.budget-progress.over i{background:var(--red)}.budget-progress.warn i{background:var(--yellow)}
 
-.personal-tabs{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}.personal-tab{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:9px 16px;font-weight:700;font-size:12px;cursor:pointer}.personal-tab.active{background:var(--text);color:var(--bg);border-color:var(--text)}.personal-goal{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:13px}.personal-goal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.personal-goal-title{font-size:18px;font-weight:800}.personal-goal-meta{font-size:11px;color:var(--muted);margin-top:4px}.personal-goal-progress{height:8px;background:#202a35;border-radius:10px;overflow:hidden;margin:13px 0 7px}.personal-goal-progress i{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,var(--green),var(--blue))}.personal-goal-foot{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.personal-actions{margin-top:13px;display:grid;gap:8px}.personal-action{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:rgba(255,255,255,.015);border-radius:10px;padding:10px}.personal-action.done{opacity:.62}.personal-action.done .pa-name{text-decoration:line-through}.pa-check{width:24px;height:24px;border-radius:7px;border:1px solid var(--line);background:transparent;color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:900}.personal-action.done .pa-check{background:var(--text);color:var(--bg)}.pa-name{font-size:12px;font-weight:700;flex:1}.pa-meta{font-size:10px;color:var(--muted)}.consistency-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;padding:4px}.consistency-cell{aspect-ratio:1;border:1px solid var(--line);border-radius:3px;background:transparent;cursor:pointer}.consistency-cell.done{background:var(--text);border-color:var(--text)}.consistency-cell.today{box-shadow:0 0 0 1px var(--accent) inset}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat-card{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:14px}.stat-card small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}.stat-card b{display:block;font-size:25px;margin-top:6px}.stat-chart{height:170px;display:flex;align-items:flex-end;gap:5px;padding:15px 5px 4px;border:1px solid var(--line);border-radius:12px;margin-top:12px}.stat-bar{flex:1;min-width:3px;background:var(--text);border-radius:4px 4px 1px 1px;opacity:.75}.reflection{margin-top:12px;padding:14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.015)}.reflection textarea{width:100%;min-height:75px;resize:vertical;margin-top:8px}.period-note{color:var(--muted);font-size:11px;margin-bottom:12px}@media(max-width:760px){.stats-grid{grid-template-columns:1fr}}
+.personal-tabs{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}.personal-tab{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:9px 16px;font-weight:700;font-size:12px;cursor:pointer}.personal-tab.active{background:var(--text);color:var(--bg);border-color:var(--text)}.personal-goal{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:13px}.personal-goal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.personal-goal-title{font-size:18px;font-weight:800}.personal-goal-meta{font-size:11px;color:var(--muted);margin-top:4px}.personal-goal-progress{height:8px;background:#202a35;border-radius:10px;overflow:hidden;margin:13px 0 7px}.personal-goal-progress i{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,var(--green),var(--blue))}.personal-goal-foot{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.personal-actions{margin-top:13px;display:grid;gap:8px}.personal-action{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:rgba(255,255,255,.015);border-radius:10px;padding:10px}.personal-action.done{opacity:.62}.personal-action.done .pa-name{text-decoration:line-through}.pa-check{width:24px;height:24px;border-radius:7px;border:1px solid var(--line);background:transparent;color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:900}.personal-action.done .pa-check{background:var(--text);color:var(--bg)}.pa-name{font-size:12px;font-weight:700;flex:1}.pa-meta{font-size:10px;color:var(--muted)}.consistency-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;padding:4px;width:100%;max-width:100%;overflow:hidden}.consistency-cell{aspect-ratio:1;border:1px solid var(--line);border-radius:3px;background:transparent;cursor:pointer}.consistency-cell.done{background:var(--text);border-color:var(--text)}.consistency-cell.today{box-shadow:0 0 0 1px var(--accent) inset}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat-card{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:14px}.stat-card small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}.stat-card b{display:block;font-size:25px;margin-top:6px}.stat-chart{height:170px;display:flex;align-items:flex-end;gap:5px;padding:15px 5px 4px;border:1px solid var(--line);border-radius:12px;margin-top:12px}.stat-bar{flex:1;min-width:3px;background:var(--text);border-radius:4px 4px 1px 1px;opacity:.75}.reflection{margin-top:12px;padding:14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.015)}.reflection textarea{width:100%;min-height:75px;resize:vertical;margin-top:8px}.period-note{color:var(--muted);font-size:11px;margin-bottom:12px}@media(max-width:760px){.stats-grid{grid-template-columns:1fr}}
 
 .daily-checklist-panel{margin-bottom:14px}.daily-item{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid var(--line)}.daily-item:last-child{border-bottom:0}.daily-check{width:26px;height:26px;border-radius:7px;border:1px solid var(--line);background:transparent;color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:900;flex:0 0 auto}.daily-item.done .daily-check{background:var(--text);color:var(--bg);border-color:var(--text)}.daily-item.done .daily-name{text-decoration:line-through;opacity:.55}.daily-name{font-size:12px;font-weight:700;flex:1}.daily-time{font-size:10px;color:var(--muted)}.daily-delete{opacity:.6}.daily-summary{display:flex;justify-content:space-between;margin-top:12px;color:var(--muted);font-size:11px}.daily-summary b{color:var(--text)}.daily-empty{padding:15px 0;color:var(--muted);font-size:11px}.daily-history{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;margin-top:12px}.daily-history-cell{height:28px;border-radius:5px;background:#202a35;border:1px solid var(--line);position:relative}.daily-history-cell.done{background:var(--text);border-color:var(--text)}.daily-history-cell.today{box-shadow:0 0 0 1px var(--accent) inset}.daily-history-cell span{position:absolute;inset:auto 0 -16px;text-align:center;font-size:8px;color:var(--muted)}@media(max-width:760px){.daily-history{grid-template-columns:repeat(7,1fr)}}
 
@@ -85,19 +85,48 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
   .sidebar.mobile-open{transform:translateX(0)}
   .mobile-overlay.mobile-open{display:block}
   .mobile-menu-close{display:block;position:absolute;top:12px;right:12px;width:36px;height:36px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--text);font-size:25px;line-height:1;cursor:pointer}
-  .main{width:100%!important;margin:0!important;padding:16px 12px 24px!important}
+  .main{width:100%!important;margin:0!important;padding:16px 12px 24px!important;min-width:0}
   body{overflow-x:hidden}
   .topbar{padding-left:60px}
-  .page{padding-left:14px!important;padding-right:14px!important}
+  .page{padding-left:14px!important;padding-right:14px!important;max-width:100%;min-width:0;overflow-x:hidden}
+  .panel,.personal-goal,.stats-grid{max-width:100%;min-width:0}
 }
-</style>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+.auth-overlay{position:fixed;inset:0;background:radial-gradient(circle at 50% 20%,#171d2a 0%,#080b10 58%);z-index:5000;display:flex;align-items:center;justify-content:center;padding:20px}
+.auth-overlay.hidden{display:none}
+.auth-card{width:min(430px,100%);background:#111720;border:1px solid #303b49;border-radius:18px;padding:26px;box-shadow:0 24px 80px rgba(0,0,0,.45)}
+.auth-brand{font-size:28px;font-weight:900;letter-spacing:2px;margin-bottom:5px}.auth-brand span{color:var(--green)}
+.auth-sub{color:var(--muted);font-size:12px;margin-bottom:22px}
+.auth-tabs{display:flex;gap:6px;margin-bottom:18px;background:#0c1219;border:1px solid var(--line);padding:4px;border-radius:10px}
+.auth-tabs button{flex:1;border:0;background:transparent;color:var(--muted);padding:9px;border-radius:7px;font-weight:700}.auth-tabs button.active{background:var(--text);color:var(--bg)}
+.auth-form{display:grid;gap:11px}.auth-form label{font-size:11px;color:var(--muted)}.auth-form input{width:100%;background:#0b1118;color:#fff;border:1px solid var(--line);border-radius:9px;padding:11px;margin-top:5px}
+.auth-msg{min-height:18px;font-size:11px;color:var(--muted);margin-top:10px}.auth-msg.error{color:var(--red)}.auth-msg.ok{color:var(--green)}
+.auth-user{font-size:10px;color:var(--muted);padding:7px 12px 12px;border-bottom:1px solid var(--line);margin-bottom:8px;word-break:break-word}.auth-user b{color:var(--text)}
+.cloud-status{font-size:10px;color:var(--muted);padding:7px 12px}.cloud-status.ok{color:var(--green)}.cloud-status.err{color:var(--red)}
+</style>
 </head>
-<body><button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Abrir menu">☰</button><div id="mobileOverlay" class="mobile-overlay" onclick="closeMobileMenu()"></div>
+<body>
+<div id="authOverlay" class="auth-overlay">
+  <div class="auth-card">
+    <div class="auth-brand">PRO<span>OS</span></div>
+    <div class="auth-sub">Entra na tua área pessoal e mantém os teus dados sincronizados em todos os dispositivos.</div>
+    <div class="auth-tabs">
+      <button id="authLoginTab" class="active" type="button" onclick="showAuthMode('login')">Entrar</button>
+      <button id="authSignupTab" type="button" onclick="showAuthMode('signup')">Criar conta</button>
+    </div>
+    <form id="authForm" class="auth-form" onsubmit="handleAuthSubmit(event)">
+      <div><label>Email</label><input id="authEmail" type="email" autocomplete="email" required placeholder="o-teu-email@exemplo.com"></div>
+      <div><label>Palavra-passe</label><input id="authPassword" type="password" autocomplete="current-password" required minlength="6" placeholder="Mínimo 6 caracteres"></div>
+      <button id="authSubmit" class="btn primary" type="submit">Entrar</button>
+    </form>
+    <button id="authReset" class="btn" type="button" style="width:100%;margin-top:8px" onclick="sendPasswordReset()">Esqueci-me da palavra-passe</button>
+    <div id="authMsg" class="auth-msg"></div>
+  </div>
+</div>
+<button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Abrir menu">☰</button><div id="mobileOverlay" class="mobile-overlay" onclick="closeMobileMenu()"></div>
 <div class="app">
 <aside id="mainSidebar" class="sidebar">
-  <button id="mobileMenuClose" class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Fechar menu">×</button><div class="brand">PRO<span>OS</span></div>
+  <button id="mobileMenuClose" class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Fechar menu">×</button><div class="brand">PRO<span>OS</span></div><div id="authUser" class="auth-user">A verificar sessão...</div><div id="cloudStatus" class="cloud-status">☁ A ligar à nuvem...</div><button id="authLogout" class="btn sm" style="width:calc(100% - 24px);margin:4px 12px 12px;display:none" onclick="signOutUser()">Sair da conta</button>
   <button class="create" onclick="newProject()">＋ Criar projeto</button>
   <div class="nav-title">Coisas pessoais</div>
   <div class="nav">
@@ -171,6 +200,8 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
     <div class="panel"><h2>Fluxo financeiro</h2><div id="financeSummary"></div></div>
     <div class="panel"><h2>Distribuição</h2><div id="financeDistribution"></div></div>
   </div>
+  <div class="panel" style="margin-top:14px"><div class="sectionbar"><h2>💰 Composição do património</h2><b id="financePatrimonyTotal">0 Kz</b></div><div id="financePatrimony"></div></div>
+  <div class="panel" style="margin-top:14px"><div class="sectionbar"><h2>🎯 Objetivos financeiros</h2><button class="btn primary sm" onclick="goalModal()">＋ Novo objetivo</button></div><p style="color:var(--muted);font-size:11px;margin:6px 0 12px">As tuas poupanças fazem parte do património. Poupar reduz o dinheiro disponível e aumenta automaticamente o valor do objetivo. Debitar faz o movimento inverso.</p><div id="financeGoals"></div></div>
   <div class="panel" style="margin-top:14px"><h2>Movimentos recentes</h2><div id="financeMoves"></div></div>
 </section>
 
@@ -280,8 +311,8 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
 </section>
 
 <section id="settings" class="page">
-  <div class="topbar"><div><h1>Definições</h1><p>Dados guardados apenas neste navegador.</p></div></div>
-  <div class="panel"><h2>Dados</h2><p style="color:var(--muted)">Esta aplicação funciona localmente. Os projetos e cronómetros ficam guardados no navegador.</p><div class="actions"><button class="btn" onclick="exportData()">Exportar dados</button><button class="btn danger" onclick="resetAll()">Apagar todos os dados</button></div></div>
+  <div class="topbar"><div><h1>Definições</h1><p>Os teus dados são sincronizados com a tua conta em todos os dispositivos.</p></div></div>
+  <div class="panel"><h2>Dados</h2><p style="color:var(--muted)">Os teus projetos, finanças, objetivos, checklists e perfil ficam associados à tua conta e sincronizados na nuvem. Uma cópia local continua a ser usada para acelerar o funcionamento.</p><div class="actions"><button class="btn" onclick="exportData()">Exportar dados</button><button class="btn danger" onclick="resetAll()">Apagar todos os dados</button></div></div>
 </section>
 </main>
 </div>
@@ -291,6 +322,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
   <div id="modalBody"></div>
 </div></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 function openMobileMenu(){
   const s=document.getElementById('mainSidebar'),o=document.getElementById('mobileOverlay');
@@ -331,21 +363,40 @@ function dueClass(p){if(!p.due)return '';let today=new Date();today.setHours(0,0
 
 
 const FINKEY='pro_os_finance_v2';
-let fin=loadFinance(); fin.budgets=fin.budgets||[]; fin.profile=fin.profile||{name:'Utilizador',age:0,income:0,extra:0,savingTarget:30,risk:'Moderado'};
-function loadFinance(){try{return JSON.parse(localStorage.getItem(FINKEY))||{profile:{name:'Utilizador',age:0,income:0,extra:0,cash:0,savingTarget:30,risk:'Moderado'},moves:[],investments:[],goals:[],budgets:[]}}catch(e){return {profile:{name:'Utilizador',age:0,income:0,extra:0,cash:0,savingTarget:30,risk:'Moderado'},moves:[],investments:[],goals:[],budgets:[]}}}
+let fin=loadFinance(); fin.budgets=fin.budgets||[]; fin.goalMoves=fin.goalMoves||[]; fin.profile=fin.profile||{name:'Utilizador',age:0,income:0,extra:0,savingTarget:30,risk:'Moderado'};
+function loadFinance(){try{return JSON.parse(localStorage.getItem(FINKEY))||{profile:{name:'Utilizador',age:0,income:0,extra:0,cash:0,savingTarget:30,risk:'Moderado'},moves:[],investments:[],goals:[],goalMoves:[],budgets:[]}}catch(e){return {profile:{name:'Utilizador',age:0,income:0,extra:0,cash:0,savingTarget:30,risk:'Moderado'},moves:[],investments:[],goals:[],goalMoves:[],budgets:[]}}}
 function saveFinance(){localStorage.setItem(FINKEY,JSON.stringify(fin));renderFinance();renderInvestments();renderBudget();renderGoals();renderProfile()}
 function monthMoves(){let now=new Date(),m=now.getMonth(),y=now.getFullYear();return fin.moves.filter(x=>{let d=new Date(x.date+'T00:00:00');return d.getMonth()===m&&d.getFullYear()===y})}
 function financeTotals(){
  let mm=monthMoves();
  let profileIncome=Number(fin.profile?.income)||0, extra=Number(fin.profile?.extra)||0;
- let income=profileIncome+extra;
- let expense=mm.filter(x=>x.kind==='expense').reduce((a,x)=>a+x.amount,0);
+ // O rendimento mensal é a soma do rendimento definido no Perfil + rendimento extra + todas as Receitas registadas neste mês.
+ // Assim, poupanças e débitos são sempre calculados sobre a receita disponível real do mês.
+ let recordedIncome=mm.filter(x=>x.kind==='income').reduce((a,x)=>a+Number(x.amount||0),0);
+ let incomeBase=profileIncome+extra;
+ let income=incomeBase+recordedIncome;
+ let expense=mm.filter(x=>x.kind==='expense').reduce((a,x)=>a+Number(x.amount||0),0);
  let invest=fin.investments.reduce((a,x)=>a+(Number(x.current)||0),0);
+ let goalTotal=fin.goals.reduce((a,g)=>a+(Number(g.current)||0),0);
+ // Apenas os movimentos do mês actual afectam o rendimento/disponível deste mês.
+ let savingsAdded=fin.goalMoves.filter(x=>x.kind==='add' && isCurrentMonth(x.date)).reduce((a,x)=>a+Number(x.amount||0),0);
+ let savingsDebited=fin.goalMoves.filter(x=>x.kind==='debit' && isCurrentMonth(x.date)).reduce((a,x)=>a+Number(x.amount||0),0);
  let openingCash=Number(fin.profile?.cash)||0;
- let cash=openingCash+income-expense;
- let saving=income?Math.max(0,(income-expense)/income*100):0;
- return {income,expense,invest,cash,net:cash+invest,saving};
+ // Poupar é uma transferência: sai da receita disponível e entra no objetivo/património.
+ // Debitar uma poupança é uma saída definitiva: reduz o património e NÃO volta a aumentar a receita disponível.
+ let cash=openingCash+income-expense-savingsAdded;
+ let incomeAvailableForSaving=Math.max(0,income-expense-savingsAdded);
+ let saving=(income>0)?Math.max(0,Math.min(100,(savingsAdded/income)*100)):0;
+ // O débito já reduziu o saldo do objetivo, por isso reduz directamente o património.
+ let net=cash+invest+goalTotal;
+ return {income,incomeBase,recordedIncome,expense,invest,goalTotal,savingsAdded,savingsDebited,cash,incomeAvailableForSaving,net,saving};
 }
+function isCurrentMonth(date){
+ if(!date)return false;
+ let d=new Date(date+'T00:00:00'), n=new Date();
+ return d.getMonth()===n.getMonth() && d.getFullYear()===n.getFullYear();
+}
+
 function financeMovement(){
  let body=`<div class="formgrid"><div class="field"><label>Tipo</label><select id="mKind"><option value="income">Receita</option><option value="expense">Despesa</option></select></div><div class="field"><label>Valor (Kz)</label><input id="mAmount" type="number" min="0"></div><div class="field"><label>Nome</label><input id="mName" placeholder="Ex.: salário, táxi, alimentação..."></div><div class="field"><label>Categoria</label><input id="mCat" placeholder="Casa, transporte, trabalho..."></div><div class="field"><label>Data</label><input id="mDate" type="date" value="${new Date().toISOString().slice(0,10)}"></div><div class="field full"><button class="btn primary" onclick="addMovement()">Guardar movimento</button></div></div>`;
  openCustomModal('Novo movimento',body)
@@ -356,11 +407,36 @@ function investmentModal(){
  openCustomModal('Novo investimento',body)
 }
 function addInvestment(){let n=document.getElementById('iName').value.trim(),t=document.getElementById('iType').value,c=+document.getElementById('iCapital').value,cur=+document.getElementById('iCurrent').value,d=document.getElementById('iDate').value,u=+document.getElementById('iUnits').value||0;if(!n||!c)return alert('Indica activo e capital.');fin.investments.push({id:Date.now(),name:n,type:t,capital:c,current:cur||c,date:d,units:u});closeModal();saveFinance()}
-function renderFinance(){let t=financeTotals();document.getElementById('fNet').textContent=money(t.net);document.getElementById('fIncome').textContent=money(t.income);document.getElementById('fExpense').textContent=money(t.expense);document.getElementById('fSave').textContent=t.saving.toFixed(1)+'%';document.getElementById('fInvest').textContent=money(t.invest);
- document.getElementById('financeSummary').innerHTML=`<div class="finance-item"><span>Receitas deste mês</span><b class="positive">${money(t.income)}</b></div><div class="finance-item"><span>Despesas deste mês</span><b class="negative">${money(t.expense)}</b></div><div class="finance-item"><span>Disponível após despesas</span><b>${money(t.income-t.expense)}</b></div><div class="finance-item"><span>Capital investido / carteira</span><b>${money(t.invest)}</b></div>`;
- let cats={};monthMoves().filter(x=>x.kind==='expense').forEach(x=>cats[x.category||'Sem categoria']=(cats[x.category||'Sem categoria']||0)+x.amount);let max=Math.max(1,...Object.values(cats));document.getElementById('financeDistribution').innerHTML=Object.entries(cats).length?Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="barrow"><label><span>${esc(k)}</span><b>${money(v)}</b></label><div class="bar"><i style="width:${v/max*100}%"></i></div></div>`).join(''):'<div class="empty">Regista despesas para começar a analisar a distribuição.</div>';
- document.getElementById('financeMoves').innerHTML=fin.moves.length?[...fin.moves].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,10).map((x,i)=>`<div class="finance-item"><span>${esc(x.name)} <small style="color:var(--muted)">· ${esc(x.category||'')}</small></span><b class="${x.kind==='income'?'positive':'negative'}">${x.kind==='income'?'+':'-'} ${money(x.amount)}</b></div>`).join(''):'<div class="empty">Nenhum movimento registado.</div>'
-}
+function renderFinance(){let t=financeTotals();
+ document.getElementById('fNet').textContent=money(t.net);
+ document.getElementById('fIncome').textContent=money(t.income);
+ document.getElementById('fExpense').textContent=money(t.expense);
+ document.getElementById('fSave').textContent=t.saving.toFixed(1)+'%';
+ document.getElementById('fInvest').textContent=money(t.invest);
+ document.getElementById('financeSummary').innerHTML=`<div class="finance-item"><span>Rendimento base do perfil</span><b class="positive">${money(t.incomeBase)}</b></div><div class="finance-item"><span>Receitas registadas neste mês</span><b class="positive">${money(t.recordedIncome)}</b></div><div class="finance-item"><span>Rendimento mensal total</span><b class="positive">${money(t.income)}</b></div><div class="finance-item"><span>Despesas deste mês</span><b class="negative">${money(t.expense)}</b></div><div class="finance-item"><span>Disponível para gastar / poupar</span><b>${money(t.incomeAvailableForSaving)}</b></div><div class="finance-item"><span>Poupanças / objetivos</span><b class="positive">${money(t.goalTotal)}</b></div><div class="finance-item"><span>Capital investido / carteira</span><b>${money(t.invest)}</b></div><div class="finance-item"><span>Património total</span><b>${money(t.net)}</b></div>`;
+ document.getElementById('financePatrimonyTotal').textContent=money(t.net);
+ let patrimonyRows=[];
+ patrimonyRows.push(`<div class="finance-item"><span>Dinheiro disponível</span><b>${money(t.cash)}</b></div>`);
+ if(fin.goals.length){
+   fin.goals.forEach((g,i)=>{
+     let cur=Number(g.current)||0;
+     patrimonyRows.push(`<div class="finance-item"><span>🎯 ${esc(g.name)}</span><span style="display:flex;align-items:center;gap:8px"><b class="positive">${money(cur)}</b><button class="btn sm danger" onclick="debitGoal(${i})">− Debitar</button></span></div>`);
+   });
+ }else{
+   patrimonyRows.push(`<div class="finance-item"><span>Objetivos financeiros</span><span class="meta">Nenhum criado</span></div>`);
+ }
+ if(fin.investments.length){
+   fin.investments.forEach(x=>patrimonyRows.push(`<div class="finance-item"><span>📈 ${esc(x.name)}</span><b class="positive">${money(Number(x.current)||0)}</b></div>`));
+ }else{
+   patrimonyRows.push(`<div class="finance-item"><span>Investimentos / carteira</span><span class="meta">Nenhum investimento</span></div>`);
+ }
+ document.getElementById('financePatrimony').innerHTML=patrimonyRows.join('');
+ let cats={};monthMoves().filter(x=>x.kind==='expense').forEach(x=>cats[x.category||'Sem categoria']=(cats[x.category||'Sem categoria']||0)+Number(x.amount||0));let max=Math.max(1,...Object.values(cats));document.getElementById('financeDistribution').innerHTML=Object.entries(cats).length?Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="barrow"><label><span>${esc(k)}</span><b>${money(v)}</b></label><div class="bar"><i style="width:${v/max*100}%"></i></div></div>`).join(''):'<div class="empty">Regista despesas para começar a analisar a distribuição.</div>';
+ renderFinanceGoals();
+ document.getElementById('financeMoves').innerHTML=fin.moves.length?[...fin.moves].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,10).map(x=>`<div class="finance-item"><span>${esc(x.name)} <small style="color:var(--muted)">· ${esc(x.category||'')}</small></span><b class="${x.kind==='income'?'positive':'negative'}">${x.kind==='income'?'+':'-'} ${money(x.amount)}</b></div>`).join(''):'<div class="empty">Nenhum movimento registado.</div>';
+}function renderFinanceGoals(){const el=document.getElementById('financeGoals');if(!el)return;if(!fin.goals.length){el.innerHTML='<div class="empty">Ainda não tens objetivos financeiros. Cria o primeiro e começa a poupar.</div>';return;}el.innerHTML=fin.goals.map((g,i)=>{let cur=Number(g.current)||0,tgt=Number(g.target)||0,pct=Math.min(100,tgt?cur/tgt*100:0);return `<div class="goal"><div class="goalhead"><div><b>${esc(g.name)}</b><div class="meta">${g.due?'Prazo: '+fullDate(g.due):'Sem prazo'}</div></div><b>${pct.toFixed(0)}%</b></div><div class="goalbar"><i style="width:${pct}%"></i></div><div class="goalmeta"><span>${money(cur)}</span><span>${money(tgt)}</span></div><div class="actions" style="margin-top:10px"><button class="btn sm" onclick="addGoalSaving(${i})">＋ Poupar</button><button class="btn sm danger" onclick="debitGoal(${i})">− Debitar</button></div></div>`}).join('')}
+function addGoalSaving(i){let g=fin.goals[i];let v=prompt('Quanto queres poupar neste objetivo? (Kz)', '0');if(v===null)return;v=Number(v);if(!isFinite(v)||v<=0)return alert('Indica um valor de poupança válido.');let t=financeTotals();if(v>t.incomeAvailableForSaving)return alert('O valor excede o rendimento disponível deste mês depois das despesas e das poupanças já feitas.');g.current=(Number(g.current)||0)+v;fin.goalMoves.push({id:Date.now(),goalId:g.id||i,kind:'add',amount:v,date:new Date().toISOString().slice(0,10)});saveFinance();showToast(money(v)+' adicionados a '+g.name+'. O valor foi retirado do rendimento deste mês.')}
+function debitGoal(i){let g=fin.goals[i],cur=Number(g.current)||0;if(cur<=0)return alert('Este objetivo não tem saldo para debitar.');let v=prompt('Quanto queres debitar deste objetivo? (Kz)', '0');if(v===null)return;v=Number(v);if(!isFinite(v)||v<=0)return alert('Indica um valor de débito válido.');if(v>cur)return alert('O débito não pode ser superior ao saldo do objetivo.');g.current=cur-v;fin.goalMoves.push({id:Date.now(),goalId:g.id||i,kind:'debit',amount:v,date:new Date().toISOString().slice(0,10)});saveFinance();showToast(money(v)+' debitados de '+g.name+'. O valor saiu do património e não regressou à receita disponível.')}
 
 function renderRiskCards(){
   const el=document.getElementById('riskCards');
@@ -386,10 +462,12 @@ function renderInvestments(){renderRiskCards();let riskLabel=document.getElement
 }
 function setRisk(r){fin.profile=fin.profile||{};fin.profile.risk=r;localStorage.setItem(FINKEY,JSON.stringify(fin));renderInvestments();renderProfile();showToast('Perfil de investidor alterado para '+r+'.')}
 function deleteInvestment(i){if(confirm('Apagar este investimento?')){fin.investments.splice(i,1);saveFinance()}}
-function goalModal(){openCustomModal('Novo objetivo financeiro',`<div class="formgrid"><div class="field"><label>Objetivo</label><input id="gName" placeholder="Ex.: Fundo de emergência"></div><div class="field"><label>Meta (Kz)</label><input id="gTarget" type="number" min="0"></div><div class="field"><label>Valor atual (Kz)</label><input id="gCurrent" type="number" min="0"></div><div class="field"><label>Prazo</label><input id="gDue" type="date"></div><div class="field full"><button class="btn primary" onclick="addGoal()">Guardar objetivo</button></div></div>`)}
-function addGoal(){let n=document.getElementById('gName').value.trim(),t=+document.getElementById('gTarget').value,c=+document.getElementById('gCurrent').value||0,d=document.getElementById('gDue').value;if(!n||!t)return alert('Indica o nome e a meta.');fin.goals.push({name:n,target:t,current:c,due:d});closeModal();saveFinance()}
-function renderGoals(){let el=document.getElementById('goalsList');if(!el)return;el.innerHTML=fin.goals.length?fin.goals.map((g,i)=>{let pct=Math.min(100,g.target?g.current/g.target*100:0);return `<div class="goal"><div class="goalhead"><div><b>${esc(g.name)}</b><div class="meta">${g.due?'Prazo: '+fullDate(g.due):'Sem prazo'}</div></div><b>${pct.toFixed(0)}%</b></div><div class="goalbar"><i style="width:${pct}%"></i></div><div class="goalmeta"><span>${money(g.current)}</span><span>${money(g.target)}</span></div><div class="actions" style="margin-top:10px"><button class="btn sm" onclick="updateGoal(${i})">＋ Registar progresso</button><button class="btn sm danger" onclick="fin.goals.splice(${i},1);saveFinance()">Apagar</button></div></div>`}).join(''):'<div class="panel"><div class="empty">Ainda não tens objetivos financeiros.</div></div>'}
-function updateGoal(i){let v=prompt('Novo valor acumulado (Kz):',fin.goals[i].current);if(v!==null&&!isNaN(+v)){fin.goals[i].current=+v;saveFinance()}}
+function goalModal(){openCustomModal('Novo objetivo financeiro',`<div class="formgrid"><div class="field"><label>Objetivo</label><input id="gName" placeholder="Ex.: Fundo de emergência"></div><div class="field"><label>Meta (Kz)</label><input id="gTarget" type="number" min="0"></div><div class="field"><label>Valor actual a transferir (Kz)</label><input id="gCurrent" type="number" min="0"><small style="display:block;color:var(--muted);margin-top:5px">Se preencheres este valor, ele será retirado do rendimento disponível deste mês.</small></div><div class="field"><label>Prazo</label><input id="gDue" type="date"></div><div class="field full"><button class="btn primary" onclick="addGoal()">Guardar objetivo</button></div></div>`)}
+function addGoal(){let n=document.getElementById('gName').value.trim(),t=+document.getElementById('gTarget').value,c=+document.getElementById('gCurrent').value||0,d=document.getElementById('gDue').value;if(!n||!t)return alert('Indica o nome e a meta.');let available=financeTotals().incomeAvailableForSaving;if(c>available)return alert('O valor inicial não pode ser superior ao rendimento disponível deste mês após as despesas e poupanças já feitas.');let id=Date.now();fin.goals.push({id,name:n,target:t,current:c,due:d});if(c>0)fin.goalMoves.push({id:Date.now()+1,goalId:id,kind:'add',amount:c,date:new Date().toISOString().slice(0,10),initial:true});closeModal();saveFinance()}
+function renderGoals(){let el=document.getElementById('goalsList');if(!el)return;el.innerHTML=fin.goals.length?fin.goals.map((g,i)=>{let pct=Math.min(100,g.target?g.current/g.target*100:0);return `<div class="goal"><div class="goalhead"><div><b>${esc(g.name)}</b><div class="meta">${g.due?'Prazo: '+fullDate(g.due):'Sem prazo'}</div></div><b>${pct.toFixed(0)}%</b></div><div class="goalbar"><i style="width:${pct}%"></i></div><div class="goalmeta"><span>${money(g.current)}</span><span>${money(g.target)}</span></div><div class="actions" style="margin-top:10px"><button class="btn sm" onclick="addGoalSaving(${i})">＋ Poupar</button><button class="btn sm danger" onclick="debitGoal(${i})">− Debitar</button><button class="btn sm danger" onclick="deleteGoal(${i})">Apagar</button></div></div>`}).join(''):'<div class="panel"><div class="empty">Ainda não tens objetivos financeiros.</div></div>'}
+function deleteGoal(i){let g=fin.goals[i],cur=Number(g.current)||0;if(!confirm(cur>0?'Este objetivo tem '+money(cur)+' guardados. Ao apagar, esse valor será devolvido ao dinheiro disponível. Continuar?':'Apagar este objetivo?'))return;if(cur>0)fin.goalMoves.push({id:Date.now(),goalId:g.id||i,kind:'debit',amount:cur,date:new Date().toISOString().slice(0,10),deleteGoal:true});fin.goals.splice(i,1);saveFinance();showToast('Objetivo apagado.')}
+
+function updateGoal(i){let g=fin.goals[i],v=prompt('Novo valor acumulado (Kz):',g.current);if(v!==null&&!isNaN(+v)){v=+v;let diff=v-(Number(g.current)||0);if(diff>0){let t=financeTotals();if(diff>t.cash)return alert('Não tens dinheiro disponível suficiente para esse aumento.');g.current=v;fin.goalMoves.push({id:Date.now(),goalId:g.id||i,kind:'add',amount:diff,date:new Date().toISOString().slice(0,10)});}else if(diff<0){g.current=v;fin.goalMoves.push({id:Date.now(),goalId:g.id||i,kind:'debit',amount:Math.abs(diff),date:new Date().toISOString().slice(0,10)});}saveFinance()}}
 function openCustomModal(title,body){document.getElementById('modalTitle').textContent=title;document.getElementById('modalBody').innerHTML=body;document.getElementById('modal').classList.add('open')}
 
 
@@ -491,7 +569,7 @@ function savePersonalGoal(i){
  let name=document.getElementById('pgName').value.trim(),period=document.getElementById('pgPeriod').value,duration=+document.getElementById('pgDuration').value,reflection=document.getElementById('pgReflection').value;
  if(!name)return alert('Indica o nome do objetivo.');
  let old=i===null?null:personal.goals[i],g=window._draftGoal||{actions:[]};
- let item={id:old?.id||Date.now(),name,period,duration,start:old?.start||todayISO(),actions:g.actions||[],reflection};
+ let item={id:old?.id||Date.now(),name,period,duration,start:old?.start||todayISO(),actions:g.actions||[],completedDays:old?.completedDays||{},reflection};
  if(i===null)personal.goals.push(item);else personal.goals[i]=item;
  window._draftGoal=null;closeModal();savePersonal();showToast('Objetivo guardado com sucesso.');
 }
@@ -506,16 +584,30 @@ function setPersonalPeriod(p){personal.activePeriod=p;document.querySelectorAll(
 function goalStats(g){
  let today=todayISO(),start=new Date(g.start+'T00:00:00'),end=new Date(start);end.setDate(end.getDate()+g.duration-1);
  let totalDays=Math.max(1,g.duration),elapsed=Math.min(totalDays,Math.max(1,dateDiff(g.start,today)+1)),days=Array.from({length:elapsed},(_,i)=>{let d=new Date(start);d.setDate(d.getDate()+i);return d.toISOString().slice(0,10)});
- let checks=0,total=days.length*Math.max(1,g.actions.length);
- days.forEach(d=>(g.actions||[]).forEach(a=>{if(a.history?.[d])checks++}));
+ let checks=0,total=0,completedDays=g.completedDays||{};
+ if((g.actions||[]).length){
+   total=days.length*g.actions.length;
+   days.forEach(d=>(g.actions||[]).forEach(a=>{if(a.history?.[d])checks++}));
+ } else {
+   total=days.length;
+   days.forEach(d=>{if(completedDays[d])checks++});
+ }
  let consistency=total?checks/total*100:0,actionToday=(g.actions||[]).filter(a=>a.history?.[today]).length;
- let streak=0;for(let d=new Date(today+'T00:00:00');;d.setDate(d.getDate()-1)){let ds=d.toISOString().slice(0,10);if((g.actions||[]).length&&g.actions.every(a=>a.history?.[ds]))streak++;else break}
+ let streak=0;for(let d=new Date(today+'T00:00:00');;d.setDate(d.getDate()-1)){let ds=d.toISOString().slice(0,10);let done=(g.actions||[]).length?g.actions.every(a=>a.history?.[ds]):!!completedDays[ds];if(done)streak++;else break}
  return {elapsed,totalDays,days,checks,total,consistency,actionToday,streak,end:end.toISOString().slice(0,10)}
 }
 function consistencyGrid(g){
- let s=goalStats(g),cells=[];for(let i=0;i<Math.min(g.duration,90);i++){let d=new Date(g.start+'T00:00:00');d.setDate(d.getDate()+i);let ds=d.toISOString().slice(0,10),done=(g.actions||[]).length&&g.actions.every(a=>a.history?.[ds]);cells.push(`<button class="consistency-cell ${done?'done':''} ${ds===todayISO()?'today':''}" title="${ds}" onclick="toggleDayActions(${personal.goals.indexOf(g)},'${ds}')"></button>`)}return cells.join('')
+ let s=goalStats(g),cells=[];for(let i=0;i<Math.min(g.duration,90);i++){let d=new Date(g.start+'T00:00:00');d.setDate(d.getDate()+i);let ds=d.toISOString().slice(0,10),done=(g.actions||[]).length?g.actions.every(a=>a.history?.[ds]):!!(g.completedDays||{})[ds];cells.push(`<button class="consistency-cell ${done?'done':''} ${ds===todayISO()?'today':''}" title="${ds} • ${done?'Concluído':'Não concluído'}" aria-label="${ds} ${done?'concluído':'não concluído'}" onclick="toggleDayActions(${personal.goals.indexOf(g)},'${ds}')"></button>`)}return cells.join('')
 }
-function toggleDayActions(gi,ds){let g=personal.goals[gi];if(!g.actions?.length)return;let makeDone=!g.actions.every(a=>a.history?.[ds]);g.actions.forEach(a=>{a.history=a.history||{};a.history[ds]=makeDone});savePersonal()}
+function toggleDayActions(gi,ds){
+ let g=personal.goals[gi];if(!g)return;
+ g.completedDays=g.completedDays||{};
+ let currentlyDone=!!g.completedDays[ds] || (!!g.actions?.length && g.actions.every(a=>a.history?.[ds]));
+ let makeDone=!currentlyDone;
+ if(g.actions?.length){g.actions.forEach(a=>{a.history=a.history||{};a.history[ds]=makeDone;a.done=!!a.history[todayISO()]});}
+ g.completedDays[ds]=makeDone;
+ savePersonal()
+}
 
 const DKEY='pro_os_daily_checklist_v1';
 let daily=loadDaily();
@@ -561,8 +653,9 @@ function renderDailyChecklist(){
  el.innerHTML=daily.tasks.map((t,i)=>{let ok=!!h[t.id];return `<div class="daily-item ${ok?'done':''}"><button class="daily-check" onclick="toggleDailyTask(${i})">${ok?'✓':''}</button><span class="daily-name">${esc(t.name)}</span>${t.time?`<span class="daily-time">${esc(t.time)}</span>`:''}<button class="btn sm" onclick="dailyTaskModal(${i})">Editar</button><button class="btn sm danger daily-delete" onclick="deleteDailyTask(${i})">✕</button></div>`}).join('')
 }
 function dailyStatsBlock(){
- let s=dailyStats(),days=dailyHistoryDays(14);
- return `<div class="panel" style="margin-top:12px"><div class="sectionbar"><h2 style="margin:0">CHECKLIST DIÁRIA</h2><b>${s.pct.toFixed(0)}%</b></div><div class="stats-grid"><div class="stat-card"><small>Tarefas concluídas</small><b>${s.checks}</b></div><div class="stat-card"><small>Consistência</small><b>${s.pct.toFixed(0)}%</b></div><div class="stat-card"><small>Melhor sequência</small><b>${s.best} dias</b></div><div class="stat-card"><small>Hoje</small><b>${dailyDoneCount()}/${daily.tasks.length}</b></div></div><div class="daily-history">${days.map(d=>`<div class="daily-history-cell ${daily.tasks.length&&dailyDoneCount(d)===daily.tasks.length?'done':''} ${d===todayISO()?'today':''}" title="${d}: ${dailyDoneCount(d)}/${daily.tasks.length}"></div>`).join('')}</div></div>`
+ let s=dailyStats(),days=dailyHistoryDays(30),today=todayISO();
+ let taskRows=daily.tasks.length?daily.tasks.map((t,i)=>`<div class="daily-item ${daily.history?.[today]?.[t.id]?'done':''}"><span class="daily-name">${esc(t.name)}</span><span class="daily-time">${daily.history?.[today]?.[t.id]?'✓ Concluída':'Pendente'}</span></div>`).join(''):'<div class="daily-empty">Nenhuma tarefa diária criada.</div>';
+ return `<div class="panel" style="margin-top:12px"><div class="sectionbar"><div><h2 style="margin:0">✓ CHECKLIST DIÁRIA</h2><div class="period-note" style="margin:4px 0 0">Desempenho das tarefas diárias.</div></div><b>${dailyPct().toFixed(0)}%</b></div><div class="stats-grid"><div class="stat-card"><small>Conclusões (30 dias)</small><b>${s.checks}</b></div><div class="stat-card"><small>Consistência</small><b>${s.pct.toFixed(0)}%</b></div><div class="stat-card"><small>Melhor sequência</small><b>${s.best} dias</b></div><div class="stat-card"><small>Hoje</small><b>${dailyDoneCount()}/${daily.tasks.length}</b></div></div><div class="panel" style="margin-top:10px;padding:10px"><div class="period-note">Tarefas de hoje</div>${taskRows}</div><div class="daily-history">${days.map(d=>`<div class="daily-history-cell ${daily.tasks.length&&dailyDoneCount(d)===daily.tasks.length?'done':''} ${d===today?'today':''}" title="${d}: ${dailyDoneCount(d)}/${daily.tasks.length}"></div>`).join('')}</div></div>`
 }
 
 function renderPersonal(){
@@ -577,7 +670,7 @@ function renderPersonal(){
    <div class="personal-goal-head"><div><div class="personal-goal-title">${esc(g.name)}</div><div class="personal-goal-meta">${periodLabel(g.period)} · ${s.elapsed} / ${s.totalDays} dias · ${s.totalDays-s.elapsed} dias restantes</div></div><div><b>${s.consistency.toFixed(0)}%</b></div></div>
    <div class="personal-goal-progress"><i style="width:${pct}%"></i></div>
    <div class="personal-goal-foot"><span>Consistência</span><b>${s.consistency.toFixed(0)}%</b><span>Racha: ${s.streak} dias</span></div>
-   <div class="panel" style="margin-top:12px"><div class="sectionbar"><h2 style="font-size:13px;margin:0">CONSISTÊNCIA</h2><b>${s.consistency>=90?'PERFEITA 💎':s.consistency>=70?'FORTE':'EM CONSTRUÇÃO'}</b></div><div class="consistency-grid">${consistencyGrid(g)}</div></div>
+   <div class="panel" style="margin-top:12px"><div class="sectionbar"><div><h2 style="font-size:13px;margin:0">CONSISTÊNCIA</h2><div class="period-note" style="margin:4px 0 0">Toca num quadro para marcar o dia como cumprido.</div></div><b>${s.consistency>=90?'PERFEITA 💎':s.consistency>=70?'FORTE':'EM CONSTRUÇÃO'}</b></div><div class="consistency-grid">${consistencyGrid(g)}</div></div>
    <div class="sectionbar" style="margin-top:13px"><h2 style="font-size:13px;margin:0">AÇÕES</h2><button class="btn sm" onclick="personalGoalModal(${gi})">＋</button></div>
    <div class="personal-actions">${(g.actions||[]).length?(g.actions.map((a,ai)=>{let done=!!a.history?.[todayISO()];return `<div class="personal-action ${done?'done':''}"><button class="pa-check" onclick="togglePersonalAction(${gi},${ai})">${done?'✓':''}</button><span class="pa-name">${esc(a.name)}</span><span class="pa-meta">${done?'Concluído hoje':'Hoje'}</span><button class="btn sm danger" onclick="deletePersonalAction(${gi},${ai})">✕</button></div>`}).join('')):'<div class="empty">Adiciona ações ao objetivo para medir consistência.</div>'}</div>
    <div class="reflection"><b>REFLEXÃO</b><div style="color:var(--muted);font-size:11px;margin-top:4px">${esc(g.reflection||'Sem reflexão definida.')}</div></div>
@@ -682,7 +775,19 @@ function renderAnalytics(){
 }
 function clearFilters(){search.value='';priorityFilter.value='';bucketFilter.value='';renderBoard()}
 function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='pro-os-projetos.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
-function resetAll(){if(confirm('Isto apagará todos os projetos e históricos deste navegador. Continuar?')){localStorage.removeItem(KEY);state=structuredClone(EMPTY);renderAll();showToast('Dados apagados.')}}
+function resetAll(){
+ const ok=confirm('ATENÇÃO: isto apagará TODOS os dados do PRO OS neste navegador: projetos, históricos, finanças, investimentos, orçamento, objetivos financeiros, objetivos pessoais, checklist diária e perfis. Esta ação não pode ser desfeita. Continuar?');
+ if(!ok)return;
+ [KEY,FINKEY,PKEY,PPROFILE_KEY,DKEY].forEach(k=>localStorage.removeItem(k));
+ state=structuredClone(EMPTY);
+ fin={profile:{name:'Utilizador',age:0,income:0,extra:0,cash:0,savingTarget:30,risk:'Moderado'},moves:[],investments:[],goals:[],goalMoves:[],budgets:[]};
+ personalProfile={name:'',age:0,profession:'',focus:'',lifeGoal:'',notes:''};
+ personal={goals:[],activePeriod:'daily'};
+ daily={tasks:[],history:{}};
+ renderAll();
+ renderFinance();renderInvestments();renderBudget();renderGoals();renderProfile();renderPersonalProfile();renderPersonal();renderDailyChecklist();
+ showToast('Todos os dados foram apagados.');
+}
 function showToast(t){let e=document.createElement('div');e.className='toast';e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),1500)}
 
 function showView(view){closeMobileMenu();
@@ -704,6 +809,190 @@ function tick(){
  document.querySelectorAll('.task').forEach(()=>{});
 }
 renderAll();setInterval(tick,1000);
+</script>
+
+<script>
+/* PRO OS + Supabase: autenticação e sincronização multi-dispositivo. */
+const SUPABASE_URL = 'https://corjklpfnrahtzukvjlm.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'COLOCA_AQUI_A_TUA_PUBLISHABLE_KEY';
+let proSupabase = null;
+let proSession = null;
+let cloudReady = false;
+let authMode = 'login';
+let cloudSyncTimer = null;
+
+function setCloudStatus(text, type=''){
+  const el=document.getElementById('cloudStatus');
+  if(el){el.textContent=text;el.className='cloud-status '+type;}
+}
+function setAuthMsg(text,type=''){
+  const el=document.getElementById('authMsg');
+  if(el){el.textContent=text;el.className='auth-msg '+type;}
+}
+function showAuthMode(mode){
+  authMode=mode;
+  document.getElementById('authLoginTab')?.classList.toggle('active',mode==='login');
+  document.getElementById('authSignupTab')?.classList.toggle('active',mode==='signup');
+  const submit=document.getElementById('authSubmit'), reset=document.getElementById('authReset');
+  if(submit)submit.textContent=mode==='login'?'Entrar':'Criar conta';
+  if(reset)reset.style.display=mode==='login'?'block':'none';
+  setAuthMsg('');
+}
+function setAuthVisible(visible){document.getElementById('authOverlay')?.classList.toggle('hidden',!visible)}
+function updateAuthUser(){
+  const el=document.getElementById('authUser');
+  const logout=document.getElementById('authLogout');
+  if(el)el.innerHTML=proSession?.user?.email?`Sessão: <b>${esc(proSession.user.email)}</b>`:'Sem sessão';
+  if(logout)logout.style.display=proSession?.user?'block':'none';
+}
+async function handleAuthSubmit(e){
+  e.preventDefault();
+  if(!proSupabase){setAuthMsg('Configuração Supabase incompleta. Coloca a Publishable Key no código.','error');return;}
+  const email=document.getElementById('authEmail').value.trim();
+  const password=document.getElementById('authPassword').value;
+  const btn=document.getElementById('authSubmit');
+  btn.disabled=true;setAuthMsg('A processar...');
+  try{
+    if(authMode==='signup'){
+      const {data,error}=await proSupabase.auth.signUp({email,password,options:{emailRedirectTo:window.location.origin+window.location.pathname}});
+      if(error)throw error;
+      if(data.session){setAuthMsg('Conta criada. A entrar...','ok');}
+      else setAuthMsg('Conta criada. Verifica o teu email para confirmar a conta.','ok');
+    }else{
+      const {data,error}=await proSupabase.auth.signInWithPassword({email,password});
+      if(error)throw error;
+      proSession=data.session;
+      await onAuthenticated();
+    }
+  }catch(err){setAuthMsg(err?.message||'Não foi possível concluir a operação.','error')}
+  finally{btn.disabled=false}
+}
+async function sendPasswordReset(){
+  if(!proSupabase)return setAuthMsg('Configuração Supabase incompleta.','error');
+  const email=document.getElementById('authEmail').value.trim();
+  if(!email)return setAuthMsg('Escreve primeiro o teu email.','error');
+  try{
+    const {error}=await proSupabase.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+window.location.pathname});
+    if(error)throw error;setAuthMsg('Enviámos um email para redefinir a palavra-passe.','ok');
+  }catch(err){setAuthMsg(err?.message||'Não foi possível enviar o email.','error')}
+}
+async function signOutUser(){
+  try{if(proSupabase)await proSupabase.auth.signOut()}catch(e){}
+  proSession=null;cloudReady=false;updateAuthUser();setCloudStatus('☁ Sessão terminada');setAuthVisible(true);showAuthMode('login');
+}
+function collectCloudData(){
+  return {
+    version:2,
+    projects:state,
+    finance:fin,
+    personalProfile,
+    personal,
+    daily,
+    savedAt:new Date().toISOString()
+  };
+}
+function applyCloudData(data){
+  if(!data||typeof data!=='object')return false;
+  if(data.projects)state=data.projects;
+  if(data.finance)fin=data.finance;
+  if(data.personalProfile)personalProfile=data.personalProfile;
+  if(data.personal)personal=data.personal;
+  if(data.daily)daily=data.daily;
+  fin.budgets=fin.budgets||[];fin.goalMoves=fin.goalMoves||[];
+  fin.profile=fin.profile||{name:'Utilizador',age:0,income:0,extra:0,cash:0,savingTarget:30,risk:'Moderado'};
+  personal=personal||{goals:[],activePeriod:'daily'};
+  daily=daily||{tasks:[],history:{}};
+  return true;
+}
+function saveLocalSnapshot(){
+  try{
+    localStorage.setItem(KEY,JSON.stringify(state));
+    localStorage.setItem(FINKEY,JSON.stringify(fin));
+    localStorage.setItem(PPROFILE_KEY,JSON.stringify(personalProfile));
+    localStorage.setItem(PKEY,JSON.stringify(personal));
+    localStorage.setItem(DKEY,JSON.stringify(daily));
+  }catch(e){}
+}
+async function syncCloudNow(){
+  if(!proSupabase||!proSession?.user||!cloudReady)return;
+  try{
+    const payload={user_id:proSession.user.id,data:collectCloudData(),updated_at:new Date().toISOString()};
+    const {error}=await proSupabase.from('user_data').upsert(payload,{onConflict:'user_id'});
+    if(error)throw error;
+    setCloudStatus('☁ Sincronizado','ok');
+  }catch(err){console.error('PRO OS cloud sync:',err);setCloudStatus('☁ Erro de sincronização','err')}
+}
+function queueCloudSync(){
+  if(!cloudReady)return;
+  clearTimeout(cloudSyncTimer);
+  cloudSyncTimer=setTimeout(syncCloudNow,450);
+}
+async function loadCloudData(){
+  if(!proSupabase||!proSession?.user)return;
+  setCloudStatus('☁ A carregar dados...');
+  const localSnapshot=collectCloudData();
+  const localHasData=!!(
+    localSnapshot.projects?.projects?.length ||
+    localSnapshot.finance?.moves?.length ||
+    localSnapshot.finance?.investments?.length ||
+    localSnapshot.finance?.goals?.length ||
+    localSnapshot.personalProfile?.name ||
+    localSnapshot.personal?.goals?.length ||
+    localSnapshot.daily?.tasks?.length
+  );
+  const {data,error}=await proSupabase.from('user_data').select('data,updated_at').eq('user_id',proSession.user.id).maybeSingle();
+  if(error)throw error;
+  if(data?.data){
+    if(localHasData){
+      const useCloud=confirm('Encontrámos dados neste dispositivo e dados guardados na tua conta.\n\nOK = usar os dados da nuvem.\nCancelar = manter os dados deste dispositivo e enviá-los para a nuvem.');
+      if(useCloud){
+        applyCloudData(data.data);saveLocalSnapshot();renderAll();renderFinance();renderInvestments();renderBudget();renderGoals();renderProfile();renderPersonalProfile();renderPersonal();renderDailyChecklist();
+        setCloudStatus('☁ Dados da nuvem carregados','ok');
+      }else{
+        await syncCloudNow();
+        setCloudStatus('☁ Dados deste dispositivo sincronizados','ok');
+      }
+    }else{
+      applyCloudData(data.data);saveLocalSnapshot();renderAll();renderFinance();renderInvestments();renderBudget();renderGoals();renderProfile();renderPersonalProfile();renderPersonal();renderDailyChecklist();
+      setCloudStatus('☁ Dados carregados','ok');
+    }
+  }else{
+    setCloudStatus('☁ A criar espaço de dados...');
+    await syncCloudNow();
+  }
+}
+async function onAuthenticated(){
+  updateAuthUser();setAuthVisible(false);setAuthMsg('');
+  try{await loadCloudData();cloudReady=true;setCloudStatus('☁ Sincronizado','ok');}
+  catch(err){console.error(err);cloudReady=false;setAuthVisible(true);setAuthMsg('Não foi possível carregar os teus dados. Verifica a tabela user_data e as políticas RLS.','error');setCloudStatus('☁ Erro','err')}
+}
+function wrapCloudSave(fnName){
+  const original=window[fnName];
+  if(typeof original!=='function')return;
+  window[fnName]=function(){const result=original.apply(this,arguments);saveLocalSnapshot();queueCloudSync();return result;};
+}
+async function initSupabaseAuth(){
+  if(!window.supabase){setAuthVisible(true);setAuthMsg('Biblioteca Supabase não carregou. Verifica a ligação à internet.','error');return;}
+  if(SUPABASE_PUBLISHABLE_KEY.includes('COLOCA_AQUI')){setAuthVisible(true);setAuthMsg('Falta colocar a Publishable Key da Supabase neste ficheiro.','error');setCloudStatus('☁ Configuração incompleta','err');return;}
+  proSupabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+  proSupabase.auth.onAuthStateChange(async (_event,session)=>{
+    proSession=session;updateAuthUser();
+    if(session){await onAuthenticated();}
+    else{cloudReady=false;setCloudStatus('☁ Sem sessão');setAuthVisible(true);}
+  });
+  const {data}=await proSupabase.auth.getSession();
+  proSession=data.session;updateAuthUser();
+  if(proSession)await onAuthenticated();else setAuthVisible(true);
+}
+
+/* Todas as áreas existentes passam a sincronizar com a conta autenticada. */
+['save','saveFinance','savePersonalProfile','savePersonal','saveDaily'].forEach(wrapCloudSave);
+const originalSetRisk=window.setRisk;
+if(typeof originalSetRisk==='function')window.setRisk=function(){const r=originalSetRisk.apply(this,arguments);saveLocalSnapshot();queueCloudSync();return r};
+const originalResetAll=window.resetAll;
+if(typeof originalResetAll==='function')window.resetAll=function(){const r=originalResetAll.apply(this,arguments);saveLocalSnapshot();queueCloudSync();return r};
+
+initSupabaseAuth();
 </script>
 </body>
 </html>
