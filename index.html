@@ -245,26 +245,46 @@ input,textarea,select{background:var(--bg);border:1px solid var(--line);color:va
 @media(max-width:760px){#board .board{grid-template-columns:1fr;overflow:visible}#analytics .kpis{grid-template-columns:1fr 1fr}.project-modal .detail-grid{grid-template-columns:1fr 1fr}.project-modal .formgrid{grid-template-columns:1fr}}
 
 /* AUTH / GOOGLE LOGIN */
-.auth-overlay{position:fixed;inset:0;background:rgba(4,8,13,.92);backdrop-filter:blur(10px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}.auth-card{width:min(430px,100%);background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 24px 80px #0008}.auth-card h1{margin:0 0 6px;font-size:25px}.auth-card p{color:var(--muted);font-size:12px;line-height:1.6}.auth-card .auth-google{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px;padding:12px;border-radius:10px;border:1px solid var(--line);background:#fff;color:#202124;font-weight:800}.auth-card .auth-google:hover{filter:brightness(.97)}.auth-card .auth-status{margin-top:12px;font-size:10px;color:var(--muted);min-height:16px}.auth-card .auth-key-note{margin-top:14px;padding:10px;border:1px dashed var(--line);border-radius:9px;font-size:9px;color:var(--muted);line-height:1.5}.auth-user{position:fixed;right:18px;top:58px;z-index:79;display:none;align-items:center;gap:8px;padding:6px 9px;border:1px solid var(--line);border-radius:9px;background:var(--panel);font-size:9px;color:var(--muted)}.auth-user button{padding:5px 8px;font-size:9px}.auth-user strong{color:var(--text);max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.auth-overlay{position:fixed;inset:0;background:rgba(4,8,13,.94);backdrop-filter:blur(10px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}
+.auth-card{width:min(430px,100%);background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 24px 80px #0008}
+.auth-card h1{margin:0 0 6px;font-size:25px}
+.auth-card p{color:var(--muted);font-size:12px;line-height:1.6}
+.auth-google{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px;padding:12px;border-radius:10px;border:1px solid #d9dce1;background:#fff;color:#202124;font-weight:800}
+.auth-google:hover{filter:brightness(.97)}
+.auth-google .google-mark{font-size:18px;font-weight:900}
+.auth-status{margin-top:12px;font-size:10px;color:var(--muted);min-height:16px}
+.auth-key-note{margin-top:14px;padding:10px;border:1px dashed var(--line);border-radius:9px;font-size:9px;color:var(--muted);line-height:1.5}
+.auth-user{position:fixed;right:18px;top:58px;z-index:79;display:none;align-items:center;gap:8px;padding:6px 9px;border:1px solid var(--line);border-radius:9px;background:var(--panel);font-size:9px;color:var(--muted)}
+.auth-user button{padding:5px 8px;font-size:9px}
+.auth-user strong{color:var(--text);max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:700px){.auth-card{padding:20px}.auth-user{right:12px;top:58px;max-width:calc(100vw - 24px)}}
+
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-// Inicializa autenticação e sincronização por utilizador após o carregamento da aplicação.
-window.addEventListener("DOMContentLoaded",()=>initAuth());
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <button class="btn theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ Tema claro</button>
+
 <div id="authOverlay" class="auth-overlay">
   <div class="auth-card">
     <div class="eyebrow">NOSDE EDVANCE</div>
     <h1>Entrar na tua conta</h1>
-    <p>Sincroniza Finanças, Projetos, XP, Ofensiva, Missões, Medalhas e Perfil entre os teus dispositivos.</p>
-    <button class="auth-google" type="button" onclick="signInWithGoogle()"><span style="font-size:18px">G</span> Continuar com Google</button>
+    <p>Inicia sessão com Google para usar o NOSDE EDVANCE. Os teus dados podem ser sincronizados por utilizador através do Supabase.</p>
+    <button class="auth-google" type="button" onclick="signInWithGoogle()">
+      <span class="google-mark">G</span> Continuar com Google
+    </button>
     <div id="authStatus" class="auth-status">A verificar a sessão...</div>
-    <div class="auth-key-note"><b>Configuração necessária:</b> mantém a Publishable Key do teu projeto PRO OS no campo indicado no código. Nunca coloques aqui a Google Client Secret.</div>
+    <div class="auth-key-note">
+      <b>Configuração:</b> coloca no código a Publishable Key do teu projeto Supabase.
+      Nunca coloques aqui a Google Client Secret.
+    </div>
   </div>
 </div>
-<div id="authUser" class="auth-user"><strong id="authEmail"></strong><button class="btn sm" onclick="signOutUser()">Sair</button></div>
+<div id="authUser" class="auth-user">
+  <strong id="authEmail"></strong>
+  <button class="btn sm" type="button" onclick="signOutUser()">Sair</button>
+</div>
+
 
 <aside class="sidebar" id="sidebar">
   <div class="logo"><div class="logo-mark">N</div><div class="logo-copy"><strong>NOSDE EDVANCE</strong><small>Sede por Mais</small></div></div>
@@ -544,33 +564,83 @@ window.addEventListener("DOMContentLoaded",()=>initAuth());
 <div id="modal" class="modal"><div class="modal-box"><div style="display:flex;justify-content:space-between;align-items:center"><h2 id="modalTitle"></h2><button class="btn sm" onclick="closeModal()">✕</button></div><div id="modalBody"></div></div></div>
 
 <script>
-const KEY="evolve_os_rebuilt_v1";
-// SUPABASE AUTH — mantém a Publishable Key do projeto PRO OS aqui.
-const SUPABASE_URL="https://corjklpfnrahtzukvjlnm.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY="COLE_AQUI_A_PUBLISHABLE_KEY_DO_PRO_OS";
-const CLOUD_STATE_TABLE="user_app_state";
-let supabaseClient=null, authSession=null, cloudReady=false, cloudHydrating=false, cloudSyncTimer=null;
 
-function setAuthStatus(msg,error=false){const el=document.getElementById("authStatus");if(el){el.textContent=msg;el.style.color=error?"var(--red)":"var(--muted)"}}
-function showAuthOverlay(show){const el=document.getElementById("authOverlay");if(el)el.style.display=show?"flex":"none"}
-function updateAuthUser(user){const box=document.getElementById("authUser"),email=document.getElementById("authEmail");if(!user){if(box)box.style.display="none";return;}if(email)email.textContent=user.email||user.user_metadata?.full_name||"Conta Google";if(box)box.style.display="flex"}
+/* =========================================================
+   AUTENTICAÇÃO GOOGLE + SUPABASE
+   ========================================================= */
+const SUPABASE_URL="https://corjklpfnrahtzukvjlnm.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY="COLE_AQUI_A_PUBLISHABLE_KEY_DO_PROJETO_SUPABASE";
+const CLOUD_STATE_TABLE="user_app_state";
+
+let supabaseClient=null;
+let authSession=null;
+let cloudReady=false;
+let cloudHydrating=false;
+let cloudSyncTimer=null;
+
+function setAuthStatus(msg,error=false){
+  const el=document.getElementById("authStatus");
+  if(el){
+    el.textContent=msg;
+    el.style.color=error?"var(--red)":"var(--muted)";
+  }
+}
+function showAuthOverlay(show){
+  const el=document.getElementById("authOverlay");
+  if(el)el.style.display=show?"flex":"none";
+}
+function updateAuthUser(user){
+  const box=document.getElementById("authUser");
+  const email=document.getElementById("authEmail");
+  if(!user){
+    if(box)box.style.display="none";
+    return;
+  }
+  if(email)email.textContent=user.email||user.user_metadata?.full_name||"Conta Google";
+  if(box)box.style.display="flex";
+}
 
 async function signInWithGoogle(){
-  if(!supabaseClient){setAuthStatus("Configura primeiro a Publishable Key do PRO OS.",true);return;}
+  if(!supabaseClient){
+    setAuthStatus("Configura primeiro a Publishable Key do Supabase.",true);
+    return;
+  }
   setAuthStatus("A abrir o Google...");
-  const {error}=await supabaseClient.auth.signInWithOAuth({provider:"google",options:{redirectTo:window.location.origin+window.location.pathname}});
+  const {error}=await supabaseClient.auth.signInWithOAuth({
+    provider:"google",
+    options:{
+      redirectTo:window.location.origin+window.location.pathname
+    }
+  });
   if(error)setAuthStatus(error.message,true);
 }
+
 async function signOutUser(){
-  if(!supabaseClient)return;
-  await supabaseClient.auth.signOut();
-  cloudReady=false;authSession=null;updateAuthUser(null);showAuthOverlay(true);setAuthStatus("Sessão terminada. Entra novamente para continuar.");
+  try{
+    if(supabaseClient)await supabaseClient.auth.signOut();
+  }catch(e){}
+  cloudReady=false;
+  authSession=null;
+  updateAuthUser(null);
+  showAuthOverlay(true);
+  setAuthStatus("Sessão terminada. Entra novamente para continuar.");
 }
 
 async function cloudLoadForUser(user){
   if(!supabaseClient||!user)return false;
-  const {data,error}=await supabaseClient.from(CLOUD_STATE_TABLE).select("app_state").eq("user_id",user.id).maybeSingle();
-  if(error){console.error("Cloud load:",error);setAuthStatus("Erro ao carregar os teus dados: "+error.message,true);return false;}
+
+  const {data,error}=await supabaseClient
+    .from(CLOUD_STATE_TABLE)
+    .select("app_state")
+    .eq("user_id",user.id)
+    .maybeSingle();
+
+  if(error){
+    console.error("NOSDE cloud load:",error);
+    setAuthStatus("Erro ao carregar os teus dados: "+error.message,true);
+    return false;
+  }
+
   cloudHydrating=true;
   try{
     if(data?.app_state){
@@ -578,51 +648,138 @@ async function cloudLoadForUser(user){
       if(payload.app) localStorage.setItem(KEY,JSON.stringify(payload.app));
       if(payload.finance) localStorage.setItem(FINKEY,JSON.stringify(payload.finance));
       if(payload.projects) localStorage.setItem(PROJECT_KEY,JSON.stringify(payload.projects));
-      s=load();fin=loadFinance();projectState=projectLoad();
+
+      s=load();
+      fin=loadFinance();
+      normalizeFinance();
+      projectState=projectLoad();
     }else{
       await cloudSaveForUser(user);
     }
-  }finally{cloudHydrating=false;}
+  }finally{
+    cloudHydrating=false;
+  }
   return true;
 }
+
 async function cloudSaveForUser(user=authSession?.user){
   if(!supabaseClient||!user||cloudHydrating)return;
-  const payload={app:s,finance:fin,projects:projectState};
-  const {error}=await supabaseClient.from(CLOUD_STATE_TABLE).upsert({user_id:user.id,app_state:payload,updated_at:new Date().toISOString()},{onConflict:"user_id"});
-  if(error)console.error("Cloud save:",error);
+
+  const payload={
+    app:s,
+    finance:fin,
+    projects:projectState,
+    savedAt:new Date().toISOString()
+  };
+
+  const {error}=await supabaseClient
+    .from(CLOUD_STATE_TABLE)
+    .upsert(
+      {
+        user_id:user.id,
+        app_state:payload,
+        updated_at:new Date().toISOString()
+      },
+      {onConflict:"user_id"}
+    );
+
+  if(error)console.error("NOSDE cloud save:",error);
 }
+
 function queueCloudSync(){
   if(!cloudReady||cloudHydrating||!authSession?.user)return;
   clearTimeout(cloudSyncTimer);
-  cloudSyncTimer=setTimeout(()=>cloudSaveForUser(),350);
+  cloudSyncTimer=setTimeout(()=>cloudSaveForUser(),450);
 }
+
 function installCloudPersistenceBridge(){
   const originalSetItem=Storage.prototype.setItem;
   if(Storage.prototype.__nosdeCloudBridge)return;
   Storage.prototype.__nosdeCloudBridge=true;
-  Storage.prototype.setItem=function(k,v){const r=originalSetItem.call(this,k,v);if(this===localStorage&&[KEY,FINKEY,PROJECT_KEY].includes(k))queueCloudSync();return r;};
+
+  Storage.prototype.setItem=function(k,v){
+    const result=originalSetItem.call(this,k,v);
+    if(
+      this===localStorage &&
+      [KEY,FINKEY,PROJECT_KEY].includes(k)
+    ){
+      queueCloudSync();
+    }
+    return result;
+  };
 }
+
 async function initAuth(){
-  if(typeof window.supabase==="undefined"){showAuthOverlay(true);setAuthStatus("Biblioteca Supabase não carregou. Verifica a ligação à internet.",true);return;}
-  if(!SUPABASE_PUBLISHABLE_KEY||SUPABASE_PUBLISHABLE_KEY.includes("COLE_AQUI")){showAuthOverlay(true);setAuthStatus("Falta colocar a Publishable Key do projeto PRO OS no código.",true);return;}
-  supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+  if(typeof window.supabase==="undefined"){
+    showAuthOverlay(true);
+    setAuthStatus("A biblioteca Supabase não carregou. Verifica a ligação à internet.",true);
+    return;
+  }
+
+  if(
+    !SUPABASE_PUBLISHABLE_KEY ||
+    SUPABASE_PUBLISHABLE_KEY.includes("COLE_AQUI")
+  ){
+    showAuthOverlay(true);
+    setAuthStatus("Falta colocar a Publishable Key do projeto Supabase no código.",true);
+    return;
+  }
+
+  supabaseClient=window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY,
+    {
+      auth:{
+        persistSession:true,
+        autoRefreshToken:true,
+        detectSessionInUrl:true
+      }
+    }
+  );
+
   installCloudPersistenceBridge();
+
   const {data:{session}}=await supabaseClient.auth.getSession();
   await applyAuthSession(session);
-  supabaseClient.auth.onAuthStateChange((event,session)=>{setTimeout(()=>applyAuthSession(session),0);});
+
+  supabaseClient.auth.onAuthStateChange((event,session)=>{
+    setTimeout(()=>applyAuthSession(session),0);
+  });
 }
+
 async function applyAuthSession(session){
   authSession=session;
-  if(!session?.user){cloudReady=false;updateAuthUser(null);showAuthOverlay(true);setAuthStatus("Entra com Google para carregar os teus dados.");return;}
+
+  if(!session?.user){
+    cloudReady=false;
+    updateAuthUser(null);
+    showAuthOverlay(true);
+    setAuthStatus("Entra com Google para continuar.");
+    return;
+  }
+
   setAuthStatus("A sincronizar os teus dados...");
   updateAuthUser(session.user);
-  await cloudLoadForUser(session.user);
+
+  const loaded=await cloudLoadForUser(session.user);
+  if(!loaded){
+    cloudReady=false;
+    showAuthOverlay(true);
+    return;
+  }
+
   cloudReady=true;
   showAuthOverlay(false);
   renderAll();
-  setTimeout(()=>{renderFinanceGate?.();renderDailyMissions?.();renderStreak?.();},0);
+
+  setTimeout(()=>{
+    try{renderFinanceGate?.()}catch(e){}
+    try{renderDailyMissions?.()}catch(e){}
+    try{renderStreak?.()}catch(e){}
+  },0);
 }
 
+const KEY="evolve_os_rebuilt_v1";
 const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
 const uid=()=>Date.now()+"_"+Math.random().toString(16).slice(2);
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
@@ -1567,6 +1724,8 @@ document.addEventListener("visibilitychange",()=>{
   }
 });
 window.addEventListener("focus",()=>updatePomoClock());
+
+setTimeout(()=>initAuth(),0);
 </script>
 </body>
 </html>
