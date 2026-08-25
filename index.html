@@ -152,6 +152,52 @@ input,textarea,select{background:var(--bg);border:1px solid var(--line);color:va
 .finance-only .finance-detail small{display:block;color:var(--muted);font-size:10px}
 .finance-only .finance-detail b{display:block;margin-top:4px;font-size:17px}
 .finance-only .finance-section{margin-top:14px}
+
+.finance-only .finance-budget-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.finance-only .finance-budget-card{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+.finance-only .finance-budget-card small{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.5px}
+.finance-only .finance-budget-card b{display:block;margin-top:5px;font-size:16px}
+.finance-only .budget-row{border:1px solid var(--line);border-radius:11px;padding:12px;margin:8px 0;background:var(--panel)}
+.finance-only .budget-row-head{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.finance-only .budget-values{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:9px;font-size:10px;color:var(--muted)}
+.finance-only .budget-values strong{display:block;color:var(--text);font-size:11px;margin-top:3px}
+.finance-only .budget-progress{height:7px;background:var(--panel2);border-radius:10px;overflow:hidden;margin-top:9px}
+.finance-only .budget-progress i{display:block;height:100%;background:var(--green);border-radius:10px}
+.finance-only .budget-progress.exceed i{background:var(--red)}
+.finance-only .budget-status{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.5px}
+.finance-only .budget-status.exceed{color:var(--red)}
+.finance-only .budget-status.remaining{color:var(--green)}
+.finance-only .budget-status.zero{color:var(--muted)}
+.finance-only .finance-chart{margin-top:10px}
+.finance-only .daily-bar{display:grid;grid-template-columns:48px 1fr 82px;gap:8px;align-items:center;margin:7px 0;font-size:9px}
+.finance-only .daily-bar .track{height:7px;background:var(--panel2);border-radius:8px;overflow:hidden}
+.finance-only .daily-bar i{display:block;height:100%;background:var(--blue);border-radius:8px}
+.finance-only .budget-compare{margin-top:12px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--panel2)}
+.finance-only .budget-compare-head{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-bottom:12px}
+.finance-only .budget-compare-title{font-weight:900;font-size:12px}
+.finance-only .budget-compare-sub{color:var(--muted);font-size:9px;margin-top:3px}
+.finance-only .budget-compare-total{font-size:11px;font-weight:900;text-align:right}
+.finance-only .budget-compare-row{display:grid;gap:5px;margin:10px 0}
+.finance-only .budget-compare-label{display:flex;justify-content:space-between;gap:8px;font-size:10px}
+.finance-only .budget-compare-label span{color:var(--muted)}
+.finance-only .budget-compare-track{height:8px;background:var(--bg);border-radius:8px;overflow:hidden}
+.finance-only .budget-compare-track i{display:block;height:100%;border-radius:8px;background:var(--blue)}
+.finance-only .budget-compare-track.expense i{background:var(--green)}
+.finance-only .budget-compare-track.expense.exceed i{background:var(--red)}
+.finance-only .budget-compare-category{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
+.finance-only .budget-compare-category-head{display:flex;justify-content:space-between;gap:8px;font-size:10px;font-weight:900;margin-bottom:6px}
+.finance-only .budget-compare-category-head .exceed{color:var(--red)}
+
+.finance-only .finance-category{border:1px solid var(--line);border-radius:12px;padding:13px;margin:9px 0;background:var(--panel)}
+.finance-only .finance-category-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.finance-only .finance-sort{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.finance-only .finance-sort .btn.active{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue) inset}
+.finance-only .finance-gate{position:fixed;inset:0;background:rgba(5,9,14,.78);backdrop-filter:blur(5px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:18px}
+.finance-only .finance-gate-card{width:min(560px,100%);background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 25px 80px #0009}
+.finance-only .finance-gate-card h2{margin:0 0 7px;font-size:20px}#modal.finance-locked-modal{z-index:1100 !important}.finance-only .finance-gate-card p{color:var(--muted);font-size:12px;line-height:1.6;margin:0 0 16px}
+.finance-only .finance-gate-kpi{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:12px 0}.finance-only .finance-gate-kpi>div{padding:12px;background:var(--bg);border:1px solid var(--line);border-radius:10px}.finance-only .finance-gate-kpi small{display:block;color:var(--muted);font-size:9px}.finance-only .finance-gate-kpi b{display:block;margin-top:4px;font-size:15px}
+.finance-only .checkpoint-box{border:1px solid color-mix(in srgb,var(--blue) 35%,var(--line));background:color-mix(in srgb,var(--blue) 7%,var(--panel));border-radius:11px;padding:12px;margin-top:12px}
+@media(max-width:700px){.finance-only .finance-budget-grid{grid-template-columns:1fr}.finance-only .budget-values{grid-template-columns:1fr 1fr}.finance-only .daily-bar{grid-template-columns:42px 1fr 70px}}
 @media(max-width:900px){.finance-only .kpis{grid-template-columns:repeat(3,1fr)}.finance-only .finance-layout{grid-template-columns:1fr}}
 @media(max-width:620px){.finance-only .kpis{grid-template-columns:1fr 1fr}.finance-only .finance-detail-grid{grid-template-columns:1fr}.finance-only .finance-item{font-size:11px}}
 
@@ -197,9 +243,54 @@ input,textarea,select{background:var(--bg);border:1px solid var(--line);color:va
 .project-modal .history{display:grid;gap:7px;margin-top:12px}.project-modal .item{padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--panel2)}.project-modal .item>b{font-size:11px}.project-modal .item .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:7px;color:var(--muted);font-size:10px}
 @media(max-width:1050px){#analytics .kpis{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){#board .board{grid-template-columns:1fr;overflow:visible}#analytics .kpis{grid-template-columns:1fr 1fr}.project-modal .detail-grid{grid-template-columns:1fr 1fr}.project-modal .formgrid{grid-template-columns:1fr}}
+
+/* AUTENTICAÇÃO SUPABASE */
+.auth-gate{position:fixed;inset:0;z-index:5000;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:20px}
+.auth-gate.hidden{display:none}
+.auth-card{width:min(520px,100%);background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:0 25px 80px #0008}
+.auth-eyebrow{font-size:10px;color:var(--green);letter-spacing:2.5px;font-weight:900}
+.auth-card h1{margin:8px 0 8px;font-size:28px}
+.auth-card>p{margin:0 0 20px;color:var(--muted);font-size:12px;line-height:1.65}
+.auth-form{display:grid;gap:8px}
+.auth-form label{font-size:10px;color:var(--muted);font-weight:800}
+.auth-form input{width:100%;padding:12px;border-radius:10px;background:var(--bg);border:1px solid var(--line);color:var(--text)}
+.auth-submit{border:0;border-radius:10px;padding:12px;background:var(--purple);color:#fff;font-weight:900;margin-top:6px}
+.auth-submit:disabled{opacity:.6;cursor:wait}
+.auth-link{border:0;background:transparent;color:var(--blue);font-size:11px;cursor:pointer;padding:9px 4px;text-align:center;width:100%;margin-top:7px}
+.auth-link.secondary{color:var(--muted)}
+.auth-error,.auth-success{display:none;border-radius:9px;padding:10px;font-size:10px;line-height:1.5;margin-bottom:10px}
+.auth-error.show,.auth-success.show{display:block}
+.auth-error{color:#ffb1bc;background:#35151c;border:1px solid #6e2734}
+.auth-success{color:#a9f1d5;background:#123d30;border:1px solid #216f58}
+.auth-note{margin-top:16px;padding:10px;border:1px dashed var(--line);border-radius:9px;color:var(--muted);font-size:9px;line-height:1.5}
+@media(max-width:600px){.auth-card{padding:22px}.auth-card h1{font-size:24px}}
 </style>
 </head>
 <body>
+
+<div id="authGate" class="auth-gate">
+  <div class="auth-card">
+    <div class="auth-eyebrow">NOSDE EDVANCE</div>
+    <h1 id="authTitle">Entrar na tua conta</h1>
+    <p id="authSubtitle">Entra com o teu e-mail e palavra-passe para usar o NOSDE EDVANCE.</p>
+    <div id="authError" class="auth-error" role="alert"></div>
+    <div id="authSuccess" class="auth-success" role="status"></div>
+    <form id="authForm" class="auth-form">
+      <label for="authEmail">E-mail</label>
+      <input id="authEmail" type="email" autocomplete="email" placeholder="teuemail@exemplo.com" required>
+      <label for="authPassword">Palavra-passe</label>
+      <input id="authPassword" type="password" autocomplete="current-password" placeholder="Mínimo 6 caracteres" minlength="6" required>
+      <div id="authConfirmWrap" style="display:none">
+        <label for="authConfirm">Confirmar palavra-passe</label>
+        <input id="authConfirm" type="password" autocomplete="new-password" placeholder="Repete a palavra-passe" minlength="6">
+      </div>
+      <button id="authSubmit" class="auth-submit" type="submit">Entrar</button>
+    </form>
+    <button id="authToggle" class="auth-link" type="button">Ainda não tens conta? Criar conta</button>
+    <button id="authReset" class="auth-link secondary" type="button">Esqueci-me da palavra-passe</button>
+    <div class="auth-note">A autenticação é feita pelo <b>Supabase Auth</b>. Não coloques aqui o Client Secret do Google.</div>
+  </div>
+</div>
 <button class="btn theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ Tema claro</button>
 
 <aside class="sidebar" id="sidebar">
@@ -220,6 +311,13 @@ input,textarea,select{background:var(--bg);border:1px solid var(--line);color:va
     <div class="nav-title" style="margin-top:8px">Finanças</div>
     <button data-view="finance">▣ &nbsp; Finanças</button>
   </div>
+
+  <div id="authUserPanel" class="side-card" style="margin-top:10px">
+    <b id="authUserEmail">Sessão</b>
+    <p style="margin:5px 0">Conta autenticada pelo Supabase.</p>
+    <button class="btn sm" style="width:100%" onclick="signOutUser()">Sair da conta</button>
+  </div>
+
   <div class="side-card"><b>🧠 Foco do dia</b><p>Planeia, executa, verifica e ajusta. O objetivo é transformar melhoria contínua em comportamento.</p><span>1% melhor, todos os dias.</span></div>
 </aside>
 
@@ -419,76 +517,162 @@ input,textarea,select{background:var(--bg);border:1px solid var(--line);color:va
 
 <section id="finance" class="page finance-only">
   <div class="top">
-    <div>
-      <h1>Finanças</h1>
-      <p>A tua visão financeira num só lugar.</p>
-    </div>
-    <div class="actions">
-      <button class="btn primary" onclick="financeMovement()">＋ Movimento</button>
-    </div>
+    <div><h1>Finanças</h1><p>Receita, reservas, orçamento, despesas e património numa única cadeia financeira.</p></div>
+    <div class="actions"><button class="btn" onclick="financeIncomeModal()">＋ Receita mensal</button><button class="btn primary" onclick="financeMovement()">＋ Despesa</button></div>
   </div>
 
   <div class="kpis">
     <div class="kpi"><small>Património estimado</small><strong id="fNet">Kz ***,00</strong></div>
-    <div class="kpi"><small>Rendimento mensal</small><strong id="fIncome">0 Kz</strong></div>
+    <div class="kpi"><small>Receita deste mês</small><strong id="fIncome">0 Kz</strong></div>
     <div class="kpi"><small>Despesas este mês</small><strong id="fExpense">0 Kz</strong></div>
     <div class="kpi"><small>Taxa de poupança</small><strong id="fSave">0%</strong></div>
     <div class="kpi"><small>Investimentos</small><strong id="fInvest">0 Kz</strong></div>
   </div>
 
   <div class="finance-layout">
-    <div class="panel">
-      <h2>Fluxo financeiro</h2>
-      <div id="financeSummary"></div>
-    </div>
-    <div class="panel">
-      <h2>Distribuição</h2>
-      <div id="financeDistribution"></div>
-    </div>
+    <div class="panel"><h2>Fluxo financeiro</h2><div id="financeSummary"></div></div>
+    <div class="panel"><h2>Distribuição por categoria</h2><div id="financeDistribution"></div></div>
   </div>
 
   <div class="panel finance-section">
-    <div class="panel-head">
-      <h2>💰 Composição do património</h2>
-      <div class="patrimony-value">
-        <strong id="financePatrimonyTotal">Kz ***,00</strong>
-        <button id="patrimonyEye" class="eye-btn" type="button" onclick="togglePatrimonyVisibility()" aria-label="Mostrar património">👁</button>
-      </div>
-    </div>
+    <div class="panel-head"><h2>🧭 Controlo do mês</h2><span id="financeMonthStatus" class="budget-status"></span></div>
+    <div id="financeMonthControl"></div>
+  </div>
+
+  <div class="panel finance-section">
+    <div class="panel-head"><h2>📊 Orçamento mensal</h2><button class="btn primary sm" onclick="financeBudgetModal()">＋ Criar / editar orçamento</button></div>
+    <div id="financeBudget"></div>
+  </div>
+
+  <div class="panel finance-section">
+    <div class="panel-head"><h2>💰 Composição do património</h2><div class="patrimony-value"><strong id="financePatrimonyTotal">Kz ***,00</strong><button id="patrimonyEye" class="eye-btn" type="button" onclick="togglePatrimonyVisibility()" aria-label="Mostrar património">👁</button></div></div>
     <div id="financePatrimony"></div>
   </div>
 
   <div class="panel finance-section">
-    <div class="panel-head">
-      <h2>🛡️ Fundo de Emergência</h2>
-      <button class="btn sm" onclick="emergencyTargetModal()">Definir meta</button>
-    </div>
+    <div class="panel-head"><h2>🛡️ Fundo de Emergência</h2><button class="btn sm" onclick="emergencyTargetModal()">Definir meta</button></div>
     <div id="emergencyFundSection"></div>
   </div>
 
   <div class="panel finance-section">
-    <div class="panel-head">
-      <h2>🎯 Objetivos financeiros</h2>
-      <button class="btn primary sm" onclick="financeGoalModal()">＋ Novo objetivo</button>
-    </div>
-    <p style="color:var(--muted);font-size:11px;margin:6px 0 12px">
-      As tuas poupanças fazem parte do património. Poupar reduz o dinheiro disponível e aumenta automaticamente o valor do objetivo. Debitar faz o movimento inverso.
-    </p>
+    <div class="panel-head"><h2>🎯 Objetivos financeiros</h2><button class="btn primary sm" onclick="financeGoalModal()">＋ Novo objetivo</button></div>
+    <p style="color:var(--muted);font-size:11px;margin:6px 0 12px">Objetivos são reservas separadas do Fundo de Emergência. Transferir dinheiro para um objetivo reduz o disponível e não cria receita.</p>
     <div id="financeGoals"></div>
   </div>
 
   <div class="panel finance-section">
-    <h2>Movimentos recentes</h2>
-    <div id="financeMoves"></div>
+    <div class="panel-head"><h2>📈 Investimentos</h2><button class="btn sm" onclick="financeInvestmentModal()">＋ Transferir para investimento</button></div>
+    <div id="financeInvestments"></div>
   </div>
+
+  <div class="finance-layout finance-section">
+    <div class="panel"><div class="panel-head"><h2>📅 Evolução diária</h2><span class="budget-status">Despesas reais</span></div><div id="financeDailyChart" class="finance-chart"></div></div>
+    <div class="panel"><div class="panel-head"><h2>🔎 Relatório por categoria</h2></div><div class="finance-sort"><button class="btn sm active" id="sortAmountBtn" onclick="setFinanceSort('amount')">Sort by amount</button><button class="btn sm" id="sortDateBtn" onclick="setFinanceSort('date')">Sort by date</button></div><div id="financeCategoryReports"></div></div>
+  </div>
+
+  <div class="panel finance-section"><h2>Movimentos recentes</h2><div id="financeMoves"></div></div>
+  <div id="financeGate" class="finance-gate" style="display:none"></div>
 </section>
 </main>
 
 <div id="modal" class="modal"><div class="modal-box"><div style="display:flex;justify-content:space-between;align-items:center"><h2 id="modalTitle"></h2><button class="btn sm" onclick="closeModal()">✕</button></div><div id="modalBody"></div></div></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+
+/* =========================
+   NOSDE EDVANCE • AUTH
+   ========================= */
+/* ============================================================
+   CONFIGURAÇÃO SUPABASE
+   >>> COLA A TUA PUBLISHABLE KEY NA LINHA ABAIXO <<<
+   Pesquisa no GitHub por: PUBLISHABLE_KEY_AQUI
+   ============================================================ */
+const SUPABASE_URL="https://corjklpfnrahtzukvjlnm.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY="sb_publishable_0NvuXPuh6lCquI_8oCKr-g_c1jYxBEM";
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+/* ============================================================ */
+let authMode="login";
+let currentAuthUser=null;
+
+function authMsg(type,text){
+  const e=document.getElementById("authError"),s=document.getElementById("authSuccess");
+  e.classList.remove("show");s.classList.remove("show");
+  if(!text)return;
+  const el=type==="error"?e:s;el.textContent=text;el.classList.add("show");
+}
+function setAuthMode(mode){
+  authMode=mode;const signup=mode==="signup";
+  document.getElementById("authTitle").textContent=signup?"Criar a tua conta":"Entrar na tua conta";
+  document.getElementById("authSubtitle").textContent=signup?"Cria a tua conta com e-mail e palavra-passe para usar o NOSDE EDVANCE.":"Entra com o teu e-mail e palavra-passe para usar o NOSDE EDVANCE.";
+  document.getElementById("authSubmit").textContent=signup?"Criar conta":"Entrar";
+  document.getElementById("authConfirmWrap").style.display=signup?"block":"none";
+  document.getElementById("authConfirm").required=signup;
+  document.getElementById("authToggle").textContent=signup?"Já tens conta? Entrar":"Ainda não tens conta? Criar conta";
+  document.getElementById("authReset").style.display=signup?"none":"block";
+  authMsg("","");
+}
+function showApp(user){
+  currentAuthUser=user||null;document.getElementById("authGate").classList.add("hidden");
+  const el=document.getElementById("authUserEmail");if(el)el.textContent=user?.email||"Utilizador";
+}
+function showAuth(){document.getElementById("authGate").classList.remove("hidden")}
+function friendlyAuthError(error){
+  const msg=String(error?.message||"Não foi possível concluir a autenticação.");
+  if(/invalid login credentials/i.test(msg))return "E-mail ou palavra-passe incorretos.";
+  if(/email not confirmed/i.test(msg))return "Confirma primeiro o teu e-mail. Verifica a caixa de entrada.";
+  if(/user already registered/i.test(msg))return "Este e-mail já tem uma conta. Escolhe Entrar.";
+  if(/password.*6/i.test(msg))return "A palavra-passe deve ter pelo menos 6 caracteres.";
+  if(/network|fetch|failed to fetch|offline/i.test(msg))return "Não foi possível contactar o Supabase. Confirma a ligação, o URL e a Publishable Key.";
+  return msg;
+}
+async function handleAuthSubmit(ev){
+  ev.preventDefault();authMsg("","");
+  const email=document.getElementById("authEmail").value.trim(),password=document.getElementById("authPassword").value,confirm=document.getElementById("authConfirm").value,btn=document.getElementById("authSubmit");
+  if(authMode==="signup"&&password!==confirm){authMsg("error","As palavras-passe não coincidem.");return}
+  btn.disabled=true;btn.textContent=authMode==="signup"?"A criar conta...":"A entrar...";
+  try{
+    if(authMode==="signup"){
+      const {data,error}=await supabaseClient.auth.signUp({email,password});if(error)throw error;
+      if(data.session){showApp(data.user);renderAll();renderFinanceGateOnLoad()}
+      else{authMsg("success","Conta criada. Confirma o teu e-mail e depois volta aqui para entrar.");setAuthMode("login")}
+    }else{
+      const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});if(error)throw error;
+      showApp(data.user);renderAll();renderFinanceGateOnLoad();
+    }
+  }catch(error){console.error("NOSDE EDVANCE Auth:",error);authMsg("error",friendlyAuthError(error))}
+  finally{btn.disabled=false;btn.textContent=authMode==="signup"?"Criar conta":"Entrar"}
+}
+async function resetAuthPassword(){
+  authMsg("","");const email=document.getElementById("authEmail").value.trim();
+  if(!email){authMsg("error","Escreve primeiro o teu e-mail.");document.getElementById("authEmail").focus();return}
+  try{
+    const redirectTo=window.location.origin+window.location.pathname;
+    const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo});if(error)throw error;
+    authMsg("success","Enviámos o pedido de recuperação para o teu e-mail.");
+  }catch(error){authMsg("error",friendlyAuthError(error))}
+}
+async function signOutUser(){
+  try{await supabaseClient.auth.signOut()}catch(e){console.error(e)}
+  currentAuthUser=null;showAuth();setAuthMode("login");authMsg("success","Sessão terminada.");
+}
+async function initAuth(){
+  if(!SUPABASE_PUBLISHABLE_KEY||SUPABASE_PUBLISHABLE_KEY.includes("COLOCA_AQUI")){
+    showAuth();authMsg("error","Falta colocar a Publishable Key do Supabase no código.");return;
+  }
+  const {data:{session},error}=await supabaseClient.auth.getSession();
+  if(error){console.error(error);showAuth();authMsg("error","Não foi possível verificar a sessão. Confirma o URL e a Publishable Key.");return}
+  if(session?.user){showApp(session.user);renderAll();renderFinanceGateOnLoad()}else showAuth();
+  supabaseClient.auth.onAuthStateChange((event,session)=>{
+    if(session?.user)showApp(session.user);else if(event==="SIGNED_OUT")showAuth();
+  });
+}
+document.getElementById("authForm").addEventListener("submit",handleAuthSubmit);
+document.getElementById("authToggle").addEventListener("click",()=>setAuthMode(authMode==="login"?"signup":"login"));
+document.getElementById("authReset").addEventListener("click",resetAuthPassword);
+
 const KEY="evolve_os_rebuilt_v1";
-const today=()=>{const d=new Date();return d.toISOString().slice(0,10)};
+const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
 const uid=()=>Date.now()+"_"+Math.random().toString(16).slice(2);
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
 function defaults(){return {profile:{name:"",age:"",profession:"",focus:"",lifeGoal:"",notes:"",vision:"",financial:{name:"",age:"",income:0,extra:0,balance:0,savings:30,risk:"Moderado"},avatar:{skin:"#e8a064",hair:"#f0e7df",hairStyle:0,body:4,eyes:"#3b3b3b",eyeStyle:0,expression:0,glasses:1,glassesColor:"#3f3f3f",beard:0,beardColor:"#3f3f3f",outfit:0,outfitColor:"#3d3d3d",background:"#dff4ff",accessory:"none",accessoryColor:"#168cc8",hat:0,hatColor:"#168cc8"}},goals:[],actions:[],reminders:[],notes:[],pomo:{focus:25,short:5,long:15},pomoSessions:0,notified:{},gamification:{xp:0,bestStreak:0,focusMinutes:{},goalAdvances:{},missionHistory:{},missions:{},monthlyAwards:{},lastLevel:1,lastLeague:"Liga Ascensão",prestige:0,xpEvents:{}}}}
@@ -522,18 +706,19 @@ viewDate.setDate(1);
 function save(){localStorage.setItem(KEY,JSON.stringify(s));renderAll()}
 function toast(t){const x=document.createElement("div");x.textContent=t;x.style="position:fixed;right:18px;bottom:18px;z-index:300;background:var(--panel);border:1px solid var(--line);color:var(--text);padding:11px 14px;border-radius:9px;font-size:11px;box-shadow:0 10px 30px #0005";document.body.appendChild(x);setTimeout(()=>x.remove(),2400)}
 function view(id){
+  const locked=typeof financeAppLocked==='function'&&financeAppLocked(id);
+  if(locked){id="finance";setTimeout(()=>{renderFinanceGate();toast("Conclui primeiro o passo financeiro pendente.")},0)}
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   const target=document.getElementById(id);
   if(target)target.classList.add("active");
   document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===id));
   document.getElementById("sidebar").classList.remove("open");
   renderAll();
-  if(id==="finance")renderFinance();
 }
 document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>view(b.dataset.view));
 function toggleMenu(){const sb=document.getElementById("sidebar"),btn=document.getElementById("mobileMenu");const open=sb.classList.toggle("open");if(btn)btn.setAttribute("aria-expanded",String(open))}
 function modal(title,body){document.getElementById("modalTitle").textContent=title;document.getElementById("modalBody").innerHTML=body;document.getElementById("modal").classList.add("open")}
-function closeModal(){document.getElementById("modal").classList.remove("open")}
+function closeModal(){const m=document.getElementById("modal");if(m){m.classList.remove("open");m.classList.remove("finance-locked-modal")}}
 function toggleTheme(){const t=document.documentElement.dataset.theme==="light"?"dark":"light";document.documentElement.dataset.theme=t;localStorage.setItem("evolve_theme",t);document.getElementById("themeBtn").textContent=t==="light"?"🌙 Tema escuro":"☀️ Tema claro";if(currentNoteType==="canvas"&&currentNoteId)renderCanvasNote();toast(t==="light"?"Tema claro":"Tema escuro")}
 
 function openActionModal(date=selected){
@@ -887,7 +1072,7 @@ function saveProfile(){
   fin.profile=Object.assign(defaultFinance().profile,fin.profile||{}, {
     name:s.profile.financial.name, age:Number(s.profile.financial.age)||0,
     income:Number(s.profile.financial.income)||0, extra:Number(s.profile.financial.extra)||0,
-    cash:Number(s.profile.financial.balance)||0, savings:Number(s.profile.financial.savings)||30,
+    cash:Number(s.profile.financial.balance)||0, savingTarget:Number(s.profile.financial.savings)||30,
     risk:s.profile.financial.risk||"Moderado"
   });
   localStorage.setItem(FINKEY,JSON.stringify(fin));
@@ -1093,310 +1278,224 @@ function saveAvatar(){s.profile.avatar={...defaults().profile.avatar,...s.profil
 
 function renderStats(){const xp=Number(s.gamification.xp)||0,league=getLeague(xp),streak=currentStreak(),mk=monthKey(),med=medalState(mk),prestige=getPrestige(xp);document.getElementById("statStreak").textContent=streak;document.getElementById("statXp").textContent=xp.toLocaleString("pt-PT");document.getElementById("statLeague").textContent=prestige?`${league.short} · P${prestige}`:league.short;document.getElementById("statMedals").textContent=Object.values(med.medals).filter(m=>m.unlocked).length;document.getElementById("statDone").textContent=s.actions.filter(x=>x.done).length;document.getElementById("statTotal").textContent=s.actions.length;document.getElementById("statGoals").textContent=s.goals.length;document.getElementById("statNotes").textContent=s.notes.length}
 
-/* EVOLVE OS • Finanças only
-   Mantém a estrutura de dados FINKEY do PRO OS para que os dados financeiros
-   existentes possam ser lidos, sem importar os módulos de Projetos/Investimentos/Orçamento. */
+/* EVOLVE OS • Finanças integradas
+   Motor único: receita mensal -> reservas -> disponível -> orçamento -> despesas -> relatórios -> património. */
 const FINKEY="pro_os_finance_v2";
-function defaultFinance(){
-  return {
-    profile:{name:"Utilizador",age:0,income:0,extra:0,cash:0,savingTarget:30,risk:"Moderado"},
-    moves:[],investments:[],goals:[],goalMoves:[],budgets:[],
-    emergencyFund:{target:0,contributions:[]}
-  };
-}
-function loadFinance(){
-  try{
-    const d=JSON.parse(localStorage.getItem(FINKEY));
-    return d||defaultFinance();
-  }catch(e){return defaultFinance();}
-}
+const FIN_CATEGORIES=["Shopping","Food","Phone","Entertainment","Education","Beauty","Sports","Social","Transportation","Clothing","Car","Alcohol","Cigarettes","Electronics","Travel","Health","Pets","Repairs","Housing","Home","Gifts","Donations","Lottery","Snacks","Kids","Vegetables","Fruits"];
+const FIN_MONTHLY_DEFAULT={income:0,registered:false,emergencyPercent:0,emergencyContributionId:null,registeredAt:null};
+function defaultFinance(){return {profile:{name:"Utilizador",age:0,income:0,extra:0,cash:0,savingTarget:30,risk:"Moderado"},moves:[],investments:[],investmentMoves:[],goals:[],goalMoves:[],budgets:[],monthlyIncome:{},dailyRecords:{},emergencyFund:{target:0,contributions:[]}}}
+function loadFinance(){try{const d=JSON.parse(localStorage.getItem(FINKEY));return d||defaultFinance()}catch(e){return defaultFinance()}}
 let fin=loadFinance();
-fin.budgets=fin.budgets||[];
-fin.goalMoves=fin.goalMoves||[];
-fin.investments=fin.investments||[];
-fin.goals=fin.goals||[];
-fin.moves=fin.moves||[];
-fin.profile=Object.assign(defaultFinance().profile,fin.profile||{});
-fin.emergencyFund=fin.emergencyFund||{target:0,contributions:[]};
-fin.emergencyFund.contributions=fin.emergencyFund.contributions||[];
-
-function money(v){
-  return new Intl.NumberFormat("pt-AO").format(Math.round(Number(v)||0))+" Kz";
+function normalizeFinance(){
+  const d=defaultFinance();
+  fin=Object.assign(d,fin||{});
+  fin.profile=Object.assign(d.profile,fin.profile||{});fin.moves=Array.isArray(fin.moves)?fin.moves:[];fin.investments=Array.isArray(fin.investments)?fin.investments:[];fin.investmentMoves=Array.isArray(fin.investmentMoves)?fin.investmentMoves:[];fin.goals=Array.isArray(fin.goals)?fin.goals:[];fin.goalMoves=Array.isArray(fin.goalMoves)?fin.goalMoves:[];fin.budgets=Array.isArray(fin.budgets)?fin.budgets:[];fin.monthlyIncome=fin.monthlyIncome&&typeof fin.monthlyIncome==='object'?fin.monthlyIncome:{};fin.dailyRecords=fin.dailyRecords&&typeof fin.dailyRecords==='object'?fin.dailyRecords:{};fin.emergencyFund=Object.assign(d.emergencyFund,fin.emergencyFund||{});fin.emergencyFund.contributions=Array.isArray(fin.emergencyFund.contributions)?fin.emergencyFund.contributions:[];
+  // Compatibilidade: mantém todos os dados antigos. O rendimento do perfil deixa de ser uma segunda receita mensal.
+  fin.profile.cash=Number(fin.profile.cash)||0;
+  if(fin.investments.some(x=>x.current==null&&x.value!=null))fin.investments.forEach(x=>{if(x.current==null)x.current=Number(x.value)||0});
 }
-function fullDateFinance(d){
-  if(!d)return "—";
-  return new Date(d+"T00:00:00").toLocaleDateString("pt-AO");
+normalizeFinance();
+function money(v){return new Intl.NumberFormat("pt-AO",{minimumFractionDigits:0,maximumFractionDigits:2}).format(Number(v)||0)+" Kz"}
+function money2(v){return new Intl.NumberFormat("pt-AO",{minimumFractionDigits:2,maximumFractionDigits:2}).format(Number(v)||0)+" Kz"}
+function fullDateFinance(d){if(!d)return "—";return new Date(d+"T00:00:00").toLocaleDateString("pt-AO")}
+function currentMonthFinance(){const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")}
+function monthKeyFromDate(d){return String(d||"").slice(0,7)}
+function isCurrentMonthFinance(date){return monthKeyFromDate(date)===currentMonthFinance()}
+function monthMovesFinance(month=currentMonthFinance()){return fin.moves.filter(x=>monthKeyFromDate(x.date)===month)}
+function monthIncomeRecord(month=currentMonthFinance()){return fin.monthlyIncome[month]||null}
+function monthlyIncomeValue(month=currentMonthFinance()){
+  const rec=monthIncomeRecord(month);if(rec&&rec.registered)return Number(rec.income)||0;
+  return monthMovesFinance(month).filter(x=>x.kind==="income").reduce((a,x)=>a+Number(x.amount||0),0);
 }
-function currentMonthFinance(){
-  const d=new Date();
-  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");
+function budgetForMonth(month=currentMonthFinance()){return fin.budgets.find(b=>b.month===month)||null}
+function budgetTotal(month=currentMonthFinance()){const b=budgetForMonth(month);return b?FIN_CATEGORIES.reduce((a,c)=>a+Number(b.categories?.[c]||0),0):0}
+function categoryBudget(category,month=currentMonthFinance()){return Number(budgetForMonth(month)?.categories?.[category]||0)}
+function categoryExpenses(category,month=currentMonthFinance()){return monthMovesFinance(month).filter(x=>x.kind==="expense"&&x.category===category).reduce((a,x)=>a+Number(x.amount||0),0)}
+function totalExpenses(month=currentMonthFinance()){return monthMovesFinance(month).filter(x=>x.kind==="expense").reduce((a,x)=>a+Number(x.amount||0),0)}
+function goalAdds(month=currentMonthFinance()){return fin.goalMoves.filter(x=>monthKeyFromDate(x.date)===month&&x.kind==="add").reduce((a,x)=>a+Number(x.amount||0),0)}
+function goalDebits(month=currentMonthFinance()){return fin.goalMoves.filter(x=>monthKeyFromDate(x.date)===month&&x.kind==="debit").reduce((a,x)=>a+Number(x.amount||0),0)}
+function emergencyAdds(month=currentMonthFinance()){return fin.emergencyFund.contributions.filter(x=>monthKeyFromDate(x.date)===month&&x.kind!=="debit").reduce((a,x)=>a+Number(x.amount||0),0)}
+function emergencyDebits(month=currentMonthFinance()){return fin.emergencyFund.contributions.filter(x=>monthKeyFromDate(x.date)===month&&x.kind==="debit").reduce((a,x)=>a+Number(x.amount||0),0)}
+function investmentAdds(month=currentMonthFinance()){return fin.investmentMoves.filter(x=>monthKeyFromDate(x.date)===month&&x.kind==="add").reduce((a,x)=>a+Number(x.amount||0),0)}
+function investmentDebits(month=currentMonthFinance()){return fin.investmentMoves.filter(x=>monthKeyFromDate(x.date)===month&&x.kind==="debit").reduce((a,x)=>a+Number(x.amount||0),0)}
+function financeTotals(month=currentMonthFinance()){
+  const income=monthlyIncomeValue(month),expense=totalExpenses(month),eAdd=emergencyAdds(month),eDebit=emergencyDebits(month),gAdd=goalAdds(month),gDebit=goalDebits(month),iAdd=investmentAdds(month),iDebit=investmentDebits(month);
+  const reserved=Math.max(0,eAdd-eDebit+gAdd-gDebit+iAdd-iDebit);
+  const availableBeforeExpenses=Math.max(0,income-eAdd-gAdd-iAdd+eDebit+gDebit+iDebit);
+  const cash=Math.max(0,availableBeforeExpenses-expense);
+  const availableForSaving=Math.max(0,availableBeforeExpenses-expense);
+  const emergencyTotal=fin.emergencyFund.contributions.reduce((a,x)=>a+(x.kind==="debit"?-1:1)*Number(x.amount||0),0);
+  const goalTotal=fin.goals.reduce((a,g)=>a+Number(g.current||0),0);
+  const invest=fin.investments.reduce((a,x)=>a+Number(x.current||0),0);
+  const saving=income>0?Math.max(0,Math.min(100,(eAdd+gAdd+iAdd)/income*100)):0;
+  const net=cash+emergencyTotal+goalTotal+invest;
+  return {income,expense,emergencyAdded:eAdd,emergencyDebited:eDebit,emergencyTotal,goalTotal,savingsAdded:gAdd,savingsDebited:gDebit,investmentAdded:iAdd,investmentDebited:iDebit,reserved,availableBeforeExpenses,availableForSaving,cash,invest,saving,net,recordedIncome:income,incomeBase:0};
 }
-function isCurrentMonthFinance(date){
-  if(!date)return false;
-  return String(date).slice(0,7)===currentMonthFinance();
+function saveFinance(){localStorage.setItem(FINKEY,JSON.stringify(fin));renderFinance();renderDailyMissions?.();renderStreak?.()}
+function monthlyRevenueRegistered(month=currentMonthFinance()){return !!(fin.monthlyIncome[month]?.registered)}
+function emergencyRequired(month=currentMonthFinance()){return monthlyRevenueRegistered(month)&&monthlyIncomeValue(month)>=50000}
+function emergencyMin(month=currentMonthFinance()){return emergencyRequired(month)?monthlyIncomeValue(month)*0.05:0}
+function emergencyPlanComplete(month=currentMonthFinance()){if(!emergencyRequired(month))return true;const r=fin.monthlyIncome[month];return !!r?.emergencyContributionId && emergencyAdds(month)>=emergencyMin(month)-0.001}
+function dailyFinanceStatus(date=today()){
+  const rec=fin.dailyRecords[date];
+  if(rec?.status==="no-record")return "no-record";
+  if(rec?.status==="registered")return "registered";
+  if(monthMovesFinance(currentMonthFinance()).some(x=>x.kind==="expense"&&x.date===date))return "registered";
+  return "pending";
 }
-function monthMovesFinance(){
-  const n=new Date();
-  return fin.moves.filter(x=>{
-    const d=new Date(x.date+"T00:00:00");
-    return d.getMonth()===n.getMonth()&&d.getFullYear()===n.getFullYear();
-  });
+function financeDailyPending(){const now=new Date();const mins=now.getHours()*60+now.getMinutes();return mins>=13*60&&dailyFinanceStatus(today())==="pending"}
+function financeGateReason(){if(!monthlyRevenueRegistered())return "income";if(!emergencyPlanComplete())return "emergency";if(financeDailyPending())return "daily";return null}
+function financeAppLocked(id){const reason=financeGateReason();return id!=="finance"&&reason&&reason!==""}
+function renderFinanceGate(){
+  const el=document.getElementById("financeGate");if(!el)return;const reason=financeGateReason();
+  if(!reason){el.style.display="none";el.innerHTML="";return}
+  el.style.display="flex";
+  if(reason==="income"){
+    el.innerHTML=`<div class="finance-gate-card"><div class="eyebrow">CICLO ${currentMonthFinance()}</div><h2>Registre sua receita deste mês</h2><p>A receita mensal é obrigatória. Pode ser <b>0 Kz</b>. Enquanto este passo não for concluído, as outras áreas permanecem bloqueadas.</p><div class="actions"><button class="btn primary" onclick="financeIncomeModal(true)">Registrar receita</button></div></div>`;
+  }else if(reason==="emergency"){
+    const income=monthlyIncomeValue();el.innerHTML=`<div class="finance-gate-card"><div class="eyebrow">FUNDO DE EMERGÊNCIA</div><h2>Defina a sua contribuição mensal</h2><p>A receita de <b>${money(income)}</b> ativa a regra mínima de <b>${money(emergencyMin())}</b> (5%). Pode guardar entre 5% e 100%.</p><div class="finance-gate-kpi"><div><small>Receita</small><b>${money(income)}</b></div><div><small>Mínimo 5%</small><b>${money(emergencyMin())}</b></div></div><div class="actions"><button class="btn primary" onclick="financeEmergencyModal(true)">Definir poupança</button></div></div>`;
+  }else{
+    el.innerHTML=`<div class="finance-gate-card"><div class="eyebrow">CHECKPOINT DIÁRIO</div><h2>${new Date().getHours()>=21?"Ainda não registou as suas despesas de hoje.":"Registe as despesas que realizou hoje."}</h2><p>O registo diário pode ser uma despesa real ou <b>Sem registro</b>. “Sem registro” não cria uma transação e não altera nenhum saldo.</p><div class="checkpoint-box"><b>Hoje · ${fullDateFinance(today())}</b><div style="color:var(--muted);font-size:10px;margin-top:5px">Estado: Pendente</div></div><div class="actions" style="margin-top:14px"><button class="btn primary" onclick="financeMovement(true)">Registrar despesa</button><button class="btn" onclick="markFinanceNoRecord()">Sem registro</button></div></div>`;
+  }
 }
-function financeTotals(){
-  const mm=monthMovesFinance();
-  const profileIncome=Number(fin.profile?.income)||0;
-  const extra=Number(fin.profile?.extra)||0;
-  const recordedIncome=mm.filter(x=>x.kind==="income").reduce((a,x)=>a+Number(x.amount||0),0);
-  const incomeBase=profileIncome+extra;
-  const income=incomeBase+recordedIncome;
-  const expense=mm.filter(x=>x.kind==="expense").reduce((a,x)=>a+Number(x.amount||0),0);
-  const invest=fin.investments.reduce((a,x)=>a+(Number(x.current)||0),0);
-  const goalTotal=fin.goals.reduce((a,g)=>a+(Number(g.current)||0),0);
-  const savingsAdded=fin.goalMoves.filter(x=>x.kind==="add"&&isCurrentMonthFinance(x.date)).reduce((a,x)=>a+Number(x.amount||0),0);
-  const savingsDebited=fin.goalMoves.filter(x=>x.kind==="debit"&&isCurrentMonthFinance(x.date)).reduce((a,x)=>a+Number(x.amount||0),0);
-  const emergencyAdded=(fin.emergencyFund?.contributions||[]).filter(x=>isCurrentMonthFinance(x.date)).reduce((a,x)=>a+(x.kind==="debit"?-1:1)*Number(x.amount||0),0);
-  const emergencyTotal=(fin.emergencyFund?.contributions||[]).reduce((a,x)=>a+(x.kind==="debit"?-1:1)*Number(x.amount||0),0);
-  const openingCash=Number(fin.profile?.cash)||0;
-  const cash=openingCash+income-expense-savingsAdded-emergencyAdded+savingsDebited;
-  const incomeAvailableForSaving=Math.max(0,income-expense-savingsAdded-emergencyAdded+savingsDebited);
-  const totalSavingsAdded=savingsAdded+emergencyAdded;
-  const saving=income>0?Math.max(0,Math.min(100,totalSavingsAdded/income*100)):0;
-  const net=cash+invest+goalTotal+emergencyTotal;
-  return {income,incomeBase,recordedIncome,expense,invest,goalTotal,savingsAdded,savingsDebited,
-    emergencyAdded,emergencyTotal,cash,incomeAvailableForSaving,totalSavingsAdded,net,saving};
+function financeIncomeModal(force=false){
+  const month=currentMonthFinance(),existing=fin.monthlyIncome[month]?.income??"";
+  modal("Registre sua receita deste mês",`<div class="form"><label>Receita mensal (Kz)</label><input id="monthlyIncomeAmount" type="number" min="0" step="0.01" value="${existing}" placeholder="0"><small style="color:var(--muted)">0 Kz é um registro válido. Esta receita passa a ser a fonte oficial do mês e não será somada novamente ao rendimento do perfil.</small><div class="actions"><button class="btn" onclick="${force?'financeIncomeModal(true)':'closeModal()'}">Cancelar</button><button class="btn primary" onclick="saveMonthlyIncome()">Continuar</button></div></div>`);
+  document.getElementById("modal")?.classList.add("finance-locked-modal");
 }
-function saveFinance(){
-  localStorage.setItem(FINKEY,JSON.stringify(fin));
-  renderFinance();
+function saveMonthlyIncome(){
+  const amount=Number(document.getElementById("monthlyIncomeAmount")?.value);if(!isFinite(amount)||amount<0){alert("Indica uma receita válida. 0 Kz é permitido.");return}
+  const month=currentMonthFinance(),old=fin.monthlyIncome[month]||{},existingBudget=budgetForMonth(month);
+  if(existingBudget&&budgetTotal(month)>amount){alert("A nova receita não pode ser inferior ao orçamento já criado para este mês. Ajusta o orçamento primeiro.");return}
+  const oldEmergencyId=old.emergencyContributionId;
+  if(oldEmergencyId){fin.emergencyFund.contributions=fin.emergencyFund.contributions.filter(x=>x.id!==oldEmergencyId)}
+  fin.monthlyIncome[month]={...FIN_MONTHLY_DEFAULT,...old,income:amount,registered:true,emergencyPercent:0,emergencyContributionId:null,registeredAt:new Date().toISOString()};
+  // A receita mensal é uma declaração, não uma segunda transação em fin.moves.
+  closeModal();localStorage.setItem(FINKEY,JSON.stringify(fin));
+  if(amount>=50000){financeEmergencyModal(true)}else{renderFinance();renderFinanceGate();toast("Receita mensal registada.")}
 }
-function financeMovement(){
-  const body=`<div class="form">
-    <label>Tipo</label>
-    <select id="mKind"><option value="income">Receita</option><option value="expense">Despesa</option></select>
-    <label>Valor (Kz)</label><input id="mAmount" type="number" min="0">
-    <label>Nome</label><input id="mName" placeholder="Ex.: salário, táxi, alimentação...">
-    <label>Categoria</label><input id="mCat" placeholder="Casa, transporte, trabalho...">
-    <label>Data</label><input id="mDate" type="date" value="${today()}">
-    <div class="actions"><button class="btn" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="addMovement()">Guardar movimento</button></div>
-  </div>`;
-  modal("Novo movimento",body);
+function financeEmergencyModal(force=false){
+  const income=monthlyIncomeValue(),min=income*0.05,max=income,old=fin.monthlyIncome[currentMonthFinance()]?.emergencyPercent||0;
+  const presets=[5,10,20,30,50,75,100];
+  modal("Poupança / Fundo de Emergência",`<div class="form"><label>Percentagem da receita</label><select id="emergencyPercent">${presets.map(p=>`<option value="${p}" ${Number(old)===p?'selected':''}>${p}% · ${money(income*p/100)}</option>`).join("")}<option value="custom">Personalizado</option></select><label id="customEmergencyLabel" style="display:${presets.includes(Number(old))?'none':'block'}">Percentagem personalizada</label><input id="customEmergencyPercent" type="number" min="5" max="100" step="0.01" value="${presets.includes(Number(old))?'':old}" style="display:${presets.includes(Number(old))?'none':'block'}"><div class="finance-gate-kpi"><div><small>Mínimo 5%</small><b>${money(min)}</b></div><div><small>Máximo 100%</small><b>${money(max)}</b></div></div><small style="color:var(--muted)">A contribuição será transferida automaticamente para o Fundo de Emergência e retirada do disponível.</small><div class="actions"><button class="btn primary" onclick="saveEmergencyPlan()">Guardar contribuição</button></div></div>`);
+  if(force)document.getElementById("modal")?.classList.add("finance-locked-modal");
+  document.getElementById("emergencyPercent")?.addEventListener("change",e=>{const c=e.target.value==='custom';document.getElementById("customEmergencyLabel").style.display=c?'block':'none';document.getElementById("customEmergencyPercent").style.display=c?'block':'none'});
+}
+function saveEmergencyPlan(){
+  const income=monthlyIncomeValue(),sel=document.getElementById("emergencyPercent")?.value;let pct=sel==='custom'?Number(document.getElementById("customEmergencyPercent")?.value):Number(sel);if(!isFinite(pct)||pct<5||pct>100){alert("A contribuição deve estar entre 5% e 100%.");return}
+  const month=currentMonthFinance(),amount=income*pct/100,old=fin.monthlyIncome[month]||{};
+  // Se o plano já foi alterado, substitui apenas a contribuição automática deste plano, preservando movimentos manuais antigos.
+  if(old.emergencyContributionId){fin.emergencyFund.contributions=fin.emergencyFund.contributions.filter(x=>x.id!==old.emergencyContributionId)}
+  const id=uid();fin.emergencyFund.contributions.push({id,kind:"add",amount,date:today(),source:`Regra mensal ${pct}%`});fin.monthlyIncome[month]={...old,income,registered:true,emergencyPercent:pct,emergencyContributionId:id};
+  closeModal();localStorage.setItem(FINKEY,JSON.stringify(fin));renderFinance();renderFinanceGate();toast(`${money(amount)} reservados no Fundo de Emergência.`)
+}
+function financeMovement(fromGate=false){
+  const reason=financeGateReason();if(reason==="income"||reason==="emergency"){renderFinanceGate();return}
+  if(!monthlyRevenueRegistered()){financeIncomeModal(true);return}
+  if(!budgetForMonth()){alert("Antes de registrar despesas, crie o orçamento deste mês.");financeBudgetModal();return}
+  const t=financeTotals();
+  modal("Nova despesa",`<div class="form"><label>Valor (Kz)</label><input id="mAmount" type="number" min="0.01" step="0.01"><label>Descrição</label><input id="mName" placeholder="Ex.: Táxi, almoço, compras..."><label>Categoria</label><select id="mCat">${FIN_CATEGORIES.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join("")}</select><label>Data</label><input id="mDate" type="date" value="${today()}"><small style="color:var(--muted)">Disponível antes desta despesa: ${money(t.availableForSaving)}.</small><div class="actions"><button class="btn" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="addMovement()">Guardar despesa</button></div></div>`);
 }
 function addMovement(){
-  const k=document.getElementById("mKind")?.value;
-  const a=Number(document.getElementById("mAmount")?.value);
-  const n=document.getElementById("mName")?.value.trim();
-  const c=document.getElementById("mCat")?.value.trim();
-  const d=document.getElementById("mDate")?.value;
-  if(!isFinite(a)||a<=0||!n||!d){alert("Preenche tipo, valor, nome e data.");return;}
-  fin.moves.push({id:Date.now(),kind:k,amount:a,name:n,category:c,date:d});
-  if(d===today()) completeMissionRewards(today(),false);
-  closeModal();localStorage.setItem(KEY,JSON.stringify(s));saveFinance();renderDailyMissions();renderStreak();renderGamificationOverview();toast("Movimento registado.");
+  const a=Number(document.getElementById("mAmount")?.value),n=document.getElementById("mName")?.value.trim(),c=document.getElementById("mCat")?.value,d=document.getElementById("mDate")?.value;
+  if(!isFinite(a)||a<=0||!n||!d){alert("Preenche valor, descrição, categoria e data.");return}
+  if(!FIN_CATEGORIES.includes(c)){alert("Seleciona uma categoria financeira válida.");return}
+  const month=monthKeyFromDate(d),b=budgetForMonth(month);if(!b){alert("Antes de registrar despesas, crie o orçamento deste mês.");closeModal();if(month===currentMonthFinance())financeBudgetModal();return}
+  const t=financeTotals(month);if(a>t.availableForSaving){alert("Esta despesa excede o dinheiro disponível para gastar / poupar.");return}
+  fin.moves.push({id:uid(),kind:"expense",amount:a,name:n,category:c,date:d});
+  if(d===today()){fin.dailyRecords[d]={status:"registered",updatedAt:new Date().toISOString()};completeMissionRewards?.(today(),false)}
+  closeModal();saveFinance();renderFinanceGate();toast("Despesa registada.")
 }
-let patrimonyVisible=false;
-function togglePatrimonyVisibility(){patrimonyVisible=!patrimonyVisible;renderFinance();}
-function renderEmergencyFund(t){
-  const el=document.getElementById("emergencyFundSection");
+let patrimonyVisible=false,financeSort="amount";
+function togglePatrimonyVisibility(){patrimonyVisible=!patrimonyVisible;renderFinance()}
+function renderFinanceMonthControl(t){const el=document.getElementById("financeMonthControl");if(!el)return;const rec=monthIncomeRecord(),budget=budgetForMonth();el.innerHTML=`<div class="finance-budget-grid"><div class="finance-budget-card"><small>Receita</small><b>${money(t.income)}</b></div><div class="finance-budget-card"><small>Fundo de Emergência</small><b>${money(t.emergencyAdded)}</b></div><div class="finance-budget-card"><small>Disponível</small><b>${money(t.availableBeforeExpenses)}</b></div></div><div class="checkpoint-box"><b>${rec?.registered?"Receita mensal registada":"Receita mensal pendente"}</b><div style="color:var(--muted);font-size:10px;margin-top:4px">${budget?`Orçamento criado: ${money(budgetTotal())}`:"Crie o orçamento mensal para começar a registrar despesas."}</div></div>`}
+function renderEmergencyFund(t){const el=document.getElementById("emergencyFundSection");if(!el)return;const ef=fin.emergencyFund,total=Number(t.emergencyTotal)||0,target=Number(ef.target)||0,pct=target?Math.min(100,total/target*100):0,month=Number(t.emergencyAdded)||0,history=[...ef.contributions].sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,20);el.innerHTML=`<div class="finance-detail-grid"><div class="finance-detail"><small>Saldo atual</small><b class="positive">${money(total)}</b></div><div class="finance-detail"><small>Meta</small><b>${target?money(target):"Não definida"}</b></div><div class="finance-detail"><small>Meta atingida</small><b>${target?pct.toFixed(1)+"%":"—"}</b></div><div class="finance-detail"><small>Acumulado neste mês</small><b class="positive">${money(month)}</b></div></div>${target?`<div class="emergency-progress"><i style="width:${pct}%"></i></div>`:""}<div class="actions" style="margin-top:12px"><button class="btn sm" onclick="addEmergencyMoney()">＋ Adicionar dinheiro</button><button class="btn sm danger" onclick="debitEmergencyMoney()">− Debitar</button></div><div class="panel-head" style="margin-top:15px"><h2 style="font-size:14px;margin:0">Histórico do Fundo</h2></div><div class="emergency-history">${history.length?history.map(x=>{const debit=x.kind==="debit";return `<div class="finance-item"><span>${fullDateFinance(x.date)} <small style="color:var(--muted)">· ${esc(x.source|| (debit?"Débito":"Contribuição"))}</small></span><b class="${debit?'negative':'positive'}">${debit?'−':'＋'} ${money2(x.amount)}</b></div>`}).join(""):"<div class='finance-empty'>Ainda não existem movimentos no fundo.</div>"}</div>`}
+function addEmergencyMoney(){const available=financeTotals().availableForSaving;modal("Adicionar dinheiro ao Fundo de Emergência",`<div class="form"><label>Valor (Kz)</label><input id="emergencyAddAmount" type="number" min="0.01" step="0.01"><small style="color:var(--muted)">Disponível para reservar: ${money(available)}.</small><label>Origem</label><input id="emergencyAddSource" placeholder="Poupança adicional"><div class="actions"><button class="btn" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="confirmAddEmergencyMoney()">Adicionar</button></div></div>`)}
+function confirmAddEmergencyMoney(){const amount=Number(document.getElementById("emergencyAddAmount")?.value),source=document.getElementById("emergencyAddSource")?.value.trim()||"Adição manual",available=financeTotals().availableForSaving;if(!isFinite(amount)||amount<=0||amount>available){alert("Indica um valor válido dentro do dinheiro disponível.");return}fin.emergencyFund.contributions.push({id:uid(),kind:"add",amount,date:today(),source});closeModal();saveFinance();toast(money(amount)+" adicionados ao Fundo de Emergência.")}
+function debitEmergencyMoney(){const current=Math.max(0,Number(financeTotals().emergencyTotal)||0);modal("Debitar do Fundo de Emergência",`<div class="form"><label>Valor (Kz)</label><input id="emergencyDebitAmount" type="number" min="0.01" step="0.01"><small style="color:var(--muted)">Saldo do fundo: ${money(current)}.</small><label>Motivo</label><input id="emergencyDebitSource" placeholder="Emergência"><div class="actions"><button class="btn" onclick="closeModal()">Cancelar</button><button class="btn danger" onclick="confirmDebitEmergencyMoney()">Debitar</button></div></div>`)}
+function confirmDebitEmergencyMoney(){const amount=Number(document.getElementById("emergencyDebitAmount")?.value),source=document.getElementById("emergencyDebitSource")?.value.trim()||"Débito por emergência",current=Math.max(0,Number(financeTotals().emergencyTotal)||0);if(!isFinite(amount)||amount<=0||amount>current){alert("O débito não pode exceder o saldo do fundo.");return}fin.emergencyFund.contributions.push({id:uid(),kind:"debit",amount,date:today(),source});closeModal();saveFinance();toast(money(amount)+" debitados do Fundo de Emergência.")}
+function emergencyTargetModal(){const current=Number(fin.emergencyFund.target)||0;modal("Meta do Fundo de Emergência",`<div class="form"><label>Meta (Kz)</label><input id="emergencyTarget" type="number" min="0" step="0.01" value="${current}"><small style="color:var(--muted)">A meta é apenas a referência do fundo e não cria dinheiro.</small><div class="actions"><button class="btn" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="saveEmergencyTarget()">Guardar meta</button></div></div>`)}
+function saveEmergencyTarget(){const v=Number(document.getElementById("emergencyTarget")?.value);if(!isFinite(v)||v<0){alert("Indica uma meta válida.");return}fin.emergencyFund.target=v;closeModal();saveFinance();toast("Meta do Fundo de Emergência guardada.")}
+function financeBudgetModal(){
+  if(!monthlyRevenueRegistered()){financeIncomeModal(true);return}if(!emergencyPlanComplete()){financeEmergencyModal(true);return}
+  const available=financeTotals().availableBeforeExpenses,old=budgetForMonth(),cats=FIN_CATEGORIES.map(c=>`<div class="field"><label>${esc(c)}</label><input class="budget-input" data-category="${esc(c)}" type="number" min="0" step="0.01" value="${Number(old?.categories?.[c]||0)}"></div>`).join("");
+  modal("Orçamento mensal · "+currentMonthFinance(),`<div class="form"><small style="color:var(--muted)">Disponível para alocação: <b>${money(available)}</b>. O orçamento é uma alocação planejada, não uma receita.</small><div class="formgrid" style="max-height:48vh;overflow:auto;padding-right:5px">${cats}</div><div id="budgetLiveTotal" class="checkpoint-box">Total planejado: 0 Kz</div><div class="actions"><button class="btn" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="saveMonthlyBudget()">Guardar orçamento</button></div></div>`);
+  const inputs=[...document.querySelectorAll(".budget-input")];const update=()=>{const total=inputs.reduce((a,x)=>a+Math.max(0,Number(x.value)||0),0);document.getElementById("budgetLiveTotal").innerHTML=`Total planejado: <b>${money(total)}</b> · Não orçamentado: <b>${money(Math.max(0,available-total))}</b>`;};inputs.forEach(x=>x.addEventListener("input",update));update();
+}
+function saveMonthlyBudget(){const month=currentMonthFinance(),available=financeTotals().availableBeforeExpenses,categories={};document.querySelectorAll(".budget-input").forEach(i=>categories[i.dataset.category]=Math.max(0,Number(i.value)||0));const total=FIN_CATEGORIES.reduce((a,c)=>a+categories[c],0);if(total>available+0.001){alert("O orçamento não pode ser superior ao dinheiro disponível para gastar / poupar.");return}const old=budgetForMonth();if(old)old.categories=categories;else fin.budgets.push({id:uid(),month,categories,createdAt:new Date().toISOString()});closeModal();saveFinance();toast("Orçamento mensal guardado.")}
+function renderFinanceBudget(t){
+  const el=document.getElementById("financeBudget");
   if(!el)return;
-  const ef=fin.emergencyFund||{target:0,contributions:[]};
-  const total=Number(t.emergencyTotal)||0,target=Number(ef.target)||0;
-  const pct=target?Math.min(100,total/target*100):0;
-  const month=Number(t.emergencyAdded)||0;
-  const history=[...(ef.contributions||[])].sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,12);
-  el.innerHTML=`<div class="finance-detail-grid">
-    <div class="finance-detail"><small>Saldo atual</small><b class="positive">${money(total)}</b></div>
-    <div class="finance-detail"><small>Meta</small><b>${target?money(target):"Não definida"}</b></div>
-    <div class="finance-detail"><small>Meta atingida</small><b>${target?pct.toFixed(0)+"%":"—"}</b></div>
-    <div class="finance-detail"><small>Acumulado neste mês</small><b class="positive">${money(month)}</b></div>
-  </div>
-  ${target?`<div class="emergency-progress"><i style="width:${pct}%"></i></div>`:""}
-  <div class="actions" style="margin-top:12px">
-    <button class="btn sm" onclick="addEmergencyMoney()">＋ Adicionar dinheiro</button>
-    <button class="btn sm danger" onclick="debitEmergencyMoney()">− Debitar</button>
-  </div>
-  <div class="panel-head" style="margin-top:15px"><h2 style="font-size:14px;margin:0">Histórico do Fundo de Emergência</h2><span style="color:var(--muted);font-size:10px">Saldo atual: ${money(total)}</span></div>
-  <div class="emergency-history">${history.length?history.map(x=>{
-    const debit=x.kind==="debit", label=debit?"Débito":"Contribuição";
-    return `<div class="finance-item"><span>${fullDateFinance(x.date)} <small style="color:var(--muted)">· ${esc(x.source||label)}</small></span><b class="${debit?"negative":"positive"}">${debit?"−":"＋"} ${money(x.amount)}</b></div>`;
-  }).join(""):`<div class="finance-empty">Ainda não existem movimentos no fundo.</div>`}</div>`;
-}
-function addEmergencyMoney(){
-  const available=Math.max(0,Number(financeTotals().incomeAvailableForSaving)||0);
-  modal("Adicionar dinheiro ao Fundo de Emergência",`<div class="form">
-    <label>Valor (Kz)</label>
-    <input id="emergencyAddAmount" type="number" min="0" step="1" placeholder="Ex.: 10000">
-    <small style="color:var(--muted)">Disponível para transferir neste mês: ${money(available)}.</small>
-    <label>Origem (opcional)</label>
-    <input id="emergencyAddSource" placeholder="Ex.: Poupança adicional">
-    <div class="actions">
-      <button class="btn" onclick="closeModal()">Cancelar</button>
-      <button class="btn primary" onclick="confirmAddEmergencyMoney()">Adicionar</button>
-    </div>
-  </div>`);
-}
-function confirmAddEmergencyMoney(){
-  const amount=Number(document.getElementById("emergencyAddAmount")?.value);
-  const source=document.getElementById("emergencyAddSource")?.value.trim()||"Adição manual";
-  if(!isFinite(amount)||amount<=0){alert("Indica um valor válido.");return;}
-  const available=Math.max(0,Number(financeTotals().incomeAvailableForSaving)||0);
-  if(amount>available){alert("O valor excede o dinheiro disponível para gastar / poupar neste mês.");return;}
-  fin.emergencyFund=fin.emergencyFund||{target:0,contributions:[]};
-  fin.emergencyFund.contributions=fin.emergencyFund.contributions||[];
-  fin.emergencyFund.contributions.push({id:Date.now(),kind:"add",amount,date:today(),source});
-  closeModal();saveFinance();renderDailyMissions();toast(money(amount)+" adicionados ao Fundo de Emergência.");
-}
-function debitEmergencyMoney(){
-  const current=Math.max(0,Number(financeTotals().emergencyTotal)||0);
-  modal("Debitar do Fundo de Emergência",`<div class="form">
-    <label>Valor (Kz)</label>
-    <input id="emergencyDebitAmount" type="number" min="0" step="1" placeholder="Ex.: 5000">
-    <small style="color:var(--muted)">Saldo disponível no fundo: ${money(current)}.</small>
-    <label>Motivo (opcional)</label>
-    <input id="emergencyDebitSource" placeholder="Ex.: Emergência médica">
-    <div class="actions">
-      <button class="btn" onclick="closeModal()">Cancelar</button>
-      <button class="btn danger" onclick="confirmDebitEmergencyMoney()">Debitar</button>
-    </div>
-  </div>`);
-}
-function confirmDebitEmergencyMoney(){
-  const amount=Number(document.getElementById("emergencyDebitAmount")?.value);
-  const source=document.getElementById("emergencyDebitSource")?.value.trim()||"Débito por emergência";
-  const current=Math.max(0,Number(financeTotals().emergencyTotal)||0);
-  if(!isFinite(amount)||amount<=0){alert("Indica um valor válido.");return;}
-  if(amount>current){alert("O débito não pode ser superior ao saldo atual do Fundo de Emergência.");return;}
-  fin.emergencyFund=fin.emergencyFund||{target:0,contributions:[]};
-  fin.emergencyFund.contributions=fin.emergencyFund.contributions||[];
-  fin.emergencyFund.contributions.push({id:Date.now(),kind:"debit",amount,date:today(),source});
-  closeModal();saveFinance();toast(money(amount)+" debitados do Fundo de Emergência.");
-}
-function emergencyTargetModal(){
-  const current=Number(fin.emergencyFund?.target)||0;
-  modal("Meta do Fundo de Emergência",`<div class="form">
-    <label>Meta (Kz)</label><input id="emergencyTarget" type="number" min="0" value="${current}">
-    <small style="color:var(--muted)">Define quanto queres acumular como reserva exclusiva para emergências.</small>
-    <div class="actions"><button class="btn" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="saveEmergencyTarget()">Guardar meta</button></div>
-  </div>`);
-}
-function saveEmergencyTarget(){
-  const v=Number(document.getElementById("emergencyTarget")?.value);
-  if(!isFinite(v)||v<0){alert("Indica uma meta válida.");return;}
-  fin.emergencyFund=fin.emergencyFund||{target:0,contributions:[]};
-  fin.emergencyFund.target=v;
-  closeModal();saveFinance();toast("Meta do Fundo de Emergência guardada.");
-}
-function financeGoalModal(){
-  modal("Novo objetivo financeiro",`<div class="form">
-    <label>Objetivo</label><input id="gName" placeholder="Ex.: Fundo de emergência">
-    <label>Meta (Kz)</label><input id="gTarget" type="number" min="0">
-    <label>Valor actual a transferir (Kz)</label><input id="gCurrent" type="number" min="0">
-    <small style="color:var(--muted)">Se preencheres este valor, ele será retirado do rendimento disponível deste mês.</small>
-    <label>Prazo</label><input id="gDue" type="date">
-    <div class="actions"><button class="btn" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="addFinanceGoal()">Guardar objetivo</button></div>
-  </div>`);
-}
-function addFinanceGoal(){
-  const n=document.getElementById("gName")?.value.trim();
-  const t=Number(document.getElementById("gTarget")?.value);
-  const c=Number(document.getElementById("gCurrent")?.value)||0;
-  const d=document.getElementById("gDue")?.value;
-  if(!n||!t){alert("Indica o nome e a meta.");return;}
-  const available=financeTotals().incomeAvailableForSaving;
-  if(c>available){alert("O valor inicial não pode ser superior ao rendimento disponível deste mês após as despesas e poupanças já feitas.");return;}
-  const id=Date.now();
-  fin.goals.push({id,name:n,target:t,current:c,due:d});
-  if(c>0)fin.goalMoves.push({id:id+1,goalId:id,kind:"add",amount:c,date:today(),initial:true});
-  closeModal();saveFinance();toast("Objetivo financeiro criado.");
-}
-function addGoalSaving(i){
-  const g=fin.goals[i]; if(!g)return;
-  let v=prompt("Quanto queres poupar neste objetivo? (Kz)","0");
-  if(v===null)return;
-  v=Number(v);
-  if(!isFinite(v)||v<=0){alert("Indica um valor de poupança válido.");return;}
-  const t=financeTotals();
-  if(v>t.incomeAvailableForSaving){alert("O valor excede o rendimento disponível deste mês depois das despesas e das poupanças já feitas.");return;}
-  g.current=(Number(g.current)||0)+v;
-  fin.goalMoves.push({id:Date.now(),goalId:g.id||i,kind:"add",amount:v,date:today()});
-  saveFinance();toast(money(v)+" adicionados a "+g.name+".");
-}
-function debitGoal(i){
-  const g=fin.goals[i],cur=Number(g?.current)||0;
-  if(!g||cur<=0){alert("Este objetivo não tem saldo para debitar.");return;}
-  let v=prompt("Quanto queres debitar deste objetivo? (Kz)","0");
-  if(v===null)return;
-  v=Number(v);
-  if(!isFinite(v)||v<=0){alert("Indica um valor de débito válido.");return;}
-  if(v>cur){alert("O débito não pode ser superior ao saldo do objetivo.");return;}
-  g.current=cur-v;
-  fin.goalMoves.push({id:Date.now(),goalId:g.id||i,kind:"debit",amount:v,date:today()});
-  saveFinance();toast(money(v)+" debitados de "+g.name+".");
-}
-function renderFinanceGoals(){
-  const el=document.getElementById("financeGoals");if(!el)return;
-  if(!fin.goals.length){el.innerHTML='<div class="finance-empty">Ainda não tens objetivos financeiros. Cria o primeiro e começa a poupar.</div>';return;}
-  el.innerHTML=fin.goals.map((g,i)=>{
-    const cur=Number(g.current)||0,tgt=Number(g.target)||0,pct=Math.min(100,tgt?cur/tgt*100:0);
-    return `<div class="goal">
-      <div class="goalhead"><div><b>${esc(g.name)}</b><div style="color:var(--muted);font-size:10px;margin-top:4px">${g.due?"Prazo: "+fullDateFinance(g.due):"Sem prazo"}</div></div><b>${pct.toFixed(0)}%</b></div>
-      <div class="goalbar"><i style="width:${pct}%"></i></div>
-      <div class="goalmeta"><span>${money(cur)}</span><span>${money(tgt)}</span></div>
-      <div class="actions" style="margin-top:10px"><button class="btn sm" onclick="addGoalSaving(${i})">＋ Poupar</button><button class="btn sm danger" onclick="debitGoal(${i})">− Debitar</button></div>
-    </div>`;
+  const b=budgetForMonth(),available=t.availableBeforeExpenses,total=b?budgetTotal():0;
+  if(!b){el.innerHTML=`<div class="finance-empty">Ainda não existe orçamento para ${currentMonthFinance()}. <button class="btn sm primary" onclick="financeBudgetModal()">Criar orçamento</button></div>`;return}
+  const rows=FIN_CATEGORIES.filter(c=>categoryBudget(c)>0||categoryExpenses(c)>0).map(c=>{
+    const budget=categoryBudget(c),spent=categoryExpenses(c),rem=budget-spent,pct=budget?Math.min(100,Math.max(0,rem/budget*100)):0,ex=spent>budget,exPct=budget?(spent-budget)/budget*100:spent>0?100:0;
+    return `<div class="budget-row"><div class="budget-row-head"><b>${esc(c)}</b><span class="budget-status ${ex?'exceed':rem===0?'zero':'remaining'}">${ex?exPct.toFixed(2)+"% Exceed":rem===0?"0% Remaining":pct.toFixed(2)+"% Remaining"}</span></div><div class="budget-values"><span>Budget<strong>${money2(budget)}</strong></span><span>Expenses<strong>${money2(spent)}</strong></span><span>Remaining<strong class="${rem<0?'negative':''}">${money2(rem)}</strong></span></div><div class="budget-progress ${ex?'exceed':''}"><i style="width:${ex?100:pct}%"></i></div></div>`
   }).join("");
+  const totalSpent=totalExpenses(currentMonthFinance()),overallMax=Math.max(1,total,totalSpent);
+  const categoryRows=FIN_CATEGORIES.filter(c=>categoryBudget(c)>0||categoryExpenses(c)>0).map(c=>{
+    const budget=categoryBudget(c),spent=categoryExpenses(c),max=Math.max(1,budget,spent),ex=spent>budget;
+    return `<div class="budget-compare-category"><div class="budget-compare-category-head"><span>${esc(c)}</span><span class="${ex?'exceed':''}">${ex?'Exceed · ':''}${money2(spent)} / ${money2(budget)}</span></div><div class="budget-compare-row"><div class="budget-compare-label"><span>Budget</span><b>${money2(budget)}</b></div><div class="budget-compare-track"><i style="width:${budget/max*100}%"></i></div></div><div class="budget-compare-row"><div class="budget-compare-label"><span>Expenses</span><b>${money2(spent)}</b></div><div class="budget-compare-track expense ${ex?'exceed':''}"><i style="width:${spent/max*100}%"></i></div></div></div>`
+  }).join("");
+  el.innerHTML=`<div class="finance-budget-grid"><div class="finance-budget-card"><small>Disponível total</small><b>${money(available)}</b></div><div class="finance-budget-card"><small>Planejado</small><b>${money(total)}</b></div><div class="finance-budget-card"><small>Não orçamentado</small><b>${money(Math.max(0,available-total))}</b></div></div>${rows||'<div class="finance-empty">Nenhuma categoria orçamentada ainda.</div>'}<div class="budget-compare"><div class="budget-compare-head"><div><div class="budget-compare-title">📊 Orçamento × Despesas</div><div class="budget-compare-sub">Comparação real de ${currentMonthFinance()}</div></div><div class="budget-compare-total">${money2(totalSpent)} / ${money2(total)}<br><span style="color:${totalSpent>total?'var(--red)':'var(--muted)'}">${totalSpent>total?'Orçamento excedido':'Despesas do mês'}</span></div></div><div class="budget-compare-row"><div class="budget-compare-label"><span>Orçamento total</span><b>${money2(total)}</b></div><div class="budget-compare-track"><i style="width:${total/overallMax*100}%"></i></div></div><div class="budget-compare-row"><div class="budget-compare-label"><span>Despesas totais</span><b>${money2(totalSpent)}</b></div><div class="budget-compare-track expense ${totalSpent>total?'exceed':''}"><i style="width:${totalSpent/overallMax*100}%"></i></div></div><div style="font-size:10px;font-weight:900;margin-top:14px">Comparação por categoria</div>${categoryRows||'<div class="finance-empty" style="padding:16px 0">Nenhuma categoria com orçamento ou despesas neste mês.</div>'}</div>`
 }
+
+function markFinanceNoRecord(){const d=today();fin.dailyRecords[d]={status:"no-record",updatedAt:new Date().toISOString()};localStorage.setItem(FINKEY,JSON.stringify(fin));renderFinance();renderFinanceGate();toast("Hoje marcado como Sem registro.")}
+function setFinanceSort(mode){financeSort=mode;renderFinanceReports()}
+function renderFinanceReports(){const container=document.getElementById("financeCategoryReports"),sortAmount=document.getElementById("sortAmountBtn"),sortDate=document.getElementById("sortDateBtn");if(sortAmount)sortAmount.classList.toggle("active",financeSort==='amount');if(sortDate)sortDate.classList.toggle("active",financeSort==='date');if(!container)return;let cats=FIN_CATEGORIES.map(c=>({c,total:categoryExpenses(c),items:monthMovesFinance().filter(x=>x.kind==='expense'&&x.category===c)})).filter(x=>x.total>0);cats.sort(financeSort==='date'?(a,b)=>String(b.items.at(-1)?.date||'').localeCompare(String(a.items.at(-1)?.date||'')):(a,b)=>b.total-a.total);container.innerHTML=cats.length?cats.map(x=>{const avg=x.items.length?x.total/x.items.length:0;const items=[...x.items].sort((a,b)=>financeSort==='date'?String(b.date).localeCompare(String(a.date)):Number(b.amount)-Number(a.amount));return `<div class="finance-category"><div class="finance-category-head"><b>${esc(x.c)}</b><b>${money2(x.total)}</b></div><div style="color:var(--muted);font-size:10px;margin-top:4px">Total: ${money2(x.total)} · Average: ${money2(avg)}</div><div style="margin-top:8px">${items.map(i=>`<div class="finance-item"><span>${esc(i.name)} <small style="color:var(--muted)">· ${fullDateFinance(i.date)}</small></span><b>${money2(i.amount)}</b></div>`).join('')}</div></div>`}).join(''):'<div class="finance-empty">Ainda não existem despesas neste mês.</div>'}
+function renderFinanceCharts(){const el=document.getElementById("financeDailyChart");if(!el)return;const byDay={};monthMovesFinance().filter(x=>x.kind==='expense').forEach(x=>byDay[x.date]=(byDay[x.date]||0)+Number(x.amount||0));const days=Object.entries(byDay).sort((a,b)=>a[0].localeCompare(b[0])),max=Math.max(1,...days.map(x=>x[1]));el.innerHTML=days.length?days.map(([d,v])=>`<div class="daily-bar"><span>${d.slice(8,10)}/${d.slice(5,7)}</span><div class="track"><i style="width:${v/max*100}%"></i></div><b>${money2(v)}</b></div>`).join(''):'<div class="finance-empty">Regista despesas para ver a evolução diária.</div>'}
+function financeGoalModal(){modal("Novo objetivo financeiro",`<div class="form"><label>Objetivo</label><input id="gName" placeholder="Ex.: Comprar roupas e sapatos"><label>Meta (Kz)</label><input id="gTarget" type="number" min="0.01"><label>Valor actual a transferir (Kz)</label><input id="gCurrent" type="number" min="0" step="0.01"><label>Prazo</label><input id="gDue" type="date"><small style="color:var(--muted)">O valor inicial será retirado do disponível real. Não cria dinheiro.</small><div class="actions"><button class="btn" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="addFinanceGoal()">Guardar objetivo</button></div></div>`)}
+function addFinanceGoal(){const n=document.getElementById("gName")?.value.trim(),t=Number(document.getElementById("gTarget")?.value),c=Number(document.getElementById("gCurrent")?.value)||0,d=document.getElementById("gDue")?.value;if(!n||!isFinite(t)||t<=0||c<0){alert("Indica nome, meta e valor válidos.");return}if(c>financeTotals().availableForSaving){alert(`Saldo insuficiente. Você possui apenas ${money(financeTotals().availableForSaving)} disponíveis.`);return}const id=uid();fin.goals.push({id,name:n,target:t,current:c,due:d});if(c>0)fin.goalMoves.push({id:uid(),goalId:id,kind:"add",amount:c,date:today(),initial:true});closeModal();saveFinance();toast("Objetivo financeiro criado.")}
+function addGoalSaving(i){const g=fin.goals[i];if(!g)return;let v=prompt("Quanto queres poupar neste objetivo? (Kz)","0");if(v===null)return;v=Number(v);if(!isFinite(v)||v<=0||v>financeTotals().availableForSaving){alert("O valor excede o disponível real.");return}g.current=(Number(g.current)||0)+v;fin.goalMoves.push({id:uid(),goalId:g.id,kind:"add",amount:v,date:today()});saveFinance();toast(money(v)+" adicionados a "+g.name+".")}
+function debitGoal(i){const g=fin.goals[i],cur=Number(g?.current)||0;if(!g||cur<=0){alert("Este objetivo não tem saldo.");return}let v=prompt("Quanto queres debitar deste objetivo? (Kz)","0");if(v===null)return;v=Number(v);if(!isFinite(v)||v<=0||v>cur){alert("O débito não pode exceder o saldo do objetivo.");return}g.current=cur-v;fin.goalMoves.push({id:uid(),goalId:g.id,kind:"debit",amount:v,date:today()});saveFinance();toast(money(v)+" debitados de "+g.name+".")}
+function renderFinanceGoals(){const el=document.getElementById("financeGoals");if(!el)return;if(!fin.goals.length){el.innerHTML='<div class="finance-empty">Ainda não tens objetivos financeiros.</div>';return}el.innerHTML=fin.goals.map((g,i)=>{const cur=Number(g.current)||0,tgt=Number(g.target)||0,pct=tgt?Math.min(100,cur/tgt*100):0;return `<div class="goal"><div class="goalhead"><div><b>${esc(g.name)}</b><div style="color:var(--muted);font-size:10px;margin-top:4px">${g.due?"Prazo: "+fullDateFinance(g.due):"Sem prazo"}</div></div><b>${pct.toFixed(0)}%</b></div><div class="goalbar"><i style="width:${pct}%"></i></div><div class="goalmeta"><span>${money(cur)}</span><span>${money(tgt)}</span></div><div class="actions" style="margin-top:10px"><button class="btn sm" onclick="addGoalSaving(${i})">＋ Poupar</button><button class="btn sm danger" onclick="debitGoal(${i})">− Debitar</button></div></div>`}).join("")}
+function financeInvestmentModal(){const available=financeTotals().availableForSaving;modal("Transferir para investimento",`<div class="form"><label>Investimento</label><input id="invName" placeholder="Ex.: ETF / Carteira"><label>Valor transferido (Kz)</label><input id="invAmount" type="number" min="0.01" step="0.01"><small style="color:var(--muted)">Disponível: ${money(available)}. O capital transferido sai do disponível.</small><div class="actions"><button class="btn" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="addFinanceInvestment()">Transferir</button></div></div>`)}
+function addFinanceInvestment(){const n=document.getElementById("invName")?.value.trim(),a=Number(document.getElementById("invAmount")?.value);if(!n||!isFinite(a)||a<=0||a>financeTotals().availableForSaving){alert("Indica um investimento e um valor dentro do disponível.");return}const id=uid();fin.investments.push({id,name:n,current:a,contributed:a});fin.investmentMoves.push({id:uid(),investmentId:id,kind:"add",amount:a,date:today()});closeModal();saveFinance();toast(money(a)+" transferidos para o investimento.")}
+function updateInvestmentValue(i){const inv=fin.investments[i];if(!inv)return;let v=prompt("Valor atual do investimento (Kz)",String(inv.current||0));if(v===null)return;v=Number(v);if(!isFinite(v)||v<0){alert("Indica um valor válido.");return}inv.current=v;inv.updatedAt=new Date().toISOString();saveFinance();toast("Valor atual do investimento atualizado.")}
+function renderFinanceInvestments(){const el=document.getElementById("financeInvestments");if(!el)return;if(!fin.investments.length){el.innerHTML='<div class="finance-empty">Nenhum investimento registado.</div>';return}el.innerHTML=fin.investments.map((x,i)=>`<div class="finance-item"><span>📈 ${esc(x.name)} <small style="color:var(--muted)">· Valor atual</small></span><span style="display:flex;gap:8px;align-items:center"><b class="positive">${money(x.current)}</b><button class="btn sm" onclick="updateInvestmentValue(${i})">Atualizar</button></span></div>`).join("")}
 function renderFinance(){
-  const t=financeTotals();
-  const fNet=document.getElementById("fNet");if(!fNet)return;
-  fNet.textContent=patrimonyVisible?money(t.net):"Kz ***,00";
-  document.getElementById("fIncome").textContent=money(t.income);
-  document.getElementById("fExpense").textContent=money(t.expense);
-  document.getElementById("fSave").textContent=t.saving.toFixed(1)+"%";
-  document.getElementById("fInvest").textContent=money(t.invest);
-
-  document.getElementById("financeSummary").innerHTML=
-    `<div class="finance-item"><span>Rendimento base do perfil</span><b class="positive">${money(t.incomeBase)}</b></div>
-     <div class="finance-item"><span>Receitas registadas neste mês</span><b class="positive">${money(t.recordedIncome)}</b></div>
-     <div class="finance-item"><span>🛡️ Fundo de Emergência neste mês</span><b class="positive">${money(t.emergencyAdded)}</b></div>
-     <div class="finance-item"><span>Rendimento mensal total</span><b class="positive">${money(t.income)}</b></div>
-     <div class="finance-item"><span>Despesas deste mês</span><b class="negative">${money(t.expense)}</b></div>
-     <div class="finance-item"><span>Disponível para gastar / poupar</span><b>${money(t.incomeAvailableForSaving)}</b></div>
-     <div class="finance-item"><span>Orçamento reservado</span><b>${money(fin.budgets.filter(b=>String(b.month||b.date||"").slice(0,7)===currentMonthFinance()).reduce((a,b)=>a+Number(b.amount||b.total||0),0))}</b></div>
-     <div class="finance-item"><span>Não orçamentado</span><b>${money(Math.max(0,t.incomeAvailableForSaving-fin.budgets.filter(b=>String(b.month||b.date||"").slice(0,7)===currentMonthFinance()).reduce((a,b)=>a+Number(b.amount||b.total||0),0)))}</b></div>
-     <div class="finance-item"><span>Poupanças / objetivos</span><b class="positive">${money(t.goalTotal)}</b></div>
-     <div class="finance-item"><span>Capital investido / carteira</span><b>${money(t.invest)}</b></div>
-     <div class="finance-item"><span>Património total</span><b>${patrimonyVisible?money(t.net):"Kz ***,00"}</b></div>`;
-
-  document.getElementById("financePatrimonyTotal").textContent=patrimonyVisible?money(t.net):"Kz ***,00";
-  document.getElementById("patrimonyEye")?.replaceChildren(document.createTextNode(patrimonyVisible?"🙈":"👁"));
-  renderEmergencyFund(t);
-
-  const rows=[];
-  rows.push(`<div class="finance-item"><span>Dinheiro disponível</span><b>${money(t.cash)}</b></div>`);
-  rows.push(`<div class="finance-item"><span>🛡️ Fundo de Emergência</span><b class="positive">${money(t.emergencyTotal)}</b></div>`);
-  if(fin.goals.length){
-    fin.goals.forEach((g,i)=>{
-      const cur=Number(g.current)||0;
-      rows.push(`<div class="finance-item"><span>🎯 ${esc(g.name)}</span><span style="display:flex;align-items:center;gap:8px"><b class="positive">${money(cur)}</b><button class="btn sm danger" onclick="debitGoal(${i})">− Debitar</button></span></div>`);
-    });
-  }else rows.push(`<div class="finance-item"><span>Objetivos financeiros</span><span style="color:var(--muted);font-size:10px">Nenhum criado</span></div>`);
-  if(fin.investments.length){
-    fin.investments.forEach(x=>rows.push(`<div class="finance-item"><span>📈 ${esc(x.name)}</span><b class="positive">${money(Number(x.current)||0)}</b></div>`));
-  }else rows.push(`<div class="finance-item"><span>Investimentos / carteira</span><span style="color:var(--muted);font-size:10px">Nenhum investimento</span></div>`);
-  document.getElementById("financePatrimony").innerHTML=rows.join("");
-
-  const cats={};
-  monthMovesFinance().filter(x=>x.kind==="expense").forEach(x=>cats[x.category||"Sem categoria"]=(cats[x.category||"Sem categoria"]||0)+Number(x.amount||0));
-  const max=Math.max(1,...Object.values(cats));
-  document.getElementById("financeDistribution").innerHTML=Object.entries(cats).length?
-    Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="finance-barrow"><label><span>${esc(k)}</span><b>${money(v)}</b></label><div class="finance-bar"><i style="width:${v/max*100}%"></i></div></div>`).join(""):
-    '<div class="finance-empty">Regista despesas para começar a analisar a distribuição.</div>';
-
-  renderFinanceGoals();
-  document.getElementById("financeMoves").innerHTML=fin.moves.length?
-    [...fin.moves].sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,10).map(x=>`<div class="finance-item"><span>${esc(x.name)} <small style="color:var(--muted)">· ${esc(x.category||"")}</small></span><b class="${x.kind==="income"?"positive":"negative"}">${x.kind==="income"?"+":"-"} ${money(x.amount)}</b></div>`).join(""):
-    '<div class="finance-empty">Nenhum movimento registado.</div>';
+  const t=financeTotals(),fNet=document.getElementById("fNet");if(!fNet)return;fNet.textContent=patrimonyVisible?money(t.net):"Kz ***,00";document.getElementById("fIncome").textContent=money(t.income);document.getElementById("fExpense").textContent=money(t.expense);document.getElementById("fSave").textContent=t.saving.toFixed(1)+"%";document.getElementById("fInvest").textContent=money(t.invest);
+  const b=budgetForMonth(),bt=budgetTotal();document.getElementById("financeSummary").innerHTML=`<div class="finance-item"><span>Receita deste mês</span><b class="positive">${money(t.income)}</b></div><div class="finance-item"><span>🛡️ Fundo de Emergência neste mês</span><b class="positive">${money(t.emergencyAdded)}</b></div><div class="finance-item"><span>Despesas deste mês</span><b class="negative">${money(t.expense)}</b></div><div class="finance-item"><span>Disponível para gastar / poupar</span><b>${money(t.availableForSaving)}</b></div><div class="finance-item"><span>Orçamento reservado</span><b>${money(bt)}</b></div><div class="finance-item"><span>Não orçamentado</span><b>${money(Math.max(0,t.availableBeforeExpenses-bt))}</b></div><div class="finance-item"><span>Poupanças / objetivos</span><b class="positive">${money(t.goalTotal)}</b></div><div class="finance-item"><span>Investimentos pelo valor atual</span><b>${money(t.invest)}</b></div><div class="finance-item"><span>Património total</span><b>${patrimonyVisible?money(t.net):"Kz ***,00"}</b></div>`;
+  document.getElementById("financePatrimonyTotal").textContent=patrimonyVisible?money(t.net):"Kz ***,00";document.getElementById("patrimonyEye")?.replaceChildren(document.createTextNode(patrimonyVisible?"🙈":"👁"));
+  renderFinanceMonthControl(t);renderEmergencyFund(t);renderFinanceBudget(t);renderFinanceGoals();renderFinanceInvestments();renderFinanceCharts();renderFinanceReports();renderFinanceGate();
+  const cats={};monthMovesFinance().filter(x=>x.kind==="expense").forEach(x=>cats[x.category]=(cats[x.category]||0)+Number(x.amount||0));const vals=Object.values(cats),max=Math.max(1,...vals),total=t.expense;document.getElementById("financeDistribution").innerHTML=vals.length?Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="finance-barrow"><label><span>${esc(k)}</span><b>${money2(v)} · ${total?(v/total*100).toFixed(2):"0.00"}%</b></label><div class="finance-bar"><i style="width:${v/max*100}%"></i></div></div>`).join(""):'<div class="finance-empty">Regista despesas para começar a analisar a distribuição.</div>';
+  document.getElementById("financeMoves").innerHTML=fin.moves.length?[...fin.moves].sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,15).map(x=>`<div class="finance-item"><span>${esc(x.name)} <small style="color:var(--muted)">· ${esc(x.category||x.kind)}</small></span><b class="${x.kind==="income"?'positive':'negative'}">${x.kind==="income"?'+':'−'} ${money2(x.amount)}</b></div>`).join(""):'<div class="finance-empty">Nenhum movimento registado.</div>';
+}
+function markFinanceCheckpointReminder(){
+  const now=new Date(),mins=now.getHours()*60+now.getMinutes(),d=today();
+  if(dailyFinanceStatus(d)!=="pending")return;
+  const checkpoint=mins>=21*60?"21:00":mins>=13*60?"13:00":null;
+  if(!checkpoint)return;
+  fin.dailyRecords[d]=fin.dailyRecords[d]||{status:"pending"};
+  const rec=fin.dailyRecords[d];
+  rec.financeNotifications=rec.financeNotifications||{};
+  if(rec.financeNotifications[checkpoint])return;
+  const body=checkpoint==="13:00"?"Registre as despesas que você realizou hoje.":"Ainda não registrou as suas despesas de hoje. Faça o registro antes de encerrar o dia.";
+  const markSent=(channel)=>{
+    rec.financeNotifications[checkpoint]={sentAt:new Date().toISOString(),channel};
+    localStorage.setItem(FINKEY,JSON.stringify(fin));
+    renderFinanceGate();
+  };
+  if("Notification" in window){
+    if(Notification.permission==="granted"){
+      try{new Notification("NOSDE EDVANCE • Finanças",{body});markSent("browser");return}catch(e){}
+    }else if(Notification.permission==="default"&&!rec.financeNotifications.permissionRequested){
+      rec.financeNotifications.permissionRequested=true;
+      localStorage.setItem(FINKEY,JSON.stringify(fin));
+      Notification.requestPermission().then(permission=>{
+        const current=fin.dailyRecords[d];
+        if(permission==="granted"&&dailyFinanceStatus(d)==="pending"&&!current?.financeNotifications?.[checkpoint]){
+          try{new Notification("NOSDE EDVANCE • Finanças",{body});current.financeNotifications=current.financeNotifications||{};current.financeNotifications[checkpoint]={sentAt:new Date().toISOString(),channel:"browser"};localStorage.setItem(FINKEY,JSON.stringify(fin));renderFinanceGate();}catch(e){}
+        }
+      }).catch(()=>{});
+      return;
+    }
+  }
+  toast("🔔 "+body);
+  markSent("in-app");
 }
 
+function renderFinanceGateOnLoad(){renderFinanceGate();markFinanceCheckpointReminder()}
 
 /* PROJECTS & EFFICIENCY — integrated from PRO_OS_SUPABASE_FINAL(4) */
 const PROJECT_KEY='pro_os_planner_v1';
@@ -1410,7 +1509,6 @@ function projectFmtMin(m){m=Math.max(0,Number(m)||0);let h=Math.floor(m/60),mi=M
 function projectFmtHours(m){return (Number(m||0)/60).toFixed(1)+'h'}
 function projectFmtDate(d){if(!d)return 'Sem prazo';return new Date(d+'T00:00:00').toLocaleDateString('pt-AO',{day:'2-digit',month:'2-digit'})}
 function projectFullDate(d){if(!d)return '—';return new Date(d+'T00:00:00').toLocaleDateString('pt-AO')}
-function money(v){return new Intl.NumberFormat('pt-AO').format(Math.round(Number(v)||0))+' Kz'}
 function projectCurrentWorkMinutes(p){let m=Number(p.elapsed||0);if(p.timerStart)m+=(Date.now()-p.timerStart)/60000;return m}
 function projectTotalMinutes(p){return projectCurrentWorkMinutes(p)+(p.alterations||[]).reduce((a,x)=>a+Number(x.minutes||0),0)}
 function projectIsLate(p){if(!p.due||p.status!=='done')return false;if(!p.completedAt)return false;return new Date(p.completedAt)>new Date(p.due+'T23:59:59')}
@@ -1510,7 +1608,10 @@ function projectExportData(){let blob=new Blob([JSON.stringify(projectState,null
 function renderProjects(){projectRenderBoard();projectRenderAnalytics()}
 function renderAll(){renderHome();renderCalendar();renderSelected();renderActions();renderReminders();renderGoals();renderStats();renderNotes();renderPomo();renderProfile();renderFinance();renderProjects()}
 document.documentElement.dataset.theme=localStorage.getItem("evolve_theme")||"dark";document.getElementById("themeBtn").textContent=document.documentElement.dataset.theme==="light"?"🌙 Tema escuro":"☀️ Tema claro";
-renderAll();setInterval(()=>{if(document.getElementById("board")?.classList.contains("active")||document.getElementById("analytics")?.classList.contains("active")){projectRenderBoard();projectRenderAnalytics()}},1000);setInterval(checkAlarms,30000);setInterval(()=>{renderMissionCountdown();renderDailyMissions();renderStreak()},60000);checkAlarms();
+initAuth();
+setInterval(()=>{if(currentAuthUser&&(document.getElementById("board")?.classList.contains("active")||document.getElementById("analytics")?.classList.contains("active"))){projectRenderBoard();projectRenderAnalytics()}},1000);
+setInterval(()=>{if(currentAuthUser)checkAlarms()},30000);
+setInterval(()=>{if(currentAuthUser){renderMissionCountdown();renderDailyMissions();renderStreak();markFinanceCheckpointReminder()}},60000);
 
 document.addEventListener("visibilitychange",()=>{
   if(document.visibilityState==="visible"){
