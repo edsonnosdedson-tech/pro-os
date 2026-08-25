@@ -288,7 +288,7 @@ input,textarea,select{background:var(--bg);border:1px solid var(--line);color:va
     </form>
     <button id="authToggle" class="auth-link" type="button">Ainda não tens conta? Criar conta</button>
     <button id="authReset" class="auth-link secondary" type="button">Esqueci-me da palavra-passe</button>
-    <div class="auth-note">A autenticação é feita pelo <b>Supabase Auth</b>. Não coloques aqui o Client Secret do Google.</div>
+    <div class="auth-note">A autenticação é feita pelo <b>Supabase Auth</b>. Usa apenas a <b>Publishable Key</b> neste HTML. Nunca coloques uma <b>Secret Key</b> aqui.</div>
   </div>
 </div>
 <button class="btn theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ Tema claro</button>
@@ -586,7 +586,7 @@ input,textarea,select{background:var(--bg);border:1px solid var(--line);color:va
 /* ============================================================
    CONFIGURAÇÃO SUPABASE
    >>> COLA A TUA PUBLISHABLE KEY NA LINHA ABAIXO <<<
-   Pesquisa no GitHub por: PUBLISHABLE_KEY_AQUI
+   Procura no código por: COLE_AQUI_A_TUA_PUBLISHABLE_KEY
    ============================================================ */
 const SUPABASE_URL="https://corjklpfnrahtzukvjlnm.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY="sb_publishable_LYziqug0ixUvu5QZe-YyWg_LsyXS18y";
@@ -657,7 +657,7 @@ async function signOutUser(){
   currentAuthUser=null;showAuth();setAuthMode("login");authMsg("success","Sessão terminada.");
 }
 async function initAuth(){
-  if(!SUPABASE_PUBLISHABLE_KEY||SUPABASE_PUBLISHABLE_KEY.includes("COLOCA_AQUI")){
+  if(!SUPABASE_PUBLISHABLE_KEY||SUPABASE_PUBLISHABLE_KEY==="COLE_AQUI_A_TUA_PUBLISHABLE_KEY"){
     showAuth();authMsg("error","Falta colocar a Publishable Key do Supabase no código.");return;
   }
   const {data:{session},error}=await supabaseClient.auth.getSession();
